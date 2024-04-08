@@ -8,11 +8,11 @@ var services = builder.Services;
 var configuration = builder.Configuration;
 
 // For Google signin 
-services.AddAuthentication().AddGoogle(googleOptions =>
+/*services.AddAuthentication().AddGoogle(googleOptions =>
 {
     googleOptions.ClientId = configuration["Authentication:Google:ClientId"];
     googleOptions.ClientSecret = configuration["Authentication:Google:ClientSecret"];
-});
+});*/
 
 // Add services to the container.
 //For the identity database
