@@ -7,7 +7,6 @@ namespace Intex2024.Models
     public class Customer: IdentityUser
     {
         [Key]
-        public int CustomerId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime BirthDate { get; set; }
