@@ -15,7 +15,7 @@ var configuration = builder.Configuration;
 
 // Add services to the container.
 //For the identity database
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+var connectionString = builder.Configuration.GetConnectionString("IntexConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
@@ -24,13 +24,6 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddIdentity<Customer, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
     builder.Services.AddControllersWithViews();
-
-// For the non identity database
-builder.Services.AddDbContext<IntexDbContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration["ConnectionStrings:IntexConnection"]);
-});
-builder.Services.AddScoped<IIntexRepository, EFIntexRepository>();
 
 /*builder.Services.AddRazorPages();*/
 
