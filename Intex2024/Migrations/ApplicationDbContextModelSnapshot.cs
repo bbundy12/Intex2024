@@ -61,7 +61,7 @@ namespace Intex2024.Migrations
                     b.HasKey("CartLineId");
 
                     b.HasIndex("CartId");
-
+                    
                     b.HasIndex("ProductId");
 
                     b.ToTable("CartLine");
@@ -81,6 +81,12 @@ namespace Intex2024.Migrations
                     b.Property<DateTime>("BirthDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("Age")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTime>("BirthDate")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
                         .HasColumnType("nvarchar(max)");
@@ -88,6 +94,10 @@ namespace Intex2024.Migrations
                     b.Property<string>("CountryOfResidence")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CountryOfResidence")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256)
@@ -107,6 +117,18 @@ namespace Intex2024.Migrations
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Gender")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -157,6 +179,7 @@ namespace Intex2024.Migrations
             modelBuilder.Entity("Intex2024.Data.LineItem", b =>
                 {
                     b.Property<int>("ProductId")
+
                         .HasColumnType("int");
 
                     b.Property<int>("TransactionId")
@@ -167,6 +190,7 @@ namespace Intex2024.Migrations
 
                     b.Property<int>("Rating")
                         .HasColumnType("int");
+
 
                     b.HasKey("ProductId", "TransactionId");
 
@@ -179,6 +203,7 @@ namespace Intex2024.Migrations
                 {
                     b.Property<int>("TransactionId")
                         .ValueGeneratedOnAdd()
+
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TransactionId"));
@@ -238,6 +263,7 @@ namespace Intex2024.Migrations
                 {
                     b.Property<int>("ProductId")
                         .ValueGeneratedOnAdd()
+
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductId"));
@@ -283,6 +309,7 @@ namespace Intex2024.Migrations
             modelBuilder.Entity("Intex2024.Data.ProductRecommendation", b =>
                 {
                     b.Property<int>("RecommendedProductId")
+
                         .HasColumnType("int");
 
                     b.Property<int>("Rank")
@@ -305,6 +332,7 @@ namespace Intex2024.Migrations
                 {
                     b.Property<int>("RecommendationId")
                         .ValueGeneratedOnAdd()
+
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RecommendationId"));
@@ -328,6 +356,7 @@ namespace Intex2024.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
+
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -346,6 +375,7 @@ namespace Intex2024.Migrations
 
                     b.HasIndex("NormalizedName")
                         .IsUnique()
+
                         .HasDatabaseName("RoleNameIndex")
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
@@ -356,6 +386,7 @@ namespace Intex2024.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
@@ -405,6 +436,7 @@ namespace Intex2024.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
+
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderKey")
@@ -445,6 +477,7 @@ namespace Intex2024.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
+
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
