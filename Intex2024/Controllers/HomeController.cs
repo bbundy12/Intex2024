@@ -28,5 +28,66 @@ namespace Intex2024.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public IActionResult Products()
+        {
+            return View();
+        }
+
+        public IActionResult ProductDetails()
+        {
+            return View();
+        }
+
+        public IActionResult CreateAccount()
+        {
+            return View();
+        }
+
+        public IActionResult About()
+        {
+            return View();
+        }
+
+        public IActionResult Cart()
+        {
+            return View();
+        }
+
+        public IActionResult Confirmation()
+        {
+            return View();
+        }
+
+        public IActionResult Orders()
+        {
+            return View();
+        }
+
+        public IActionResult AdminProducts()
+        {
+            return View();
+        }
+
+        public IActionResult AdminUsers()
+        {
+            return View();
+        }
+
+        public IActionResult Dashboard()
+        {
+            return View();
+        }
+
+        public IActionResult AddProduct()
+        {
+            return View();
+        }
+
+        public IActionResult Fraud()
+        {
+            return View();
+        }
+
     }
 }

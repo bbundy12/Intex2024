@@ -24,7 +24,6 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddIdentity<Customer, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
     builder.Services.AddControllersWithViews();
-
 builder.Services.AddScoped<IIntexRepository, EFIntexRepository>();
 
 builder.Services.AddRazorPages();
