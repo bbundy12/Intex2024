@@ -6,6 +6,7 @@ namespace Intex2024.Data
 {
     public class Customer : IdentityUser
     {
+        public Customer() : base() { }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime BirthDate { get; set; }

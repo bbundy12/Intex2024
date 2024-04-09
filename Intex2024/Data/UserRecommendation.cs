@@ -9,12 +9,12 @@ namespace Intex2024.Data
     {
         [Key]
         public int RecommendationId { get; set; }
-        public int UserId { get; set; }
+        public string UserId { get; set; }
         public int ProductId { get; set; }
 
         //Below will be the Users model
         [ForeignKey("UserId")]
-        public IdentityUser User { get; set; }
+        public Customer Customer { get; set; }
 
         [ForeignKey("ProductId")]
         public Product Product { get; set; }
