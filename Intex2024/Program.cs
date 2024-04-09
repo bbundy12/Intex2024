@@ -1,5 +1,4 @@
 using Intex2024.Data;
-using Intex2024.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,22 +15,15 @@ var configuration = builder.Configuration;
 
 // Add services to the container.
 //For the identity database
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+var connectionString = builder.Configuration.GetConnectionString("IntexConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-// For the identity database-- This part needs to be kept
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+//Configuration Identity Services
+builder.Services.AddIdentity<Customer, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
-builder.Services.AddControllersWithViews();
-
-// For the non identity database
-builder.Services.AddDbContext<IntexDbContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration["ConnectionStrings:IntexConnection"]);
-});
-builder.Services.AddScoped<IIntexRepository, EFIntexRepository>();
+    builder.Services.AddControllersWithViews();
 
 /*builder.Services.AddRazorPages();*/
 

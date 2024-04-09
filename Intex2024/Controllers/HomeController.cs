@@ -1,4 +1,4 @@
-using Intex2024.Models;
+using Intex2024.Data;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 

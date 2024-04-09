@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Intex2024.Models
+namespace Intex2024.Data
 {
     public class Order
     {
         [Key]
-        public int TransactionId { get; set; }
-        public int CustomerId { get; set; } //Foreign Key to ASP.NET Users table
+        public int TransactionId { get; set; }        
         public DateTime Date { get; set; }
         public string DayOfWeek { get; set; }
         public TimeSpan Time { get; set; }
@@ -21,8 +20,7 @@ namespace Intex2024.Models
         public string ShippingAddress { get; set; }
         public string Bank { get; set; }
         public bool Fraud { get; set; }
-
-        [ForeignKey("CustomerId")]
+        public string CustomerId { get; set; } //Foreign Key to ASP.NET Users table
         public Customer Customer { get; set; }
         public ICollection<LineItem> LineItems { get; set; }
     }

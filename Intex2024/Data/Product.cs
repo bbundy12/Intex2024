@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Intex2024.Models
+namespace Intex2024.Data
 {
     public class Product
     {
