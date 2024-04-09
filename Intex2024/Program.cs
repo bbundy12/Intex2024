@@ -27,7 +27,7 @@ builder.Services.AddIdentity<Customer, IdentityRole>(options => options.SignIn.R
 
 builder.Services.AddScoped<IIntexRepository, EFIntexRepository>();
 
-/*builder.Services.AddRazorPages();*/
+builder.Services.AddRazorPages();
 
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession();
