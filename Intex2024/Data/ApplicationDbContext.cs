@@ -9,5 +9,12 @@ namespace Intex2024.Data
             : base(options)
         {
         }
+
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<UserRecommendation> UserRecommendations { get; set; }
+        public DbSet<ProductRecommendation> ProductRecommendations { get; set; }
+        public DbSet<Cart> Carts { get; set; }
+
     }
 }

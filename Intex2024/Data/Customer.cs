@@ -2,9 +2,9 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Identity;
 
-namespace Intex2024.Models
+namespace Intex2024.Data
 {
-    public class Customer: IdentityUser
+    public class Customer : IdentityUser
     {
         [Key]
         public string FirstName { get; set; }

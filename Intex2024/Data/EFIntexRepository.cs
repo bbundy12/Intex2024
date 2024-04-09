@@ -1,4 +1,4 @@
-﻿namespace Intex2024.Models
+﻿namespace Intex2024.Data
 {
     public class EFIntexRepository : IIntexRepository
     {
@@ -9,6 +9,6 @@
             _context = ctx;
         }
 
-       /* public IQueryable<Project> Projects => _context.Projects;*/
+        /* public IQueryable<Project> Projects => _context.Projects;*/
     }
 }

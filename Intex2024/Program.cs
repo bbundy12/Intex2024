@@ -1,5 +1,4 @@
 using Intex2024.Data;
-using Intex2024.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
