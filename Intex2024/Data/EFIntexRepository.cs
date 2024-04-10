@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using System.Linq;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 
 namespace Intex2024.Data
 {
@@ -19,9 +22,6 @@ namespace Intex2024.Data
         public IQueryable<UserRecommendation> UserRecommendations => _context.UserRecommendations;
         public IQueryable<ProductRecommendation> ProductRecommendations => _context.ProductRecommendations;
         public IQueryable<IdentityRole> IdentityRoles => _context.Roles;
-        public Customer GetCustomerData()
-        {
-            return _context.Users.FirstOrDefault();
-        }
+
     }
 }

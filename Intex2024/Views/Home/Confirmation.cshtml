@@ -10,19 +10,19 @@ using Microsoft.AspNetCore.Identity;
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <h2>Confirm Information</h2>
+            <h2>Confirm Information</h2
             <form>
                 <div class="form-group">
-                    <label asp-for="FirstName">First Name</label>
-                    <input type="text" class="form-control" id="FirstName" value="@Model.FirstName">
+                    <label asp-for="FirstName">@Model.FirstName</label>
+                    <input type="text" class="form-control" id="FirstName">
                 </div>
                 <div class="form-group">
-                    <label asp-for="LastName">Last Name</label>
-                    <input type="text" class="form-control" id="LastName" value="@Model.LastName">
+                    <label asp-for="LastName">@Model.LastName</label>
+                    <input type="text" class="form-control" id="LastName">
                 </div>
                 <div class="form-group">
-                    <label asp-for="CountryOfResidence">Country</label>
-                    <input type="text" class="form-control" id="CountryOfResidence" value="@Model.CountryOfResidence">
+                    <label asp-for="CountryOfResidence">@Model.CountryOfResidence</label>
+                    <input type="text" class="form-control" id="CountryOfResidence">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
