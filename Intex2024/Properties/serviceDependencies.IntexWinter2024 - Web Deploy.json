@@ -1,17 +1,16 @@
 {
   "dependencies": {
+    "mssql1": {
+      "ignored": "true",
+      "type": "mssql",
+      "connectionId": "ConnectionStrings:DefaultConnection"
+    },
     "mssql2": {
       "serviceConnectorResourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Web/sites/IntexWinter2024/providers/Microsoft.ServiceLinker/linkers/ConnectionStringsIntexConnection_5AA4D6EECB",
       "secretStore": "AzureAppSettings",
       "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/intex2024/databases/Intex2024",
       "type": "mssql.azure",
-      "connectionId": "ConnectionStrings:IntexConnection",
-      "dynamicId": null
-    },
-    "mssql1": {
-      "ignored": "true",
-      "type": "mssql",
-      "connectionId": "ConnectionStrings:DefaultConnection"
+      "connectionId": "ConnectionStrings:IntexConnection"
     }
   }
 }
