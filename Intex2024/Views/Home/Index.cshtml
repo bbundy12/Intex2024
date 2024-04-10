@@ -4,7 +4,7 @@
 
 <style>
     .hero-section {
-      background-image: url('https://www.lego.com/cdn/cs/family/assets/blt958ffa756de503d8/FC_LH_3_Hero.png?width=1440&format=webply&quality=80'); /* Replace 'your-image-url.jpg' with the URL or path to your desired background image */
+      background-image: url('img/sharpen_heroImg.png'); /* Replace 'your-image-url.jpg' with the URL or path to your desired background image */
       background-size: cover;
       background-position: center;
       color: white;
@@ -31,9 +31,6 @@
         left: 75px;
     }
     .btn-shop-hero {
-        position: absolute;
-        bottom: 50px;
-        left: 50px;
         width: 220px; /* Set the width */
         height: 92px; /* Set the height */
         background-color: white; /* Set the background color */
@@ -50,6 +47,21 @@
         padding-top: 100px;
         text-align: center;
     }
+    .btn-shop-hero-pos {
+        position: absolute;
+        bottom: 50px;
+        left: 50px;
+    }
+    .jump-head {
+      padding-top: 100px;
+      padding-left: 125px;
+    }
+    .bg-gold {
+      background-color: #FFD700;
+    }
+	.item-of-week {
+		font-size: 75px;
+	}
 </style>
 
 <section>
@@ -59,19 +71,62 @@
         <div class="col-md-6">
           <div class="hero-content">
             <h1 class="hero-heading-home hhh-pos">Explore A Whole New World</h1>
-            <a href="#" class="btn btn-lg btn-shop-hero">Shop Now</a>
+            <a href="#" class="btn btn-lg btn-shop-hero btn-shop-hero-pos">Shop Now</a>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-<section style="background: linear-gradient(to right, rgba(0, 111, 227, 0.25), rgba(0, 61, 125, 0.25));">
-    <div>
-        <h2 class="hero-heading-home home-mustsee">AURORA'S MUST-SEE SETS:</h2>
-        <h4 class="px-5 font-size-75">You may like:</h4>
+<section class="px-2" style="background: linear-gradient(to right, rgba(0, 111, 227, 0.25), rgba(0, 61, 125, 0.25));">
+    <div class="row">
+        <h2 class="hero-heading-home home-mustsee">AURORA'S MUST-SEE SETS</h2>
+        <h4 class="col-sm px-5">You may like:</h4>
     </div>
-    <div>
+<div class="row">
+    <!--foreach (var product in Model.Products.Take(6))
+    {
+    -->
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="product.ImageUrl" class="card-img-top" alt="product.Name">
+                <div class="card-body">
+                    <h5 class="card-title">product.Name</h5>
+                    <p class="card-text">$product.Price</p>
+                    <a href="#" class="btn btn-primary">Add to Cart</a>
+                </div>
+            </div>
+        </div>
+    <!--
+    }
+    -->
+</div>
 
+    <div class="row bg-gold justify-content-center py-5">
+        <div class="col-sm-8 text-center">
+            <h2 class="hero-heading-home">Jump Into More Legos</h2>
+        </div>
+        <div class="col-sm-auto d-flex align-items-center">
+            <a href="#" class="btn btn-lg btn-shop-hero me-3">Products</a>
+            <a href="#" class="btn btn-lg btn-shop-hero">Learn More</a>
+        </div>
     </div>
+	<div class="row py-3 justify-content-center">
+		<div class="col-sm-3">
+			<img src="~/img/lego3.jpg" style="height: 448px; width: 386px; border-radius: 20px;" alt="Random Product">
+		</div>
+		<div class="col-sm-6">
+			<div class="row">
+				<div class="col">
+					<h2 class="item-of-week">Item of the week: (Random Product.name)</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<a href="#" class="btn btn-lg btn-shop-hero">Shop Now</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
 </section>
