@@ -6,7 +6,10 @@
     },
     "mssql2": {
       "type": "mssql",
-      "connectionId": "ConnectionStrings:IntexConnection",
+      "connectionId": "ConnectionStrings:IntexConnection"
+    },
+    "secrets1": {
+      "type": "secrets",
       "dynamicId": null
     }
   }

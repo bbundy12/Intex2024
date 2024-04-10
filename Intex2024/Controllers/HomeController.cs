@@ -17,7 +17,12 @@ namespace Intex2024.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var vm = new ProductsListViewModel
+            {
+                Products = _repo.Products
+                .OrderBy(x => x.Name)
+            };
+            return View(vm);
         }
 
         public IActionResult Privacy()

@@ -11,6 +11,10 @@
       "type": "mssql.azure",
       "connectionId": "ConnectionStrings:IntexConnection",
       "dynamicId": null
+    },
+    "secrets1": {
+      "type": "secrets.user",
+      "dynamicId": null
     }
   }
 }

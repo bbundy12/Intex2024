@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Intex2024.Data
 {
-    public class Product
+    public partial class Product
     {
         [Key]
         public int ProductId { get; set; }

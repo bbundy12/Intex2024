@@ -32,7 +32,7 @@ namespace Intex2024.Migrations
 
                     b.Property<string>("CustomerId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.HasKey("CartId");
 
@@ -61,7 +61,7 @@ namespace Intex2024.Migrations
                     b.HasKey("CartLineId");
 
                     b.HasIndex("CartId");
-                    
+
                     b.HasIndex("ProductId");
 
                     b.ToTable("CartLine");
@@ -70,7 +70,7 @@ namespace Intex2024.Migrations
             modelBuilder.Entity("Intex2024.Data.Customer", b =>
                 {
                     b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
@@ -81,54 +81,32 @@ namespace Intex2024.Migrations
                     b.Property<DateTime>("BirthDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Age")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("BirthDate")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.Property<string>("CountryOfResidence")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CountryOfResidence")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.Property<string>("Gender")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Gender")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -138,30 +116,30 @@ namespace Intex2024.Migrations
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.Property<string>("NormalizedUserName")
                         .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
 
                     b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.Property<bool>("TwoFactorEnabled")
                         .HasColumnType("bit");
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.HasKey("Id");
 
@@ -179,7 +157,6 @@ namespace Intex2024.Migrations
             modelBuilder.Entity("Intex2024.Data.LineItem", b =>
                 {
                     b.Property<int>("ProductId")
-
                         .HasColumnType("int");
 
                     b.Property<int>("TransactionId")
@@ -190,7 +167,6 @@ namespace Intex2024.Migrations
 
                     b.Property<int>("Rating")
                         .HasColumnType("int");
-
 
                     b.HasKey("ProductId", "TransactionId");
 
@@ -203,7 +179,6 @@ namespace Intex2024.Migrations
                 {
                     b.Property<int>("TransactionId")
                         .ValueGeneratedOnAdd()
-
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TransactionId"));
@@ -213,44 +188,44 @@ namespace Intex2024.Migrations
 
                     b.Property<string>("Bank")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.Property<string>("CountryOfTransaction")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.Property<string>("CustomerId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("DayOfWeek")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.Property<string>("EntryMode")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.Property<bool>("Fraud")
                         .HasColumnType("bit");
 
                     b.Property<string>("ShippingAddress")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.Property<TimeSpan>("Time")
                         .HasColumnType("time");
 
                     b.Property<string>("TypeOfCard")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.Property<string>("TypeOfTransaction")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.HasKey("TransactionId");
 
@@ -263,26 +238,25 @@ namespace Intex2024.Migrations
                 {
                     b.Property<int>("ProductId")
                         .ValueGeneratedOnAdd()
-
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ProductId"));
 
                     b.Property<string>("Category")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.Property<string>("ImgLink")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.Property<int>("NumParts")
                         .HasColumnType("int");
@@ -292,11 +266,11 @@ namespace Intex2024.Migrations
 
                     b.Property<string>("PrimaryColor")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.Property<string>("SecondaryColor")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.Property<int>("Year")
                         .HasColumnType("int");
@@ -309,7 +283,6 @@ namespace Intex2024.Migrations
             modelBuilder.Entity("Intex2024.Data.ProductRecommendation", b =>
                 {
                     b.Property<int>("RecommendedProductId")
-
                         .HasColumnType("int");
 
                     b.Property<int>("Rank")
@@ -332,7 +305,6 @@ namespace Intex2024.Migrations
                 {
                     b.Property<int>("RecommendationId")
                         .ValueGeneratedOnAdd()
-
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RecommendationId"));
@@ -342,7 +314,7 @@ namespace Intex2024.Migrations
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.HasKey("RecommendationId");
 
@@ -356,26 +328,24 @@ namespace Intex2024.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
-
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.Property<string>("Name")
                         .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.Property<string>("NormalizedName")
                         .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedName")
                         .IsUnique()
-
                         .HasDatabaseName("RoleNameIndex")
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
@@ -386,20 +356,19 @@ namespace Intex2024.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("ClaimType")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.Property<string>("ClaimValue")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.Property<string>("RoleId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.HasKey("Id");
 
@@ -417,14 +386,14 @@ namespace Intex2024.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("ClaimType")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.Property<string>("ClaimValue")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.HasKey("Id");
 
@@ -436,18 +405,17 @@ namespace Intex2024.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.Property<string>("ProviderDisplayName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.HasKey("LoginProvider", "ProviderKey");
 
@@ -459,10 +427,10 @@ namespace Intex2024.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
                 {
                     b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.Property<string>("RoleId")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.HasKey("UserId", "RoleId");
 
@@ -474,17 +442,16 @@ namespace Intex2024.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
                     b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.Property<string>("LoginProvider")
-
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.Property<string>("Value")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("VARCHAR(255)");
 
                     b.HasKey("UserId", "LoginProvider", "Name");
 
