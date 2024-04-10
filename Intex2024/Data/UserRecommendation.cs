@@ -7,7 +7,6 @@ namespace Intex2024.Data
 {
     public class UserRecommendation
     {
-        [Key]
         public int RecommendationId { get; set; }
         public string UserId { get; set; }
         public int ProductId { get; set; }
