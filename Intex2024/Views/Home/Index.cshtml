@@ -2,16 +2,134 @@
     ViewData["Title"] = "Home Page";
 }
 
-<!-- Hero 1 - Bootstrap Brain Component -->
-<section class="bsb-hero-1 px-3 bsb-overlay bsb-hover-pull" style="background-image: url('././wwwroot/img/heroImg.png');">
-  <div class="container">
-    <div class="row justify-content-md-center">
-      <div class="col-12 col-md-11 col-lg-9 col-xl-7 col-xxl-6 text-center text-white">
-        <h1 class="display-3 fw-bold mb-3">Explore A Whole New World</h1>
-        <div class="d-grid gap-2 d-sm-flex justify-content-sm-start">
-          <button type="button" class="btn bsb-btn-3xl btn-light gap-3">Shop Now</button>
-        </div>
-      </div>
-    </div>
-  </div>
+<style>
+    .hero-section {
+      background-image: url('img/sharpen_heroImg.png'); /* Replace 'your-image-url.jpg' with the URL or path to your desired background image */
+      background-size: cover;
+      background-position: center;
+      color: white;
+      height: 660px;
+      position: relative;
+    }
+    .hero-content {
+
+    }
+    .hero-section .container-fluid {
+        padding-left: 50px;
+        padding-right: 0;
+    }
+    .hero-heading-home {
+        color: white;
+        font-weight: 600;
+        font-family: 'Inter', sans-serif;
+        font-size: 90px; /* Adjust the font size as needed */
+        text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    }
+    .hhh-pos {
+        position: absolute;
+        top: 20px;
+        left: 75px;
+    }
+    .btn-shop-hero {
+        width: 220px; /* Set the width */
+        height: 92px; /* Set the height */
+        background-color: white; /* Set the background color */
+        color: black; /* Set the text color */
+        border: none;
+        border-radius: 100px; /* Remove border radius */
+        font-size: 30px; /* Set the font size */
+        font-weight: bold; /* Set the text to bold */
+        display: flex; /* Use flexbox */
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+    }
+    .home-mustsee {
+        padding-top: 100px;
+        text-align: center;
+    }
+    .btn-shop-hero-pos {
+        position: absolute;
+        bottom: 50px;
+        left: 50px;
+    }
+    .jump-head {
+      padding-top: 100px;
+      padding-left: 125px;
+    }
+    .bg-gold {
+      background-color: #FFD700;
+    }
+	.item-of-week {
+		font-size: 75px;
+	}
+</style>
+<section  style="background: linear-gradient(to right, rgba(68, 159, 255, 0.25), rgba(0, 61, 125, 0.25));">
+	<section>
+		<div class="hero-section">
+			<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-6">
+				<div class="hero-content">
+					<h1 class="hero-heading-home hhh-pos">Explore A Whole New World</h1>
+					<a class="btn btn-lg btn-shop-hero btn-shop-hero-pos" asp-controller="Home" asp-action="Products">Shop Now</a>
+				</div>
+				</div>
+			</div>
+			</div>
+		</div>
+	</section>
+	<section class="px-2">
+		<div class="row">
+			<h2 class="hero-heading-home home-mustsee">AURORA'S MUST-SEE SETS</h2>
+			<h4 class="col-sm px-5">You may like:</h4>
+		</div>
+	<div class="row">
+		<!--foreach (var product in Model.Products.Take(6))
+		{
+		-->
+			<div class="col-md-4 mb-4">
+				<div class="card">
+					<img src="product.ImageUrl" class="card-img-top" alt="product.Name">
+					<div class="card-body">
+						<h5 class="card-title">product.Name</h5>
+						<p class="card-text">$product.Price</p>
+						<a class="btn btn-primary">Add to Cart</a>
+					</div>
+				</div>
+			</div>
+		<!--
+		}
+		-->
+	</div>
+
+		<div class="row bg-gold justify-content-center py-5">
+			<div class="col-sm-8 text-center">
+				<h2 class="hero-heading-home">Jump Into More Legos</h2>
+			</div>
+			<div class="col-sm-auto d-flex align-items-center">
+				<a class="btn btn-lg btn-shop-hero me-3" asp-controller="Home" asp-action="Products">Products</a>
+				<a class="btn btn-lg btn-shop-hero" asp-controller="Home" asp-action="About">Learn More</a>
+			</div>
+		</div>
+		<div class="row py-3 justify-content-center">
+			<div class="col-sm-3">
+				<img src="~/img/lego3.jpg" style="height: 448px; width: 386px; border-radius: 20px;" alt="Random Product">
+			</div>
+			<div class="col-sm-6">
+				<div class="row">
+					<div class="col">
+						<h2 class="item-of-week">Item of the week: (Random Product.name)</h2>
+						<br>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-auto d-flex">
+						<a class="btn btn-lg btn-shop-hero me-5" asp-controller="Home" asp-action="Products">Check It Out</a>
+						<a class="btn btn-lg btn-shop-hero" asp-controller="Home" asp-action="Products">Shop All</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
 </section>
