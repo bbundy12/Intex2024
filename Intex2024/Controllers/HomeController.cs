@@ -1,5 +1,8 @@
 using Intex2024.Data;
+using Intex2024.Infrastructure;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,11 +12,50 @@ namespace Intex2024.Controllers
     public class HomeController : Controller
     {
         private IIntexRepository _repo;
-        public HomeController(IIntexRepository repo)
+        private readonly UserManager<Customer> _userManager;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
+        public HomeController(IIntexRepository repo, UserManager<Customer> userManager, IHttpContextAccessor httpContextAccessor)
         {
             _repo = repo;
+            _userManager = userManager;
+            _httpContextAccessor = httpContextAccessor;
         }
 
+        public IActionResult Cart()
+        {
+            Cart cart = _httpContextAccessor.HttpContext.Session.GetJson<Cart>("Cart") ?? new Cart();
+            return View(cart);
+        }
+
+        [HttpPost]
+        public IActionResult AddToCart(int productId, int quantity)
+        {
+            Product product = _repo.Products.FirstOrDefault(p => p.ProductId == productId);
+            if (product != null)
+            {
+                Cart cart = _httpContextAccessor.HttpContext.Session.GetJson<Cart>("Cart") ?? new Cart();
+                cart.AddItem(product, quantity);
+                _httpContextAccessor.HttpContext.Session.SetJson("Cart", cart);
+            }
+            return RedirectToAction("Cart");
+        }
+
+        [HttpPost]
+        public IActionResult RemoveFromCart(int productId)
+        {
+            Product product = _repo.Products.FirstOrDefault(p => p.ProductId == productId);
+            if (product != null)
+            {
+                Cart cart = _httpContextAccessor.HttpContext.Session.GetJson<Cart>("Cart");
+                if (cart != null)
+                {
+                    cart.RemoveLine(product);
+                    _httpContextAccessor.HttpContext.Session.SetJson("Cart", cart);
+                }
+            }
+            return RedirectToAction("Cart");
+        } 
 
         public IActionResult Index()
         {
@@ -36,9 +78,27 @@ namespace Intex2024.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public IActionResult Products()
+        public IActionResult Products(int pageNum)
         {
-            return View();
+            int pageSize = 5;
+            pageNum = Math.Max(1, pageNum); // Ensure pageNum is at least 1
+
+
+            var vm = new ProductsListViewModel
+            {
+                Products = _repo.Products
+                .OrderBy(x => x.Name)
+                .Skip(pageSize * (pageNum - 1))
+                .Take(pageSize),
+
+                PaginationInfo = new PaginationInfo
+                {
+                    CurrentPage = pageNum,
+                    ItemsPerPage = pageSize,
+                    TotalItems = _repo.Products.Count()
+                }
+            };
+            return View(vm);
         }
 
         public IActionResult ProductDetails()
@@ -52,11 +112,6 @@ namespace Intex2024.Controllers
         }
 
         public IActionResult About()
-        {
-            return View();
-        }
-
-        public IActionResult Cart()
         {
             return View();
         }

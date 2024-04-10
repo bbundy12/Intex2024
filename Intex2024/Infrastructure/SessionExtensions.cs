@@ -1,4 +1,5 @@
 ﻿using System.Text.Json;
+using System.Runtime.CompilerServices;
 
 namespace Intex2024.Infrastructure
 {

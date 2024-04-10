@@ -1,3 +1,40 @@
-@{
-    ViewData["Title"] = "Cart";
-}
+@model Cart
+
+<section style="background-color: rgba(255, 215, 0, 0.25);">
+    <h1>Shopping Cart</h1>
+
+    <div>
+        <a asp-action="Index">Continue Shopping</a>
+    </div>
+
+    @if (Model.Lines.Any())
+    {
+        <div class="cart-items">
+            @foreach (var line in Model.Lines)
+            {
+                <div class="cart-item">
+                    <img src="@line.Product.ImgLink" alt="@line.Product.Name" />
+                    <div>
+                        <h3>@line.Product.Name</h3>
+                        <p>Quantity: @line.Quantity</p>
+                        <p>Price: $@line.Product.Price</p>
+                        <form asp-action="RemoveFromCart" method="post">
+                            <input type="hidden" name="productId" value="@line.Product.ProductId" />
+                            <button type="submit">Remove</button>
+                        </form>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <p>Total: $@Model.CalculateTotal()</p>
+
+        <form asp-action="Checkout" method="post">
+            <button type="submit">Checkout</button>
+        </form>
+    }
+    else
+    {
+        <p>Your shopping cart is empty.</p>
+    }
+</section>
