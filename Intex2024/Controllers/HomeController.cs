@@ -1,5 +1,7 @@
 using Intex2024.Data;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace Intex2024.Controllers
@@ -7,9 +9,12 @@ namespace Intex2024.Controllers
     public class HomeController : Controller
     {
         private IIntexRepository _repo;
-        public HomeController(IIntexRepository repo)
+        private readonly UserManager<Customer> _userManager;
+
+        public HomeController(IIntexRepository repo, UserManager<Customer> userManager)
         {
             _repo = repo;
+            _userManager = userManager;
         }
 
 
@@ -34,7 +39,30 @@ namespace Intex2024.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public IActionResult Products()
+        public IActionResult Products(int pageNum)
+        {
+            int pageSize = 5;
+            pageNum = Math.Max(1, pageNum); // Ensure pageNum is at least 1
+
+
+            var vm = new ProductsListViewModel
+            {
+                Products = _repo.Products
+                .OrderBy(x => x.Name)
+                .Skip(pageSize * (pageNum - 1))
+                .Take(pageSize),
+
+                PaginationInfo = new PaginationInfo
+                {
+                    CurrentPage = pageNum,
+                    ItemsPerPage = pageSize,
+                    TotalItems = _repo.Products.Count()
+                }
+            };
+            return View(vm);
+        }
+
+        public IActionResult Cart()
         {
             return View();
         }
@@ -50,11 +78,6 @@ namespace Intex2024.Controllers
         }
 
         public IActionResult About()
-        {
-            return View();
-        }
-
-        public IActionResult Cart()
         {
             return View();
         }
