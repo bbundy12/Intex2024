@@ -1,3 +1,27 @@
 @{
     ViewData["Title"] = "About";
 }
+
+
+<style>
+    body {
+        /* Set background color with 25% opacity using RGBA */
+        background-color: rgba(255, 215, 0, 0.25);
+    }
+</style>
+
+
+<!--This is the content of the About page.-->
+<div style="display: flex; justify-content: space-between;">
+    <div style="flex: 1;">
+        <h1 style="font-weight: bold;">@ViewData["Title"]</h1>
+        <br>
+        <p>Welcome to Aurora's Brick Well! We are a family-owned business that has been serving the community for over 20 years. Our mission is to provide the best quality products at the best prices, so you can build your dream home without breaking the bank.</p>
+        <p>Our store is located in the heart of downtown Aurora, where you can find everything you need to complete your home improvement projects. From bricks and stones to windows and doors, we have it all!</p>
+        <p>Our team of experts is here to help you every step of the way. Whether you're a seasoned builder or a first-time DIYer, we have the knowledge and experience to guide you through your project and make sure you get the results you want.</p>
+        <p>So come visit us today and see why Aurora's Brick Well is the best place to shop for all your home improvement needs!</p>
+    </div>
+    <div style="flex: 1; text-align: right;">
+        <img src="~/img/be32e6e3-0ada-4f61-92f6-15213b640b80.png" alt="Padlock Icon" style="max-height: 200px;">
+    </div>
+</div>
