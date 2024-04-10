@@ -63,70 +63,73 @@
 		font-size: 75px;
 	}
 </style>
-
-<section>
-  <div class="hero-section">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="hero-content">
-            <h1 class="hero-heading-home hhh-pos">Explore A Whole New World</h1>
-            <a href="#" class="btn btn-lg btn-shop-hero btn-shop-hero-pos">Shop Now</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<section class="px-2" style="background: linear-gradient(to right, rgba(0, 111, 227, 0.25), rgba(0, 61, 125, 0.25));">
-    <div class="row">
-        <h2 class="hero-heading-home home-mustsee">AURORA'S MUST-SEE SETS</h2>
-        <h4 class="col-sm px-5">You may like:</h4>
-    </div>
-<div class="row">
-    <!--foreach (var product in Model.Products.Take(6))
-    {
-    -->
-        <div class="col-md-4 mb-4">
-            <div class="card">
-                <img src="product.ImageUrl" class="card-img-top" alt="product.Name">
-                <div class="card-body">
-                    <h5 class="card-title">product.Name</h5>
-                    <p class="card-text">$product.Price</p>
-                    <a href="#" class="btn btn-primary">Add to Cart</a>
-                </div>
-            </div>
-        </div>
-    <!--
-    }
-    -->
-</div>
-
-    <div class="row bg-gold justify-content-center py-5">
-        <div class="col-sm-8 text-center">
-            <h2 class="hero-heading-home">Jump Into More Legos</h2>
-        </div>
-        <div class="col-sm-auto d-flex align-items-center">
-            <a href="#" class="btn btn-lg btn-shop-hero me-3">Products</a>
-            <a href="#" class="btn btn-lg btn-shop-hero">Learn More</a>
-        </div>
-    </div>
-	<div class="row py-3 justify-content-center">
-		<div class="col-sm-3">
-			<img src="~/img/lego3.jpg" style="height: 448px; width: 386px; border-radius: 20px;" alt="Random Product">
-		</div>
-		<div class="col-sm-6">
+<section  style="background: linear-gradient(to right, rgba(68, 159, 255, 0.25), rgba(0, 61, 125, 0.25));">
+	<section>
+		<div class="hero-section">
+			<div class="container-fluid">
 			<div class="row">
-				<div class="col">
-					<h2 class="item-of-week">Item of the week: (Random Product.name)</h2>
+				<div class="col-md-6">
+				<div class="hero-content">
+					<h1 class="hero-heading-home hhh-pos">Explore A Whole New World</h1>
+					<a class="btn btn-lg btn-shop-hero btn-shop-hero-pos" asp-controller="Home" asp-action="Products">Shop Now</a>
+				</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col">
-					<a href="#" class="btn btn-lg btn-shop-hero">Shop Now</a>
-				</div>
 			</div>
 		</div>
+	</section>
+	<section class="px-2">
+		<div class="row">
+			<h2 class="hero-heading-home home-mustsee">AURORA'S MUST-SEE SETS</h2>
+			<h4 class="col-sm px-5">You may like:</h4>
+		</div>
+	<div class="row">
+		<!--foreach (var product in Model.Products.Take(6))
+		{
+		-->
+			<div class="col-md-4 mb-4">
+				<div class="card">
+					<img src="product.ImageUrl" class="card-img-top" alt="product.Name">
+					<div class="card-body">
+						<h5 class="card-title">product.Name</h5>
+						<p class="card-text">$product.Price</p>
+						<a class="btn btn-primary">Add to Cart</a>
+					</div>
+				</div>
+			</div>
+		<!--
+		}
+		-->
 	</div>
 
+		<div class="row bg-gold justify-content-center py-5">
+			<div class="col-sm-8 text-center">
+				<h2 class="hero-heading-home">Jump Into More Legos</h2>
+			</div>
+			<div class="col-sm-auto d-flex align-items-center">
+				<a class="btn btn-lg btn-shop-hero me-3" asp-controller="Home" asp-action="Products">Products</a>
+				<a class="btn btn-lg btn-shop-hero" asp-controller="Home" asp-action="About">Learn More</a>
+			</div>
+		</div>
+		<div class="row py-3 justify-content-center">
+			<div class="col-sm-3">
+				<img src="~/img/lego3.jpg" style="height: 448px; width: 386px; border-radius: 20px;" alt="Random Product">
+			</div>
+			<div class="col-sm-6">
+				<div class="row">
+					<div class="col">
+						<h2 class="item-of-week">Item of the week: (Random Product.name)</h2>
+						<br>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-auto d-flex">
+						<a class="btn btn-lg btn-shop-hero me-5" asp-controller="Home" asp-action="Products">Check It Out</a>
+						<a class="btn btn-lg btn-shop-hero" asp-controller="Home" asp-action="Products">Shop All</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
 </section>
