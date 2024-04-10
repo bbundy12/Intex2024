@@ -13,6 +13,18 @@ namespace Intex2024.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            foreach (var entity in modelBuilder.Model.GetEntityTypes())
+            {
+                foreach (var property in entity.GetProperties())
+                {
+                    if (property.ClrType == typeof(string))
+                    {
+                        // Set the column type to VARCHAR with a max length of 255
+                        property.SetColumnType("VARCHAR(255)");
+                    }
+                }
+            }
+
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<LineItem>()
                 .HasKey(e => new { e.ProductId, e.TransactionId });
@@ -21,7 +33,7 @@ namespace Intex2024.Data
                 .HasKey(e => new { e.RecommendedProductId, e.Rank });
         }
         public DbSet<Order> Orders { get; set; }
-        public DbSet<Product> Products { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
         public DbSet<UserRecommendation> UserRecommendations { get; set; }
         public DbSet<ProductRecommendation> ProductRecommendations { get; set; }
         public DbSet<Cart> Carts { get; set; }
