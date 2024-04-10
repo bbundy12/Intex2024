@@ -80,26 +80,27 @@
 			</div>
 		</div>
 	</section>
-	<section class="px-2">
+	<section class="px-2"> 
 		<div class="row">
 			<h2 class="hero-heading-home home-mustsee">AURORA'S MUST-SEE SETS</h2>
 			<h4 class="col-sm px-5">You may like:</h4>
 		</div>
-	<div class="row">
-		@foreach (var product in Model.Products.Take(6))
-		{
-			<div class="col-md-4 mb-4">
-				<div class="card">
-					<img src="@product.ImgLink" class="card-img-top" alt="@product.Name">
-					<div class="card-body">
-						<h5 class="card-title">@product.Name</h5>
-						<p class="card-text">$@product.Price</p>
-						<a class="btn btn-primary">Add to Cart</a>
+		<div class="row">
+			@foreach (Product product in Model.Products.Take(6))
+			{
+				<div class="col-md-4 mb-4">
+					<div class="card">
+						<img src="@product.ImgLink" class="card-img-top" alt="@product.Name">
+						<div class="card-body">
+							<h5 class="card-title">@product.Name</h5>
+							<p class="card-text">$@product.Price</p>
+							<a class="btn btn-primary">Add to Cart</a>
+						</div>
 					</div>
 				</div>
-			</div>
-		}
-	</div>
+			}
+		</div>
+
 
 		<div class="row bg-gold justify-content-center py-5">
 			<div class="col-sm-8 text-center">

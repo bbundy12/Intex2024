@@ -21,7 +21,7 @@ namespace Intex2024.Data
                 .HasKey(e => new { e.RecommendedProductId, e.Rank });
         }
         public DbSet<Order> Orders { get; set; }
-        public DbSet<Product> Products { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
         public DbSet<UserRecommendation> UserRecommendations { get; set; }
         public DbSet<ProductRecommendation> ProductRecommendations { get; set; }
         public DbSet<Cart> Carts { get; set; }
