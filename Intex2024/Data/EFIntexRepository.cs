@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace Intex2024.Data
 {
@@ -13,12 +14,20 @@ namespace Intex2024.Data
 
         public IQueryable<Product> Products => _context.Products;
         public IQueryable<Customer> Customers => _context.Users;
-        public IQueryable<Order> Orders => _context.Orders;
+        public IQueryable<Order> Orders => (IQueryable<Order>) _context.Orders;
         public IQueryable<Cart> Carts => _context.Carts;
         public IQueryable<LineItem> LineItems => _context.LineItems;
         public IQueryable<UserRecommendation> UserRecommendations => _context.UserRecommendations;
         public IQueryable<ProductRecommendation> ProductRecommendations => _context.ProductRecommendations;
         public IQueryable<IdentityRole> IdentityRoles => _context.Roles;
+
+        public IQueryable<Order> OrderNames()
+        {
+            var orderNames = _context.Orders
+                .Include(o => o.Customer);
+            
+            return orderNames;
+        }
         public void Update(Product product)
         {
             // Update the entity in the context

@@ -11,7 +11,7 @@ namespace Intex2024.Data
         public int TransactionId { get; set; }        
         public DateTime Date { get; set; }
         public string DayOfWeek { get; set; }
-        public TimeSpan Time { get; set; }
+        public int Time { get; set; }
         public string TypeOfCard { get; set; }
         public string EntryMode { get; set; }
         public decimal Amount { get; set; }

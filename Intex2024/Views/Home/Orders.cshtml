@@ -115,7 +115,6 @@
         <tr>
             <th>TransactionId</th>
             <th>Date</th>
-            <th>Customer</th>
             <th>Amount</th>
             <th>ShippingAddress</th>
             <th>Fraud</th>
@@ -125,12 +124,12 @@
             <tr>
                 <td>@o.TransactionId</td>
                 <td>@o.Date.ToShortDateString()</td>
-                <td>@o.Customer</td>
                 <td>@o.Amount</td>
                 <td>@o.ShippingAddress</td>
                 <td>@(o.Fraud ? "Yes" : "No")</td>
             </tr>
         }
     </table>
+
 </body>
 </html>

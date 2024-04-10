@@ -70,17 +70,11 @@ namespace Intex2024.Controllers
         // Commented out the entire method as requested
         public IActionResult Orders()
         {
-            var ordersQuery = _repo.Orders.AsQueryable();
-
-            // Apply any filtering based on parameters
-
-            // No need for Include if all data is in the Orders entity
-
-            // Execute the query to get the list of orders
-            var orders = ordersQuery.ToList();
-
+            var orders = _repo.Orders.ToList(); // Execute the query to retrieve the orders
             return View(orders);
         }
+
+
 
 
         public string? Customer { get; set; }

@@ -7,12 +7,12 @@ namespace Intex2024.Data
     public class Customer : IdentityUser
     {
         public Customer() : base() { }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string FirstName { get; set; } = null!;
+        public string LastName { get; set; } = null!;
         public DateTime BirthDate { get; set; }
         public string CountryOfResidence { get; set; }
         public string Gender { get; set; }
         public int Age { get; set; }
-        public ICollection<Order> Orders { get; set; }
+        public ICollection<Order> Orders { get; set; } = new List<Order>();
     }
 }

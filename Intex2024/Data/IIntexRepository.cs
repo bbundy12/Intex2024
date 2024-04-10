@@ -14,5 +14,6 @@ namespace Intex2024.Data
         IQueryable<IdentityRole> IdentityRoles { get; }
         void Update(Product updatedInfo);
         void SaveChanges();
+        public IQueryable<Order> OrderNames();
     }
 }
