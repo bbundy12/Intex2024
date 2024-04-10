@@ -2,16 +2,76 @@
     ViewData["Title"] = "Home Page";
 }
 
-<!-- Hero 1 - Bootstrap Brain Component -->
-<section class="bsb-hero-1 px-3 bsb-overlay bsb-hover-pull" style="background-image: url('././wwwroot/img/heroImg.png');">
-  <div class="container">
-    <div class="row justify-content-md-center">
-      <div class="col-12 col-md-11 col-lg-9 col-xl-7 col-xxl-6 text-center text-white">
-        <h1 class="display-3 fw-bold mb-3">Explore A Whole New World</h1>
-        <div class="d-grid gap-2 d-sm-flex justify-content-sm-start">
-          <button type="button" class="btn bsb-btn-3xl btn-light gap-3">Shop Now</button>
+<style>
+    .hero-section {
+      background-image: url('https://www.lego.com/cdn/cs/family/assets/blt958ffa756de503d8/FC_LH_3_Hero.png?width=1440&format=webply&quality=80'); /* Replace 'your-image-url.jpg' with the URL or path to your desired background image */
+      background-size: cover;
+      background-position: center;
+      color: white;
+      height: 660px;
+      position: relative;
+    }
+    .hero-content {
+
+    }
+    .hero-section .container-fluid {
+        padding-left: 50px;
+        padding-right: 0;
+    }
+    .hero-heading-home {
+        color: white;
+        font-weight: 600;
+        font-family: 'Inter', sans-serif;
+        font-size: 90px; /* Adjust the font size as needed */
+        text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    }
+    .hhh-pos {
+        position: absolute;
+        top: 20px;
+        left: 75px;
+    }
+    .btn-shop-hero {
+        position: absolute;
+        bottom: 50px;
+        left: 50px;
+        width: 220px; /* Set the width */
+        height: 92px; /* Set the height */
+        background-color: white; /* Set the background color */
+        color: black; /* Set the text color */
+        border: none;
+        border-radius: 100px; /* Remove border radius */
+        font-size: 30px; /* Set the font size */
+        font-weight: bold; /* Set the text to bold */
+        display: flex; /* Use flexbox */
+        justify-content: center; /* Center horizontally */
+        align-items: center; /* Center vertically */
+    }
+    .home-mustsee {
+        padding-top: 100px;
+        text-align: center;
+    }
+</style>
+
+<section>
+  <div class="hero-section">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="hero-content">
+            <h1 class="hero-heading-home hhh-pos">Explore A Whole New World</h1>
+            <a href="#" class="btn btn-lg btn-shop-hero">Shop Now</a>
+          </div>
         </div>
       </div>
     </div>
   </div>
+</section>
+<section style="background: linear-gradient(to right, rgba(0, 111, 227, 0.25), rgba(0, 61, 125, 0.25));">
+    <div>
+        <h2 class="hero-heading-home home-mustsee">AURORA'S MUST-SEE SETS:</h2>
+        <h4 class="px-5 font-size-75">You may like:</h4>
+    </div>
+    <div>
+
+    </div>
 </section>
