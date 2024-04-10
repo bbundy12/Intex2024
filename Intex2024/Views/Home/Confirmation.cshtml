@@ -1,3 +1,38 @@
+using System;
+using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Identity;
+@model Intex2024.Data.Customer
+
 @{
     ViewData["Title"] = "Confirmation";
 }
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Confirm Information</h2>
+            <form>
+                <div class="form-group">
+                    <label asp-for="FirstName">First Name</label>
+                    <input type="text" class="form-control" id="FirstName" value="@Model.FirstName">
+                </div>
+                <div class="form-group">
+                    <label asp-for="LastName">Last Name</label>
+                    <input type="text" class="form-control" id="LastName" value="@Model.LastName">
+                </div>
+                <div class="form-group">
+                    <label asp-for="CountryOfResidence">Country</label>
+                    <input type="text" class="form-control" id="CountryOfResidence" value="@Model.CountryOfResidence">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <!-- This is the right side of the page. It contains the Place Order section and the Order Summary section. -->
+        <div class="col-md-6">
+            <h2>Place Order</h2>
+            <button class="btn btn-primary">Place Order</button>
+            <h3>Order Summary</h3>
+            <!-- Here you can list the items they are purchasing, the quantity, the price, and the total price. -->
+        </div>
+    </div>
+</div>

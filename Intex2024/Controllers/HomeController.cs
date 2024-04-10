@@ -56,6 +56,7 @@ namespace Intex2024.Controllers
 
         public IActionResult Confirmation()
         {
+            Customer customer = _repo.GetCustomerData();
             return View();
         }
 

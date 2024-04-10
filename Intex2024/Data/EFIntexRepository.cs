@@ -19,5 +19,9 @@ namespace Intex2024.Data
         public IQueryable<UserRecommendation> UserRecommendations => _context.UserRecommendations;
         public IQueryable<ProductRecommendation> ProductRecommendations => _context.ProductRecommendations;
         public IQueryable<IdentityRole> IdentityRoles => _context.Roles;
+        public Customer GetCustomerData()
+        {
+            return _context.Users.FirstOrDefault();
+        }
     }
 }
