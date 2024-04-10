@@ -1,6 +1,8 @@
 using Intex2024.Data;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace Intex2024.Controllers
 {
@@ -58,15 +60,47 @@ namespace Intex2024.Controllers
         {
             return View();
         }
-
+        
+        // [HttpPost]
+        // Commented out the entire method as requested
         public IActionResult Orders()
         {
-            return View();
+            var ordersQuery = _repo.Orders.AsQueryable();
+
+            // Apply any filtering based on parameters
+
+            // No need for Include if all data is in the Orders entity
+
+            // Execute the query to get the list of orders
+            var orders = ordersQuery.ToList();
+
+            return View(orders);
         }
+
+
+        public string? Customer { get; set; }
 
         public IActionResult AdminProducts()
         {
             return View();
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            Product recordToEdit = _repo.Products
+                .Single(p => p.ProductId == id);
+            
+            return View("AddProduct", recordToEdit);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Product updatedInfo)
+        {
+            _repo.Update(updatedInfo);
+            _repo.SaveChanges();
+
+            return RedirectToAction("AdminProducts");
         }
 
         public IActionResult AdminUsers()
@@ -79,15 +113,30 @@ namespace Intex2024.Controllers
             return View();
         }
 
-        public IActionResult AddProduct()
-        {
-            return View();
-        }
+        /*
+   [HttpGet]
+   public IActionResult AddProduct(Product response)
+   {
+       _repo.Products
+           .OrderBy(p => p.Name)
+           .ToList();
+
+       return View();
+   }
+
+   [HttpPost]
+   public IActionResult AddProduct(Product response)
+   {
+       _repo.Products.Add(response); // Add product to database
+       _repo.SaveChanges();
+       return View(AdminProducts);  // Assuming AdminProducts is a variable or constant name
+   }
+   */
+
 
         public IActionResult Fraud()
         {
             return View();
         }
-
     }
 }

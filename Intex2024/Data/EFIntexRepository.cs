@@ -19,5 +19,15 @@ namespace Intex2024.Data
         public IQueryable<UserRecommendation> UserRecommendations => _context.UserRecommendations;
         public IQueryable<ProductRecommendation> ProductRecommendations => _context.ProductRecommendations;
         public IQueryable<IdentityRole> IdentityRoles => _context.Roles;
+        public void Update(Product product)
+        {
+            // Update the entity in the context
+            _context.Products.Update(product);
+        }
+        public void SaveChanges()
+        {
+            // Save changes to the database
+            _context.SaveChanges();
+        }
     }
 }

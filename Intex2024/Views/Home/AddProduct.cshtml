@@ -1,3 +1,120 @@
-@{
-    ViewData["Title"] = "Add Product";
-}
+@model Product
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Page - Products</title>
+    <style>
+             body {
+                    background: linear-gradient(to right, #A7CFFB, #067CFE);
+                    margin: 0;
+                    padding: 0;
+                }
+                nav {
+                    background-color: #006FE3;
+                    padding: 10px;
+                    position: fixed;
+                    left: 0;
+                    top: 0;
+                    bottom: 0;
+                    width: 150px;
+                }
+                nav ul {
+                    list-style-type: none;
+                    padding: 0;
+                    margin: 0;
+                }
+                nav ul li {
+                    margin-bottom: 5px;
+                }
+                nav ul li a {
+                    display: block;
+                    padding: 10px;
+                    color: white;
+                    text-decoration: none;
+                    transition: background-color 0.3s ease;
+                }
+                nav ul li a:hover {
+                    background-color: #004E9C;
+                }
+                table {
+                    border-collapse: collapse;
+                    margin-left: 170px; /* Adjust this value to leave space for the navigation menu */
+                    width: calc(100% - 170px); /* Adjust this value to leave space for the navigation menu */
+                    border: 2px solid #006FE3;
+                }
+                th, td {
+                    padding: 8px;
+                    text-align: left;
+                    border-bottom: 1px solid #006FE3;
+                }
+                th {
+                    background-color: #006FE3;
+                    color: white;
+                }
+                tr:nth-child(even) {
+                    background-color: #f2f2f2;
+                }
+                .filter-container {
+                    margin-bottom: 10px;
+                }
+                .filter-container label {
+                    display: block;
+                }
+                .filter-container input[type="text"],
+                .filter-container select {
+                    width: 200px;
+                    margin-bottom: 5px;
+                }
+                .search-button {
+                    float: right;
+                    margin-bottom: 10px;
+                }
+    </style>
+</head>
+<body>
+<nav>
+    <ul>
+        <li><a href="#">Dashboard</a></li>
+        <li><a href="#">Orders</a></li>
+        <li><a href="#">AdminProducts</a></li>
+        <li><a href="#">AddProducts</a></li>
+        <li><a href="#">AdminUsers</a></li>
+    </ul>
+</nav>
+<h1>Add Product</h1>
+
+<form method="post">
+    <input type=hidden asp-for="ProductId" />
+    <br />
+    <label asp-for="Name">Product Name:</label>
+    <input asp-for="Name" />
+    <br />
+    <label asp-for="Year">Year:</label>
+    <input type="int" asp-for="Year" />
+    <br />
+    <label asp-for="NumParts">Number of Parts :</label>
+    <input asp-for="NumParts" />
+    <br>
+    <label asp-for="Price">Price:</label>
+    <input asp-for="Price">
+    <br />
+    <label asp-for="ImgLink">Image Link</label>
+    <input asp-for="ImgLink">
+    <br />
+    <label asp-for="PrimaryColor">Primary Color</label>
+    <input asp-for="PrimaryColor" />
+    <br />
+    <label asp-for="SecondaryColor">Secondary</label>
+    <input asp-for="SecondaryColor" />
+    <br />
+    <label asp-for="Description">Description</label>
+    <input asp-for="Description"/>
+    <br/>
+    <
+
+    <button type="submit">Submit Movie</button>
+
+</form>
+</body>
+</html>
