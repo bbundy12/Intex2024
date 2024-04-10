@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Intex2024.Migrations
 {
     /// <inheritdoc />
-    public partial class FullDatabase : Migration
+    public partial class AzureDatabase : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,10 +15,10 @@ namespace Intex2024.Migrations
                 name: "AspNetRoles",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "TEXT", nullable: false),
-                    Name = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
-                    NormalizedName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "TEXT", nullable: true)
+                    Id = table.Column<string>(type: "VARCHAR(255)", nullable: false),
+                    Name = table.Column<string>(type: "VARCHAR(255)", maxLength: 256, nullable: true),
+                    NormalizedName = table.Column<string>(type: "VARCHAR(255)", maxLength: 256, nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "VARCHAR(255)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -29,27 +29,27 @@ namespace Intex2024.Migrations
                 name: "AspNetUsers",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "TEXT", nullable: false),
-                    FirstName = table.Column<string>(type: "TEXT", nullable: false),
-                    LastName = table.Column<string>(type: "TEXT", nullable: false),
-                    BirthDate = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    CountryOfResidence = table.Column<string>(type: "TEXT", nullable: false),
-                    Gender = table.Column<string>(type: "TEXT", nullable: false),
-                    Age = table.Column<int>(type: "INTEGER", nullable: false),
-                    UserName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
-                    NormalizedUserName = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
-                    Email = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
-                    NormalizedEmail = table.Column<string>(type: "TEXT", maxLength: 256, nullable: true),
-                    EmailConfirmed = table.Column<bool>(type: "INTEGER", nullable: false),
-                    PasswordHash = table.Column<string>(type: "TEXT", nullable: true),
-                    SecurityStamp = table.Column<string>(type: "TEXT", nullable: true),
-                    ConcurrencyStamp = table.Column<string>(type: "TEXT", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "TEXT", nullable: true),
-                    PhoneNumberConfirmed = table.Column<bool>(type: "INTEGER", nullable: false),
-                    TwoFactorEnabled = table.Column<bool>(type: "INTEGER", nullable: false),
-                    LockoutEnd = table.Column<DateTimeOffset>(type: "TEXT", nullable: true),
-                    LockoutEnabled = table.Column<bool>(type: "INTEGER", nullable: false),
-                    AccessFailedCount = table.Column<int>(type: "INTEGER", nullable: false)
+                    Id = table.Column<string>(type: "VARCHAR(255)", nullable: false),
+                    FirstName = table.Column<string>(type: "VARCHAR(255)", nullable: false),
+                    LastName = table.Column<string>(type: "VARCHAR(255)", nullable: false),
+                    BirthDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CountryOfResidence = table.Column<string>(type: "VARCHAR(255)", nullable: false),
+                    Gender = table.Column<string>(type: "VARCHAR(255)", nullable: false),
+                    Age = table.Column<int>(type: "int", nullable: false),
+                    UserName = table.Column<string>(type: "VARCHAR(255)", maxLength: 256, nullable: true),
+                    NormalizedUserName = table.Column<string>(type: "VARCHAR(255)", maxLength: 256, nullable: true),
+                    Email = table.Column<string>(type: "VARCHAR(255)", maxLength: 256, nullable: true),
+                    NormalizedEmail = table.Column<string>(type: "VARCHAR(255)", maxLength: 256, nullable: true),
+                    EmailConfirmed = table.Column<bool>(type: "bit", nullable: false),
+                    PasswordHash = table.Column<string>(type: "VARCHAR(255)", nullable: true),
+                    SecurityStamp = table.Column<string>(type: "VARCHAR(255)", nullable: true),
+                    ConcurrencyStamp = table.Column<string>(type: "VARCHAR(255)", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "VARCHAR(255)", nullable: true),
+                    PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
+                    TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
+                    LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
+                    LockoutEnabled = table.Column<bool>(type: "bit", nullable: false),
+                    AccessFailedCount = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -60,17 +60,17 @@ namespace Intex2024.Migrations
                 name: "Products",
                 columns: table => new
                 {
-                    ProductId = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(type: "TEXT", nullable: false),
-                    Year = table.Column<int>(type: "INTEGER", nullable: false),
-                    NumParts = table.Column<int>(type: "INTEGER", nullable: false),
-                    Price = table.Column<decimal>(type: "TEXT", nullable: false),
-                    ImgLink = table.Column<string>(type: "TEXT", nullable: false),
-                    PrimaryColor = table.Column<string>(type: "TEXT", nullable: false),
-                    SecondaryColor = table.Column<string>(type: "TEXT", nullable: false),
-                    Description = table.Column<string>(type: "TEXT", nullable: false),
-                    Category = table.Column<string>(type: "TEXT", nullable: false)
+                    ProductId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "VARCHAR(255)", nullable: false),
+                    Year = table.Column<int>(type: "int", nullable: false),
+                    NumParts = table.Column<int>(type: "int", nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    ImgLink = table.Column<string>(type: "VARCHAR(255)", nullable: false),
+                    PrimaryColor = table.Column<string>(type: "VARCHAR(255)", nullable: false),
+                    SecondaryColor = table.Column<string>(type: "VARCHAR(255)", nullable: false),
+                    Description = table.Column<string>(type: "VARCHAR(255)", nullable: false),
+                    Category = table.Column<string>(type: "VARCHAR(255)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -81,11 +81,11 @@ namespace Intex2024.Migrations
                 name: "AspNetRoleClaims",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    RoleId = table.Column<string>(type: "TEXT", nullable: false),
-                    ClaimType = table.Column<string>(type: "TEXT", nullable: true),
-                    ClaimValue = table.Column<string>(type: "TEXT", nullable: true)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    RoleId = table.Column<string>(type: "VARCHAR(255)", nullable: false),
+                    ClaimType = table.Column<string>(type: "VARCHAR(255)", nullable: true),
+                    ClaimValue = table.Column<string>(type: "VARCHAR(255)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -102,11 +102,11 @@ namespace Intex2024.Migrations
                 name: "AspNetUserClaims",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    UserId = table.Column<string>(type: "TEXT", nullable: false),
-                    ClaimType = table.Column<string>(type: "TEXT", nullable: true),
-                    ClaimValue = table.Column<string>(type: "TEXT", nullable: true)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<string>(type: "VARCHAR(255)", nullable: false),
+                    ClaimType = table.Column<string>(type: "VARCHAR(255)", nullable: true),
+                    ClaimValue = table.Column<string>(type: "VARCHAR(255)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -123,10 +123,10 @@ namespace Intex2024.Migrations
                 name: "AspNetUserLogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(type: "TEXT", nullable: false),
-                    ProviderKey = table.Column<string>(type: "TEXT", nullable: false),
-                    ProviderDisplayName = table.Column<string>(type: "TEXT", nullable: true),
-                    UserId = table.Column<string>(type: "TEXT", nullable: false)
+                    LoginProvider = table.Column<string>(type: "VARCHAR(255)", nullable: false),
+                    ProviderKey = table.Column<string>(type: "VARCHAR(255)", nullable: false),
+                    ProviderDisplayName = table.Column<string>(type: "VARCHAR(255)", nullable: true),
+                    UserId = table.Column<string>(type: "VARCHAR(255)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -143,8 +143,8 @@ namespace Intex2024.Migrations
                 name: "AspNetUserRoles",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(type: "TEXT", nullable: false),
-                    RoleId = table.Column<string>(type: "TEXT", nullable: false)
+                    UserId = table.Column<string>(type: "VARCHAR(255)", nullable: false),
+                    RoleId = table.Column<string>(type: "VARCHAR(255)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -167,10 +167,10 @@ namespace Intex2024.Migrations
                 name: "AspNetUserTokens",
                 columns: table => new
                 {
-                    UserId = table.Column<string>(type: "TEXT", nullable: false),
-                    LoginProvider = table.Column<string>(type: "TEXT", nullable: false),
-                    Name = table.Column<string>(type: "TEXT", nullable: false),
-                    Value = table.Column<string>(type: "TEXT", nullable: true)
+                    UserId = table.Column<string>(type: "VARCHAR(255)", nullable: false),
+                    LoginProvider = table.Column<string>(type: "VARCHAR(255)", nullable: false),
+                    Name = table.Column<string>(type: "VARCHAR(255)", nullable: false),
+                    Value = table.Column<string>(type: "VARCHAR(255)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -187,9 +187,9 @@ namespace Intex2024.Migrations
                 name: "Carts",
                 columns: table => new
                 {
-                    CartId = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    CustomerId = table.Column<string>(type: "TEXT", nullable: false)
+                    CartId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CustomerId = table.Column<string>(type: "VARCHAR(255)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -206,20 +206,20 @@ namespace Intex2024.Migrations
                 name: "Orders",
                 columns: table => new
                 {
-                    TransactionId = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Date = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    DayOfWeek = table.Column<string>(type: "TEXT", nullable: false),
-                    Time = table.Column<TimeSpan>(type: "TEXT", nullable: false),
-                    TypeOfCard = table.Column<string>(type: "TEXT", nullable: false),
-                    EntryMode = table.Column<string>(type: "TEXT", nullable: false),
-                    Amount = table.Column<decimal>(type: "TEXT", nullable: false),
-                    TypeOfTransaction = table.Column<string>(type: "TEXT", nullable: false),
-                    CountryOfTransaction = table.Column<string>(type: "TEXT", nullable: false),
-                    ShippingAddress = table.Column<string>(type: "TEXT", nullable: false),
-                    Bank = table.Column<string>(type: "TEXT", nullable: false),
-                    Fraud = table.Column<bool>(type: "INTEGER", nullable: false),
-                    CustomerId = table.Column<string>(type: "TEXT", nullable: false)
+                    TransactionId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DayOfWeek = table.Column<string>(type: "VARCHAR(255)", nullable: false),
+                    Time = table.Column<TimeSpan>(type: "time", nullable: false),
+                    TypeOfCard = table.Column<string>(type: "VARCHAR(255)", nullable: false),
+                    EntryMode = table.Column<string>(type: "VARCHAR(255)", nullable: false),
+                    Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    TypeOfTransaction = table.Column<string>(type: "VARCHAR(255)", nullable: false),
+                    CountryOfTransaction = table.Column<string>(type: "VARCHAR(255)", nullable: false),
+                    ShippingAddress = table.Column<string>(type: "VARCHAR(255)", nullable: false),
+                    Bank = table.Column<string>(type: "VARCHAR(255)", nullable: false),
+                    Fraud = table.Column<bool>(type: "bit", nullable: false),
+                    CustomerId = table.Column<string>(type: "VARCHAR(255)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -236,10 +236,10 @@ namespace Intex2024.Migrations
                 name: "ProductRecommendations",
                 columns: table => new
                 {
-                    RecommendedProductId = table.Column<int>(type: "INTEGER", nullable: false),
-                    Rank = table.Column<int>(type: "INTEGER", nullable: false),
-                    ProductId = table.Column<int>(type: "INTEGER", nullable: false),
-                    SimilarityScore = table.Column<decimal>(type: "TEXT", nullable: false)
+                    RecommendedProductId = table.Column<int>(type: "int", nullable: false),
+                    Rank = table.Column<int>(type: "int", nullable: false),
+                    ProductId = table.Column<int>(type: "int", nullable: false),
+                    SimilarityScore = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -256,10 +256,10 @@ namespace Intex2024.Migrations
                 name: "UserRecommendations",
                 columns: table => new
                 {
-                    RecommendationId = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    UserId = table.Column<string>(type: "TEXT", nullable: false),
-                    ProductId = table.Column<int>(type: "INTEGER", nullable: false)
+                    RecommendationId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<string>(type: "VARCHAR(255)", nullable: false),
+                    ProductId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -282,11 +282,11 @@ namespace Intex2024.Migrations
                 name: "CartLine",
                 columns: table => new
                 {
-                    CartLineId = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    ProductId = table.Column<int>(type: "INTEGER", nullable: false),
-                    Quantity = table.Column<int>(type: "INTEGER", nullable: false),
-                    CartId = table.Column<int>(type: "INTEGER", nullable: true)
+                    CartLineId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProductId = table.Column<int>(type: "int", nullable: false),
+                    Quantity = table.Column<int>(type: "int", nullable: false),
+                    CartId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -308,10 +308,10 @@ namespace Intex2024.Migrations
                 name: "LineItems",
                 columns: table => new
                 {
-                    TransactionId = table.Column<int>(type: "INTEGER", nullable: false),
-                    ProductId = table.Column<int>(type: "INTEGER", nullable: false),
-                    Quantity = table.Column<int>(type: "INTEGER", nullable: false),
-                    Rating = table.Column<int>(type: "INTEGER", nullable: false)
+                    TransactionId = table.Column<int>(type: "int", nullable: false),
+                    ProductId = table.Column<int>(type: "int", nullable: false),
+                    Quantity = table.Column<int>(type: "int", nullable: false),
+                    Rating = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -339,7 +339,8 @@ namespace Intex2024.Migrations
                 name: "RoleNameIndex",
                 table: "AspNetRoles",
                 column: "NormalizedName",
-                unique: true);
+                unique: true,
+                filter: "[NormalizedName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserClaims_UserId",
@@ -365,7 +366,8 @@ namespace Intex2024.Migrations
                 name: "UserNameIndex",
                 table: "AspNetUsers",
                 column: "NormalizedUserName",
-                unique: true);
+                unique: true,
+                filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CartLine_CartId",
