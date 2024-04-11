@@ -8,8 +8,8 @@ namespace Intex2024.Data
     public class EFIntexRepository : IIntexRepository
     {
 
-        private IntexDbContext _context;
-        public EFIntexRepository(IntexDbContext ctx)
+        private ApplicationDbContext _context;
+        public EFIntexRepository(ApplicationDbContext ctx)
         {
             _context = ctx;
         }
