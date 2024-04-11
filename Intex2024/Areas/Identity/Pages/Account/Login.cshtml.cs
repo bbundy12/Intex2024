@@ -20,10 +20,10 @@ namespace Intex2024.Areas.Identity.Pages.Account
 {
     public class LoginModel : PageModel
     {
-        private readonly SignInManager<Customer> _signInManager;
-        private readonly ILogger<Customer> _logger;
+        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly ILogger<IdentityUser> _logger;
 
-        public LoginModel(SignInManager<Customer> signInManager, ILogger<Customer> logger)
+        public LoginModel(SignInManager<IdentityUser> signInManager, ILogger<IdentityUser> logger)
         {
             _signInManager = signInManager;
             _logger = logger;
