@@ -8,10 +8,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f501258e-1492-4509-b4b1-cd1371616d7c" name="Changes" comment="commiting changed files from pull">
+    <list default="true" id="f501258e-1492-4509-b4b1-cd1371616d7c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Intex2024/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Intex2024/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/AddProduct.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/Home/AddProduct.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/AdminProducts.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/Home/AdminProducts.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/AdminUsers.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/Home/AdminUsers.cshtml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +53,7 @@
     <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/IIntexRepository.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/IIntexRepository.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Views/Home/AddProduct.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Views/Home/AdminProducts.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -189,7 +190,31 @@
       <option name="project" value="LOCAL" />
       <updated>1712854793995</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="brendans last database update hopefully">
+      <option name="closed" value="true" />
+      <created>1712859077699</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1712859077699</updated>
+    </task>
+    <task id="LOCAL-00009" summary="brendans last database update hopefully">
+      <option name="closed" value="true" />
+      <created>1712859252489</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1712859252489</updated>
+    </task>
+    <task id="LOCAL-00010" summary="brendans last database update hopefully">
+      <option name="closed" value="true" />
+      <created>1712859272570</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1712859272570</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -205,6 +230,8 @@
     <MESSAGE value="These are ben Ropers real changes and the ones that should be pushed to main" />
     <MESSAGE value="I am commiting the changes from my last pull" />
     <MESSAGE value="commiting changed files from pull" />
-    <option name="LAST_COMMIT_MESSAGE" value="commiting changed files from pull" />
+    <MESSAGE value="i hope this pushes" />
+    <MESSAGE value="brendans last database update hopefully" />
+    <option name="LAST_COMMIT_MESSAGE" value="brendans last database update hopefully" />
   </component>
 </project>
