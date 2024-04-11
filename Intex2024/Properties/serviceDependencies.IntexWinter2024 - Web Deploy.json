@@ -11,6 +11,14 @@
       "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/intex2024/databases/Intex2024",
       "type": "mssql.azure",
       "connectionId": "ConnectionStrings:IntexConnection"
+    },
+    "secrets1": {
+      "serviceConnectorResourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Web/sites/IntexWinter2024/providers/Microsoft.ServiceLinker/linkers/Intex2024_E341F79657",
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.KeyVault/vaults/Intex2024vault",
+      "type": "secrets.keyVault",
+      "connectionId": "Intex2024",
+      "dynamicId": null
     }
   }
 }

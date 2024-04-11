@@ -5,8 +5,12 @@ using System.Linq;
 using Microsoft.ML;
 using Microsoft.ML.Data;
 using Microsoft.ML.Transforms.Onnx;
+using Azure.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
+
+var keyVaultEndpoint = new Uri(Environment.GetEnvironmentVariable("Intex2024"));
+builder.Configuration.AddAzureKeyVault(keyVaultEndpoint, new DefaultAzureCredential());
 var services = builder.Services;
 var configuration = builder.Configuration;
 

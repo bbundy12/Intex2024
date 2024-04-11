@@ -10,6 +10,7 @@
     },
     "secrets1": {
       "type": "secrets",
+      "connectionId": "Intex2024",
       "dynamicId": null
     }
   }
