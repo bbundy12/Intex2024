@@ -17,7 +17,6 @@
             </form>
             <form id="@Model.ProductId" method="post" asp-page="/ProductDetails">
                 <input type="hidden" asp-for="ProductId" />
-                <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
                 <button type="submit" class="btn btn-primary">View Details</a>
             </form>
         </div>

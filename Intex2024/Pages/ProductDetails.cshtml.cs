@@ -14,7 +14,11 @@ namespace Intex2024.Pages
             _repo = temp;
         }
         public Product? product { get; set; }
-        public void OnGet(int productId)
+        public void OnGet()
+        {
+            
+        }
+        public void OnPost(int productId)
         {
             Product p = _repo.Products
                     .FirstOrDefault(x => x.ProductId == productId);
