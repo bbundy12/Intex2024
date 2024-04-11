@@ -122,41 +122,6 @@ namespace Intex2024.Controllers
             }
         }
 
-        public IActionResult Cart()
-        {
-            Cart cart = _httpContextAccessor.HttpContext.Session.GetJson<Cart>("Cart") ?? new Cart();
-            return View(cart);
-        }
-
-        [HttpPost]
-        public IActionResult AddToCart(int productId, int quantity)
-        {
-            Product product = _repo.Products.FirstOrDefault(p => p.ProductId == productId);
-            if (product != null)
-            {
-                Cart cart = _httpContextAccessor.HttpContext.Session.GetJson<Cart>("Cart") ?? new Cart();
-                cart.AddItem(product, quantity);
-                _httpContextAccessor.HttpContext.Session.SetJson("Cart", cart);
-            }
-            return RedirectToAction("Cart");
-        }
-
-        [HttpPost]
-        public IActionResult RemoveFromCart(int productId)
-        {
-            Product product = _repo.Products.FirstOrDefault(p => p.ProductId == productId);
-            if (product != null)
-            {
-                Cart cart = _httpContextAccessor.HttpContext.Session.GetJson<Cart>("Cart");
-                if (cart != null)
-                {
-                    cart.RemoveLine(product);
-                    _httpContextAccessor.HttpContext.Session.SetJson("Cart", cart);
-                }
-            }
-            return RedirectToAction("Cart");
-        } 
-
         public IActionResult Index()
         {
             var vm = new ProductsListViewModel
@@ -178,7 +143,7 @@ namespace Intex2024.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public IActionResult Products(int pageNum)
+        public IActionResult Products(int pageNum, string? productCategory)
         {
             int pageSize = 5;
             pageNum = Math.Max(1, pageNum); // Ensure pageNum is at least 1
@@ -187,6 +152,7 @@ namespace Intex2024.Controllers
             var vm = new ProductsListViewModel
             {
                 Products = _repo.Products
+                .Where(x => x.Category == productCategory || productCategory == null)
                 .OrderBy(x => x.Name)
                 .Skip(pageSize * (pageNum - 1))
                 .Take(pageSize),
@@ -195,8 +161,11 @@ namespace Intex2024.Controllers
                 {
                     CurrentPage = pageNum,
                     ItemsPerPage = pageSize,
-                    TotalItems = _repo.Products.Count()
-                }
+                    TotalItems = productCategory == null ? _repo.Products.Count() : _repo.Products.Where(x => x.Category == productCategory).Count()
+                },
+
+                CurrentProductCategory = productCategory
+
             };
             return View(vm);
         }
