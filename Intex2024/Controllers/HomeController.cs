@@ -145,30 +145,41 @@ namespace Intex2024.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public IActionResult Products(int pageNum, string? productCategory)
+        public IActionResult Products(int pageNum, int pageSize, string? productCategory, string? productColor)
         {
-            int pageSize = 5;
             pageNum = Math.Max(1, pageNum); // Ensure pageNum is at least 1
+            pageSize = Math.Max(5, pageSize); // Ensure pageSize is at least 5
 
+            var query = _repo.Products.AsQueryable();
+
+            // Apply filters for productCategory and productColor
+            if (!string.IsNullOrEmpty(productCategory))
+            {
+                query = query.Where(x => x.Category == productCategory);
+            }
+            if (!string.IsNullOrEmpty(productColor))
+            {
+                query = query.Where(x => x.PrimaryColor == productColor);
+            }
 
             var vm = new ProductsListViewModel
             {
-                Products = _repo.Products
-                .Where(x => x.Category == productCategory || productCategory == null)
-                .OrderBy(x => x.Name)
-                .Skip(pageSize * (pageNum - 1))
-                .Take(pageSize),
+                Products = query
+                    .OrderBy(x => x.Name)
+                    .Skip(pageSize * (pageNum - 1))
+                    .Take(pageSize),
 
                 PaginationInfo = new PaginationInfo
                 {
                     CurrentPage = pageNum,
                     ItemsPerPage = pageSize,
-                    TotalItems = productCategory == null ? _repo.Products.Count() : _repo.Products.Where(x => x.Category == productCategory).Count()
+                    TotalItems = query.Count() // Count after applying filters
                 },
 
-                CurrentProductCategory = productCategory
-
+                CurrentProductCategory = productCategory,
+                CurrentProductColor = productColor // Add the current product color to the view model
             };
+
             return View(vm);
         }
 

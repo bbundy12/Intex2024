@@ -1,4 +1,4 @@
-﻿@*
+@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
@@ -6,33 +6,34 @@
 @model IQueryable<string>
 
 <div>
-    <select id="productCategorySelect" class="form-select" onchange="changeProductCategory(this)">
-        <option value="">All Categories</option>
-        @foreach (string pc in Model ?? Enumerable.Empty<string>()) //If model is empty, return an empty string
+    <select id="productColorSelect" class="form-select" onchange="changeProductColor(this)">
+        <option value="">All Colors</option>
+        @foreach (string color in Model ?? Enumerable.Empty<string>())
         {
-            <option value="@pc" class="@(pc == ViewBag.SelectedProductCategory ? "selected" : "")">@pc</option>
+            <option value="@color" class="@(color == ViewBag.SelectedProductColor ? "selected" : "")">@color</option>
         }
     </select>
 </div>
 
 <script>
-    function changeProductCategory(select) {
+    function changeProductColor(select) {
         var selectedValue = select.value;
         if (selectedValue === '') {
             window.location.href = '@Url.Action("Products", "Home")'; // Redirect to /Product
             return;
         }
         var url = '@Url.Action("Products", "Home")';
-        var params = '?productCategory=' + encodeURIComponent(selectedValue) + '&pageNum=1';
+        var params = '?productColor=' + encodeURIComponent(selectedValue) + '&pageNum=1';
         window.location.href = url + params;
     };
+
     window.onload = function() {
-        var select = document.getElementById("productCategorySelect");
+        var select = document.getElementById("productColorSelect");
         var urlParams = new URLSearchParams(window.location.search);
-        var selectedCategory = urlParams.get('productCategory');
-        if (selectedCategory) {
+        var selectedColor = urlParams.get('productColor');
+        if (selectedColor) {
             for (var i = 0; i < select.options.length; i++) {
-                if (select.options[i].value === selectedCategory) {
+                if (select.options[i].value === selectedColor) {
                     select.options[i].selected = true;
                     break;
                 }

@@ -43,7 +43,7 @@ namespace Mission11_JacobBigler.Infrastructure
 					buttonTag.Attributes["type"] = "button"; // Ensure it's a button type
 
 					// Set the onclick attribute to navigate to the corresponding page
-					buttonTag.Attributes["onclick"] = $"window.location.href='{urlHelper.Action(PageAction, new { pageNum = i })}'";
+					buttonTag.Attributes["onclick"] = $"window.location.href='{urlHelper.Action(PageAction, new { pageNum = i, pageSize = PageModel.ItemsPerPage })}'";
 
 					buttonTag.AddCssClass("page-link");
 					buttonTag.InnerHtml.Append(i.ToString());
