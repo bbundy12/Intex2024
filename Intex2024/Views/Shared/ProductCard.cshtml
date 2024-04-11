@@ -15,9 +15,8 @@
                 <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
                 <button type="submit" class="btn btn-primary">Add to Cart</a>
             </form>
-            <form id="@Model.ProductId" method="post" asp-page="/ProductDetails">
-                <input type="hidden" asp-for="ProductId" />
-                <button type="submit" class="btn btn-primary">View Details</a>
+            <form method="get" asp-page="/ProductDetails" asp-route-id="@Model.ProductId">
+                <button type="submit" class="btn btn-primary">View Details</button>
             </form>
         </div>
     </div>
