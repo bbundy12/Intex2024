@@ -42,5 +42,6 @@ namespace Intex2024.Data
         public DbSet<Cart> Carts { get; set; }
         public DbSet<LineItem> LineItems { get; set; }
 
+
     }
 }

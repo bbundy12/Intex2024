@@ -3,6 +3,8 @@ using Intex2024.Infrastructure;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.ML.OnnxRuntime;
+using Microsoft.ML.OnnxRuntime.Tensors;
 using System.Diagnostics;
 using System.Xml.Linq;
 using Microsoft.EntityFrameworkCore;
@@ -15,48 +17,113 @@ namespace Intex2024.Controllers
         private IIntexRepository _repo;
         private readonly UserManager<Customer> _userManager;
         private readonly IHttpContextAccessor _httpContextAccessor;
-
-        public HomeController(IIntexRepository repo, UserManager<Customer> userManager, IHttpContextAccessor httpContextAccessor)
+        private readonly InferenceSession _session;
+        private readonly string _onnxModelPath;
+      
+        public HomeController(IIntexRepository repo, UserManager<Customer> userManager, IHostEnvironment hostEnvironment, IHttpContextAccessor httpContextAccessor)
         {
             _repo = repo;
             _userManager = userManager;
             _httpContextAccessor = httpContextAccessor;
-        }
-
-        public IActionResult Cart()
-        {
-            Cart cart = _httpContextAccessor.HttpContext.Session.GetJson<Cart>("Cart") ?? new Cart();
-            return View(cart);
+            string onnxModelPath = System.IO.Path.Combine(hostEnvironment.ContentRootPath, "decision_tree_clf.onnx");
+            _session = new InferenceSession(onnxModelPath);
         }
 
         [HttpPost]
-        public IActionResult AddToCart(int productId, int quantity)
+        public IActionResult SubmitCart(CartSubmissionViewModel cartSubmission)
         {
-            Product product = _repo.Products.FirstOrDefault(p => p.ProductId == productId);
-            if (product != null)
-            {
-                Cart cart = _httpContextAccessor.HttpContext.Session.GetJson<Cart>("Cart") ?? new Cart();
-                cart.AddItem(product, quantity);
-                _httpContextAccessor.HttpContext.Session.SetJson("Cart", cart);
-            }
-            return RedirectToAction("Cart");
-        }
 
-        [HttpPost]
-        public IActionResult RemoveFromCart(int productId)
+            var predictions = new FraudPrediction();
+
+            // Dictionary mapping the numeric prediction to a string
+            var class_type_dict = new Dictionary<int, string>
         {
-            Product product = _repo.Products.FirstOrDefault(p => p.ProductId == productId);
-            if (product != null)
+            { 0, "Not Fraud" },
+            { 1, "Fraud" }
+        };
+
+            // Assuming you have all the necessary properties on your cartSubmission object, such as Age, Gender, etc.
+            var input = new List<float>
+    {
+        cartSubmission.Customer.Age, // Assuming Age is already a float or can be cast to one.
+        (float)cartSubmission.Order.Time, 
+        (float)cartSubmission.Order.Amount, 
+
+        // Country of residence
+        cartSubmission.Customer.CountryOfResidence == "USA" ? 1 : 0,
+        cartSubmission.Customer.CountryOfResidence == "United Kingdom" ? 1 : 0,
+
+        // Gender
+        cartSubmission.Customer.Gender == "M" ? 1 : 0,
+
+        // Day of the week
+        cartSubmission.Order.DayOfWeek == "Mon" ? 1 : 0,
+        cartSubmission.Order.DayOfWeek == "Sat" ? 1 : 0,
+        cartSubmission.Order.DayOfWeek == "Sun" ? 1 : 0,
+        cartSubmission.Order.DayOfWeek == "Thu" ? 1 : 0,
+        cartSubmission.Order.DayOfWeek == "Tue" ? 1 : 0,
+        cartSubmission.Order.DayOfWeek == "Wed" ? 1 : 0,
+
+        // Entry mode
+        cartSubmission.Order.EntryMode == "PIN" ? 1 : 0,
+        cartSubmission.Order.EntryMode == "Tap" ? 1 : 0,
+
+        // Type of transaction
+        cartSubmission.Order.TypeOfTransaction == "Online" ? 1 : 0,
+        cartSubmission.Order.TypeOfTransaction == "POS" ? 1 : 0,
+
+        // Country of transaction
+        cartSubmission.Order.CountryOfTransaction == "India" ? 1 : 0,
+        cartSubmission.Order.CountryOfTransaction == "Russia" ? 1 : 0,
+        cartSubmission.Order.CountryOfTransaction == "USA" ? 1 : 0,
+        cartSubmission.Order.CountryOfTransaction == "United Kingdom" ? 1 : 0,
+
+        // Shipping address
+        cartSubmission.Order.ShippingAddress == "India" ? 1 : 0,
+        cartSubmission.Order.ShippingAddress == "Russia" ? 1 : 0,
+        cartSubmission.Order.ShippingAddress == "USA" ? 1 : 0,
+        cartSubmission.Order.ShippingAddress == "United Kingdom" ? 1 : 0,
+
+        // Bank
+        cartSubmission.Order.Bank == "HSBC" ? 1 : 0,
+        cartSubmission.Order.Bank == "Halifax" ? 1 : 0,
+        cartSubmission.Order.Bank == "Lloyds" ? 1 : 0,
+        cartSubmission.Order.Bank == "Metro" ? 1 : 0,
+        cartSubmission.Order.Bank == "Monzo" ? 1 : 0,
+        cartSubmission.Order.Bank == "RBS" ? 1 : 0,
+
+        // Type of card
+        cartSubmission.Order.TypeOfCard == "Visa" ? 1 : 0,
+    };
+
+            var inputTensor = new DenseTensor<float>(input.ToArray(), new[] { 1, input.Count });
+
+            var inputs = new List<NamedOnnxValue>
+    {
+        NamedOnnxValue.CreateFromTensor("float_input", inputTensor)
+    };
+
+            string predictionResult;
+            using (var results = _session.Run(inputs))
             {
-                Cart cart = _httpContextAccessor.HttpContext.Session.GetJson<Cart>("Cart");
-                if (cart != null)
-                {
-                    cart.RemoveLine(product);
-                    _httpContextAccessor.HttpContext.Session.SetJson("Cart", cart);
-                }
+                var prediction = results.FirstOrDefault(item => item.Name == "output_label")?.AsTensor<long>().ToArray();
+                predictionResult = prediction is not null && prediction.Length > 0
+                    ? class_type_dict.GetValueOrDefault((int)prediction[0], "Unknown")
+                    : "Error in prediction";
             }
-            return RedirectToAction("Cart");
-        } 
+
+            bool isFraud = predictionResult == "Fraud";
+            /*SaveOrder(cartSubmission.Order, isFraud);*/
+
+            if (isFraud)
+            {
+                return View("ConfirmationPending");
+            }
+            else
+            {
+                return View("ConfirmationSuccess");
+            }
+        }
 
         public IActionResult Index()
         {
@@ -79,7 +146,7 @@ namespace Intex2024.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public IActionResult Products(int pageNum)
+        public IActionResult Products(int pageNum, string? productCategory)
         {
             int pageSize = 5;
             pageNum = Math.Max(1, pageNum); // Ensure pageNum is at least 1
@@ -88,6 +155,7 @@ namespace Intex2024.Controllers
             var vm = new ProductsListViewModel
             {
                 Products = _repo.Products
+                .Where(x => x.Category == productCategory || productCategory == null)
                 .OrderBy(x => x.Name)
                 .Skip(pageSize * (pageNum - 1))
                 .Take(pageSize),
@@ -96,8 +164,11 @@ namespace Intex2024.Controllers
                 {
                     CurrentPage = pageNum,
                     ItemsPerPage = pageSize,
-                    TotalItems = _repo.Products.Count()
-                }
+                    TotalItems = productCategory == null ? _repo.Products.Count() : _repo.Products.Where(x => x.Category == productCategory).Count()
+                },
+
+                CurrentProductCategory = productCategory
+
             };
             return View(vm);
         }

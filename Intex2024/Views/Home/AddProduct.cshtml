@@ -4,124 +4,187 @@
 <html>
 <head>
     <title>Admin Page - Products</title>
-    <style>
-        body {
-            background: linear-gradient(to right, #A7CFFB, #067CFE);
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        nav {
-            background-color: #006FE3;
-            padding: 10px;
-            position: fixed;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 150px;
-        }
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
-        nav ul li {
-            margin-bottom: 5px;
-        }
-        nav ul li a {
-            display: block;
-            padding: 10px;
-            color: white;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
-        }
-        nav ul li a:hover {
-            background-color: #004E9C;
-        }
-        form {
-            width: 400px; /* Adjust width as needed */
-            padding: 20px;
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-top: 50px;
-            max-height: 600px; /* Adjust the max height as needed */
-            overflow-y: auto; /* Adjust the top margin to create space below the header */
-        }
-        h1 {
-            text-align: center;
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-        input[type="text"] {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
-            box-sizing: border-box;
-        }
-        button[type="submit"] {
-            background-color: #006FE3;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button[type="submit"]:hover {
-            background-color: #004E9C;
-        }
-    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Include Bootstrap CSS -->
+   <style>
+           /* Custom styles for this page */
+           body {
+                       background: linear-gradient(to right, #A7CFFB, #067CFE);
+                       margin: 0;
+                       padding: 0;
+                       display: flex;
+                       flex-direction: column;
+                       justify-content: center;
+                       align-items: center;
+                       min-height: 100vh;
+                   }
+           
+   
+           .custom-nav {
+               padding: 10px;
+               width: 150px;
+               position: fixed;
+               top: 0;
+               bottom: 0;
+               left: 0;
+               height: auto; /* Adjusting height to be auto */
+
+           }
+   
+           .custom-nav ul {
+               list-style-type: none;
+               padding: 0;
+               margin: 0;
+           }
+   
+           .custom-nav ul li {
+               margin-bottom: 5px;
+           }
+   
+           .custom-nav ul li a {
+               display: block;
+               padding: 10px;
+               color: white;
+               text-decoration: none;
+               transition: background-color 0.3s ease;
+           }
+   
+           .custom-nav ul li a:hover {
+               background-color: #004E9C;
+           }
+   
+           .custom-form {
+               width: 1000px;
+               padding: 20px;
+               background: #fff;
+               border-radius: 8px;
+               box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+               margin-top: 20px;
+               max-height: 600px;
+               overflow-y: auto;
+               align-self: normal;
+               margin-left: 175px;
+               min-width: 600px;
+               overflow-x: hidden;
+               height: auto; /* Adjusting height to be auto */
+
+           }
+   
+           .custom-form h1 {
+               text-align: center;
+           }
+   
+           .custom-form label {
+               display: block;
+               margin-bottom: 5px;
+           }
+   
+           .custom-form input[type="text"] {
+               width: 100%;
+               padding: 8px;
+               margin-bottom: 10px;
+               box-sizing: border-box;
+           }
+   
+           .custom-form button[type="submit"] {
+               background-color: #006FE3;
+               color: white;
+               padding: 10px 20px;
+               border: none;
+               border-radius: 5px;
+               cursor: pointer;
+           }
+   
+           .custom-form button[type="submit"]:hover {
+               background-color: #004E9C;
+           }
+             /* Adjusting container background to be transparent */
+           
+       </style>
 </head>
 <body>
-<nav>
-    <ul>
-        <li><a href="#">Dashboard</a></li>
-        <li><a href="#">Orders</a></li>
-        <li><a href="#">AdminProducts</a></li>
-        <li><a href="#">AddProducts</a></li>
-        <li><a href="#">AdminUsers</a></li>
-    </ul>
-</nav>
-<h1>Add Product</h1>
+<div class="container">
+    <!-- Bootstrap container to center content and provide padding -->
 
-<form method="post">
-    <input type="hidden" asp-for="ProductId"/>
-    <br/>
-    <label asp-for="Name">Product Name:</label>
-    <input asp-for="Name"/>
-    <br/>
-    <label asp-for="Year">Year:</label>
-    <input asp-for="Year"/>
-    <br/>
-    <label asp-for="NumParts">Number of Parts :</label>
-    <input asp-for="NumParts"/>
-    <br>
-    <label asp-for="Price">Price:</label>
-    <input asp-for="Price">
-    <br/>
-    <label asp-for="ImgLink">Image Link</label>
-    <input asp-for="ImgLink">
-    <br/>
-    <label asp-for="PrimaryColor">Primary Color</label>
-    <input asp-for="PrimaryColor"/>
-    <br/>
-    <label asp-for="SecondaryColor">Secondary</label>
-    <input asp-for="SecondaryColor"/>
-    <br/>
-    <label asp-for="Description">Description</label>
-    <input asp-for="Description"/>
-    <br/>
-    <label asp-for="Category">Category</label>
-    <input asp-for="Category"/>
+    <h1 class="text-center">Add Product</h1>
 
-    <button type="submit">Confirm New Product</button>
+    <div class="row">
+        <!-- Bootstrap row to create horizontal groups -->
+        <div class="col-md-2">
+            <!-- Bootstrap column to take up 2 columns on the left -->
+           <nav>
+               <ul class="list-unstyled">
+                   <li class="col-md-12 mb-2 text-center">
+                       <a class="btn btn-primary btn-block" asp-controller="Home" asp-action="Orders">Orders</a>
+                   </li>
+                   <li class="col-md-12 mb-2 text-center">
+                       <a class="btn btn-primary btn-block" asp-controller="Home" asp-action="AdminProducts">Admin Products</a>
+                   </li>
+                   <li class="col-md-12 mb-2 text-center">
+                       <a class="btn btn-primary btn-block" asp-controller="Home" asp-action="AddProduct">Add Products</a>
+                   </li>
+                   <li class="col-md-12 mb-2 text-center">
+                       <a class="btn btn-primary btn-block" asp-controller="Home" asp-action="AdminUsers">Admin Users</a>
+                   </li>
+               </ul>
+           </nav>
 
-</form>
+        </div>
+        <div class="col-md-8">
+            <!-- Bootstrap column to take up 8 columns for the form -->
+            <form method="post">
+                <input type="hidden" asp-for="ProductId"/>
+                <br/>
+                <div class="form-group">
+                    <label asp-for="Name">Product Name:</label>
+                    <input class="form-control" asp-for="Name"/>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Year">Year:</label>
+                    <input class="form-control" asp-for="Year"/>
+                </div>
+                <div class="form-group">
+                    <label asp-for="NumParts">Number of Parts :</label>
+                    <input class="form-control" asp-for="NumParts"/>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Price">Price:</label>
+                    <input class="form-control" asp-for="Price">
+                </div>
+                <div class="form-group">
+                    <label asp-for="ImgLink">Image Link</label>
+                    <input class="form-control" asp-for="ImgLink">
+                </div>
+                <div class="form-group">
+                    <label asp-for="PrimaryColor">Primary Color</label>
+                    <input class="form-control" asp-for="PrimaryColor"/>
+                </div>
+                <div class="form-group">
+                    <label asp-for="SecondaryColor">Secondary</label>
+                    <input class="form-control" asp-for="SecondaryColor"/>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description">Description</label>
+                    <input class="form-control" asp-for="Description"/>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Category">Category</label>
+                    <input class="form-control" asp-for="Category"/>
+                </div>
+                
+                <button type="submit" class="btn btn-primary mb-5">Confirm New Product</button>
+
+
+            </form>
+        </div>
+        <div class="col-md-2">
+            <!-- Bootstrap column to take up 2 columns on the right -->
+            <!-- This column will create margin on the right -->
+        </div>
+    </div>
+
+</div>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Include Bootstrap JS -->
 </body>
 </html>

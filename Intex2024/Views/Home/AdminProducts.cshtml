@@ -65,11 +65,10 @@
 <body>
 <nav>
     <ul>
-        <li><a href="#">Dashboard</a></li>
-        <li><a href="#">Orders</a></li>
-        <li><a href="#">AdminProducts</a></li>
-        <li><a href="#">AddProducts</a></li>
-        <li><a href="#">AdminUsers</a></li>
+        <li><a asp-controller="Home" asp-action="Orders">Orders</a></li>
+        <li><a asp-controller="Home" asp-action="AdminProducts">Admin Products</a></li>
+        <li><a asp-controller="Home" asp-action="AddProduct">Add Products</a></li>
+        <li><a asp-controller="Home" asp-action="AdminUsers">Admin Users</a></li>
     </ul>
 </nav>
 
