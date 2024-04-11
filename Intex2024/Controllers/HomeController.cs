@@ -185,10 +185,9 @@ namespace Intex2024.Controllers
             return View();
         }
 
-        public IActionResult Confirmation(string? customerId)
+        public IActionResult Confirmation()
         {
-            Customer c = new Customer();
-            return View(c);
+            return View();
         }
 
         public IActionResult Orders()
