@@ -143,10 +143,10 @@ namespace Intex2024.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public IActionResult Products(int pageNum, string? productCategory)
+        public IActionResult Products(int pageNum, int pageSize, string? productCategory)
         {
-            int pageSize = 5;
             pageNum = Math.Max(1, pageNum); // Ensure pageNum is at least 1
+            pageSize = Math.Max(5, pageSize); // Ensure pageSize is at least 1
 
 
             var vm = new ProductsListViewModel

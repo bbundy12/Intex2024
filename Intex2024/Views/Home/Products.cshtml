@@ -64,6 +64,25 @@
 		font-size: 75px;
 	}
 </style>
+<script>
+    function changePageSize() {
+        var select = document.getElementById("pageSizeSelect");
+        var selectedValue = select.options[select.selectedIndex].value;
+        // Redirect to the same page with the selected page size as a query parameter
+        window.location.href = `@Url.Action("Products", new { pageNum = 1, pageSize = "__pageSize__" })`.replace("__pageSize__", selectedValue);
+    }
+    window.onload = function() {
+        var select = document.getElementById("pageSizeSelect");
+        var pageSize = @Model.PaginationInfo.ItemsPerPage; // Get the current page size from the model
+        for (var i = 0; i < select.options.length; i++) {
+            if (select.options[i].value == pageSize) {
+                select.options[i].selected = true;
+                break;
+            }
+        }
+    };
+
+</script>
 <section  style="background: linear-gradient(to right, rgba(68, 159, 255, 0.25), rgba(0, 61, 125, 0.25));">
 	<section>
 		<div class="hero-section d-flex align-items-center">
@@ -80,11 +99,20 @@
 		</div>
 	</section>
     <section>
+        <div class="mt-3">
+            <label for="pageSizeSelect">Products Per Page:</label>
+            <select id="pageSizeSelect" class="form-control" onchange="changePageSize()">
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+            </select>
+        </div>
         <div class="row m-1 p-1">
             <div class="col-3">
                 <vc:product-categories />
             </div>
         </div>
+            
         <div class="container">
             <div class="row">
                 @foreach (Product product in Model.Products)
@@ -95,6 +123,6 @@
         </div>
     </section>
 <div page-model="@Model.PaginationInfo" page-action="Products" page-class-enabled="true" page-class-normal="btn-outline-dark" 
-	page-class="btn" page-class-selected="btn-primary" class="btn-group pull-right m-1"></div>
+	page-class="btn" page-class-selected="active" class="btn-group pull-right m-1"></div>
 
 </section>
