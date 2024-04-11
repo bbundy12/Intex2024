@@ -30,7 +30,10 @@ namespace Intex2024.Data
                 .HasKey(e => new { e.ProductId, e.TransactionId });
 
             modelBuilder.Entity<ProductRecommendation>()
-                .HasKey(e => new { e.RecommendedProductId, e.Rank });
+                .HasKey(e => new { e.RecommendedProductId, e.Rank, e.ProductId });
+
+            modelBuilder.Entity<UserRecommendation>()
+                .HasKey(e => new { e.UserId, e.RecommendationId });
         }
         public DbSet<Order> Orders { get; set; }
         public virtual DbSet<Product> Products { get; set; }
