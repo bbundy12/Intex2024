@@ -7,7 +7,7 @@ namespace Intex2024.Data
     public class Customer
     {
         [Key]
-        public string CustomerId { get; set; }
+        public int CustomerId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime BirthDate { get; set; }

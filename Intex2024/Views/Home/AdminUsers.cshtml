@@ -1,101 +1,108 @@
-@model List<Customer>
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Page - Products</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Include Bootstrap CSS -->
     <style>
         body {
-            background: linear-gradient(to right, #A7CFFB, #067CFE);
-            margin: 0;
-            padding: 0;
+            background: linear-gradient(to right, #a7cffb, #067cfe);
         }
-        nav {
-            background-color: #006FE3;
-            padding: 10px;
-            position: fixed;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 150px;
+
+        .container {
+            padding: 20px; /* Add padding to the container */
+            margin-top: 20px; /* Add margin to separate from background */
         }
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
+
+        .container-white {
+            background-color: white; /* Set background color to white */
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+            padding: 20px; /* Add padding to the white container */
         }
-        nav ul li {
-            margin-bottom: 5px;
+
+        .custom-nav {
+            text-align: left; /* Align navigation buttons to the left */
         }
-        nav ul li a {
-            display: block;
-            padding: 10px;
-            color: white;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
-        }
-        nav ul li a:hover {
-            background-color: #004E9C;
-        }
-        .container-table {
-            margin-left: 170px; /* Adjust this value to leave space for the navigation menu */
-            width: calc(100% - 170px); /* Adjust this value to leave space for the navigation menu */
-            border: 2px solid #006FE3;
-            overflow-y: auto;
-            max-height: calc(100vh - 20px); /* Adjust the max height */
-        }
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-        th, td {
-            padding: 8px;
-            text-align: left;
-            border-bottom: 1px solid #006FE3;
-        }
-        th {
-            background-color: #006FE3;
-            color: white;
-        }
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
+
+        .container-form {
+            text-align: left; /* Align table content to the left */
+            margin-top: 20px; /* Add margin to separate from navigation */
         }
     </style>
 </head>
-<body>
-<nav>
-    <ul>
-        <li><a asp-controller="Home" asp-action="Orders">Orders</a></li>
-        <li><a asp-controller="Home" asp-action="AdminProducts">Admin Products</a></li>
-        <li><a asp-controller="Home" asp-action="AddProduct">Add Products</a></li>
-        <li><a asp-controller="Home" asp-action="AdminUsers">Admin Users</a></li>
-    </ul>
-</nav>
 
-<div class="container-table">
-    <table>
-        <tr>
-            <th>Product Name</th>
-            <th>Year</th>
-            <th>Number of Parts</th>
-            <th>Price</th>
-            <th>Image Link</th>
-        </tr>
-        @foreach (var o in Model)
-        {
-            <tr>
-                <td>@o.CustomerId</td>
-                <td>@(o.FirstName + " " + o.LastName)</td>
-                <td>@o.BirthDate</td>
-                <td>@o.CountryOfResidence</td>
-                <td>@o.Gender</td>
-                <td>@o.Age</td>
-                <td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@o.CustomerId">Edit</a></td>
-                <td><a class="btn btn-danger" asp-controller="Home" asp-action="DeleteConfirmation" asp-route-id="@o.CustomerId">Delete</a></td>
-                
-            </tr>
-        }
-    </table>
-</div>
+<body>
+    <div class="col-md-12">
+        <div class="row justify-content-center">
+            <!-- Bootstrap row to create horizontal groups and center content -->
+            <div class="col-md-2">
+                <!-- Bootstrap column to take up 2 columns on the left for buttons -->
+                <div>
+                    <!-- White container for buttons -->
+                    <div class="custom-nav">
+                        <!-- Navigation buttons -->
+                        <ul class="list-unstyled">
+                            <li class="col-md-12 mb-2 text-center">
+                                <a class="btn btn-primary btn-block" asp-controller="Home" asp-action="Orders">Orders</a>
+                            </li>
+                            <li class="col-md-12 mb-2 text-center">
+                                <a class="btn btn-primary btn-block" asp-controller="Home" asp-action="AdminProducts">Admin Products</a>
+                            </li>
+                            <li class="col-md-12 mb-2 text-center">
+                                <a class="btn btn-primary btn-block" asp-controller="Home" asp-action="AddProduct">Add Products</a>
+                            </li>
+                            <li class="col-md-12 mb-2 text-center">
+                                <a class="btn btn-primary btn-block" asp-controller="Home" asp-action="AdminUsers">Admin Users</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-10">
+                <!-- Bootstrap column to take up 10 columns for the white container -->
+                <div class="container-white mb-5">
+                    <!-- White container -->
+                    <h1 class="text-center">Admin Products</h1>
+                    <div class="container-form table-responsive">
+                        <!-- Table -->
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>CustomerId</th>
+                                    <th>Name</th>
+                                    <th>BirthDate</th>
+                                    <th>Country</th>
+                                    <th>Gender</th>
+                                    <th>Age</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var o in Model)
+                                {
+                                    <tr>
+                                        <td>@o.CustomerId</td>
+                                        <td>@(o.FirstName + " " + o.LastName)</td>
+                                        <td>@o.BirthDate</td>
+                                        <td>@o.CountryOfResidence</td>
+                                        <td>@o.Gender</td>
+                                        <td>@o.Age</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Include Bootstrap JS -->
 </body>
+
 </html>

@@ -24,8 +24,8 @@ namespace Intex2024.Controllers
             _repo = repo;
             _userManager = userManager;
             _httpContextAccessor = httpContextAccessor;
-            string onnxModelPath = System.IO.Path.Combine(hostEnvironment.ContentRootPath, "decision_tree_clf.onnx");
-            _session = new InferenceSession(onnxModelPath);
+           // string onnxModelPath = System.IO.Path.Combine(hostEnvironment.ContentRootPath, "decision_tree_clf.onnx");
+          //  _session = new InferenceSession(onnxModelPath);
         }
 
         /*[HttpPost]
@@ -126,12 +126,12 @@ namespace Intex2024.Controllers
 
         public IActionResult Index()
         {
-            var vm = new ProductsListViewModel
+           var vm = new ProductsListViewModel
             {
                 Products = _repo.Products
                 .OrderBy(x => x.Name)
             };
-            return View(vm);
+           return View(vm);
         }
 
         public IActionResult Privacy()

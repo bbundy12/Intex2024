@@ -10,8 +10,12 @@
   <component name="ChangeListManager">
     <list default="true" id="f501258e-1492-4509-b4b1-cd1371616d7c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Intex2024/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Intex2024/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex2024/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Controllers/HomeController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex2024/Data/Customer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Data/Customer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex2024/Data/UserRecommendation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Data/UserRecommendation.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/AddProduct.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/Home/AddProduct.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/AdminProducts.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/Home/AdminProducts.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/AdminUsers.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/Home/AdminUsers.cshtml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
