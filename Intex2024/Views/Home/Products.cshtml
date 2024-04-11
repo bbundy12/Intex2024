@@ -65,24 +65,22 @@
 	}
 </style>
 <script>
-    function changePageSize() {
-        var select = document.getElementById("pageSizeSelect");
-        var selectedValue = select.options[select.selectedIndex].value;
+    function changePageSize(pageSize) {
         // Redirect to the same page with the selected page size as a query parameter
-        window.location.href = `@Url.Action("Products", new { pageNum = 1, pageSize = "__pageSize__" })`.replace("__pageSize__", selectedValue);
-    }
-    window.onload = function() {
-        var select = document.getElementById("pageSizeSelect");
-        var pageSize = @Model.PaginationInfo.ItemsPerPage; // Get the current page size from the model
-        for (var i = 0; i < select.options.length; i++) {
-            if (select.options[i].value == pageSize) {
-                select.options[i].selected = true;
-                break;
-            }
-        }
-    };
+        window.location.href = `@Url.Action("Products", new { pageNum = 1, pageSize = "__pageSize__" })`.replace("__pageSize__", pageSize);
 
+        // Remove "active" class from all buttons
+        var buttons = document.querySelectorAll('.btn-group button');
+        buttons.forEach(function(button) {
+            button.classList.remove('active');
+        });
+
+        // Add "active" class to the clicked button
+        var selectedButton = document.querySelector(`.btn-group button[data-page-size="${pageSize}"]`);
+        selectedButton.classList.add('active');
+    }
 </script>
+
 <section  style="background: linear-gradient(to right, rgba(68, 159, 255, 0.25), rgba(0, 61, 125, 0.25));">
 	<section>
 		<div class="hero-section d-flex align-items-center">
@@ -100,16 +98,18 @@
 	</section>
     <section>
         <div class="mt-3">
-            <label for="pageSizeSelect">Products Per Page:</label>
-            <select id="pageSizeSelect" class="form-control" onchange="changePageSize()">
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="20">20</option>
-            </select>
+            <label>Products Per Page:</label>
+            <div class="btn-group" role="group" aria-label="Page Size">
+                <button type="button" class="btn btn-outline-secondary" data-page-size="5" onclick="changePageSize(5)">5</button>
+                <button type="button" class="btn btn-outline-secondary" data-page-size="10" onclick="changePageSize(10)">10</button>
+                <button type="button" class="btn btn-outline-secondary" data-page-size="20" onclick="changePageSize(20)">20</button>
+            </div>
         </div>
+
         <div class="row m-1 p-1">
             <div class="col-3">
                 <vc:product-categories />
+                <vc:product-colors />
             </div>
         </div>
             

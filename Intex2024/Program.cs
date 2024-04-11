@@ -62,11 +62,12 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
 app.MapControllerRoute(
     name: "cart",
     pattern: "/Cart",
-    defaults: new { controller = "Home", action = "Cart" }
-);
+    defaults: new { controller = "Home", action = "Cart" });
+
 app.MapControllerRoute("pagenumandtype", "Products/{productCategory}/{pageNum}", new { Controller = "Home", action = "Products" });
 app.MapControllerRoute("pagination", "Products/{pageNum}", new { Controller = "Home", action = "Products", pageNum = 1});
 app.MapControllerRoute("productCategory", "Products/{productCategory}", new { Controller = "Home", action = "Products", pageNum = 1 });
