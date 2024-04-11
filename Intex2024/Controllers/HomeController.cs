@@ -61,6 +61,7 @@ namespace Intex2024.Controllers
 
         public IActionResult Confirmation()
         {
+
             return View();
         }
 

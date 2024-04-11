@@ -10,11 +10,11 @@ using Microsoft.AspNetCore.Identity;
 <div class="container">
     <div class="row">
         <div class="col-md-6">
-            <h2>Confirm Information</h2
+            <h2>Confirm Information</h2>
             <form>
                 <div class="form-group">
                     <label asp-for="FirstName">@Model.FirstName</label>
-                    <input type="text" class="form-control" id="FirstName">
+                    <input type="text" class="form-control" id="FirstName" asp-for="FirstName">
                 </div>
                 <div class="form-group">
                     <label asp-for="LastName">@Model.LastName</label>
