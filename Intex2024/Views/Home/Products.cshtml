@@ -2,6 +2,8 @@
     ViewData["Title"] = "Products";
 }
 
+@model ProductsListViewModel
+
 <style>
     .hero-section {
       background-image: url('/img/prodHero.png'); /* Replace 'your-image-url.jpg' with the URL or path to your desired background image */
@@ -77,4 +79,22 @@
 			</div>
 		</div>
 	</section>
+    <section>
+        <div class="row m-1 p-1">
+            <div class="col-3">
+                <vc:product-categories />
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                @foreach (Product product in Model.Products)
+                {
+                    <partial name="ProductCard" model="product"/>
+                }
+            </div>
+        </div>
+    </section>
+<div page-model="@Model.PaginationInfo" page-action="Products" page-class-enabled="true" page-class-normal="btn-outline-dark" 
+	page-class="btn" page-class-selected="btn-primary" class="btn-group pull-right m-1"></div>
+
 </section>

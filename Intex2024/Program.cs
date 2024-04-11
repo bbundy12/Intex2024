@@ -23,7 +23,7 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 //Configuration Identity Services
 builder.Services.AddIdentity<Customer, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
-    builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IIntexRepository, EFIntexRepository>();
 
 builder.Services.AddRazorPages();
@@ -31,8 +31,8 @@ builder.Services.AddRazorPages();
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession();
 
-// builder.Services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
-// builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>() ;allow you to access the current session of the session cart
+builder.Services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 
 var app = builder.Build();
@@ -58,13 +58,17 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
-
 app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-/*app.MapControllerRoute("pagenumandtype", "{projectType}/{pageNum}", new { Controller = "Home", action = "Index" });
-app.MapControllerRoute("pagination", "{pageNum}", new { Controller = "Home", action = "Index", pageNum = 1 });
-app.MapControllerRoute("projectType", "{projectType}", new { Controller = "Home", action = "Index", pageNum = 1 });*/
+    name: "cart",
+    pattern: "/Cart",
+    defaults: new { controller = "Home", action = "Cart" }
+);
+app.MapControllerRoute("pagenumandtype", "Products/{productCategory}/{pageNum}", new { Controller = "Home", action = "Products" });
+app.MapControllerRoute("pagination", "Products/{pageNum}", new { Controller = "Home", action = "Products", pageNum = 1});
+app.MapControllerRoute("productCategory", "Products/{productCategory}", new { Controller = "Home", action = "Products", pageNum = 1 });
+
+app.MapDefaultControllerRoute();
+
 app.MapRazorPages();
 
 app.Run();

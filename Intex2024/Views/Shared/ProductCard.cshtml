@@ -1,0 +1,23 @@
+@using Intex2024.Infrastructure
+@{
+}
+
+@model Product
+
+<div class="col-md-4 mb-4">
+    <div class="card">
+        <img src="@Model.ImgLink" class="card-img-top" alt="@Model.Name">
+        <div class="card-body">
+            <h5 class="card-title">@Model.Name</h5>
+            <p class="card-text">$@Model.Price</p>
+            <form id="@Model.ProductId" method="post" asp-page="/Cart">
+                <input type="hidden" asp-for="ProductId" />
+                <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+                <button type="submit" class="btn btn-primary">Add to Cart</a>
+            </form>
+            <form method="get" asp-page="/ProductDetails" asp-route-id="@Model.ProductId">
+                <button type="submit" class="btn btn-primary">View Details</button>
+            </form>
+        </div>
+    </div>
+</div>

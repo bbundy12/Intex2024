@@ -1,6 +1,6 @@
-using System;
-using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Identity;
+@using System;
+@using System.ComponentModel.DataAnnotations;
+@using Microsoft.AspNetCore.Identity;
 @model Intex2024.Data.Customer
 
 @{
@@ -13,16 +13,16 @@ using Microsoft.AspNetCore.Identity;
             <h2>Confirm Information</h2>
             <form>
                 <div class="form-group">
-                    <label asp-for="FirstName">@Model.FirstName</label>
-                    <input type="text" class="form-control" id="FirstName" asp-for="FirstName">
+                    <label asp-for="FirstName">First Name</label>
+                    <input type="text" class="form-control" id="FirstName">
                 </div>
                 <div class="form-group">
-                    <label asp-for="LastName">@Model.LastName</label>
+                    <label asp-for="LastName">Last Name</label>
                     <input type="text" class="form-control" id="LastName">
                 </div>
                 <div class="form-group">
-                    <label asp-for="CountryOfResidence">@Model.CountryOfResidence</label>
-                    <input type="text" class="form-control" id="CountryOfResidence">
+                    <label asp-for="CountryOfResidence">Country Of Residence</label>
+                    <input type="text" class="form-control" id="CountryOfResidence" value="@Model.CountryOfResidence">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
