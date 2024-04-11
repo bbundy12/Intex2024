@@ -14,6 +14,11 @@
         height: 200px; /* Set the height of the image */
         object-fit: cover; /* Maintain aspect ratio */
     }
+
+    .form-inline form {
+    display: inline-block;
+    margin-right: 10px; /* Adjust the margin as needed */
+    }
 </style>
 
 <div class="col-sm mb-4">
@@ -22,14 +27,16 @@
         <div class="card-body">
             <h5 class="card-title">@Model.Name</h5>
             <p class="card-text">$@Model.Price</p>
-            <form id="@Model.ProductId" method="post" asp-page="/Cart">
-                <input type="hidden" asp-for="ProductId" />
-                <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
-                <button type="submit" class="btn btn-primary">Add to Cart</button>
-            </form>
-            <form method="get" asp-page="/ProductDetails" asp-route-id="@Model.ProductId">
-                <button type="submit" class="btn btn-primary">View Details</button>
-            </form>
+            <div class="form-inline">
+                <form id="@Model.ProductId" method="post" asp-page="/Cart">
+                    <input type="hidden" asp-for="ProductId" />
+                    <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+                    <button type="submit" class="btn btn-primary">Add to Cart</button>
+                </form>
+                <form method="get" asp-page="/ProductDetails" asp-route-id="@Model.ProductId">
+                    <button type="submit" class="btn btn-primary">View Details</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>
