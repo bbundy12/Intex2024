@@ -1,51 +1,71 @@
+using Intex2024.Data;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using Intex2024.Data;
-
-namespace Intex2024.Infrastructure
+namespace Mission11_JacobBigler.Infrastructure
 {
-    [HtmlTargetElement("div", Attributes = "page-model")]
-    public class PaginationTagHelper : TagHelper
-    {
-        public PaginationInfo PageModel { get; set; }
-        public string PageAction { get; set; }
+	[HtmlTargetElement("div", Attributes = "page-model")]
+	public class PaginationTagHelper : TagHelper
+	{
+		private IUrlHelperFactory urlHelperFactory;
 
-        [ViewContext]
-        [HtmlAttributeNotBound]
-        public ViewContext ViewContext { get; set; }
+		public PaginationTagHelper(IUrlHelperFactory temp)
+		{
+			urlHelperFactory = temp;
+		}
 
-        public override void Process(TagHelperContext context, TagHelperOutput output)
-        {
-            if (PageModel == null || PageModel.TotalPages < 2)
-            {
-                return; // No need to render pagination if only one page or no data
-            }
+		[ViewContext]
+		[HtmlAttributeNotBound]
+		public ViewContext? ViewContext { get; set; }
+		public string? PageAction { get; set; }
+		public PaginationInfo PageModel { get; set; }
 
-            var ul = new TagBuilder("ul");
-            ul.AddCssClass("pagination");
+		public bool PageClassEnabled { get; set; } = false;
+		public string PageClassNormal { get; set; } = String.Empty;
+		public string PageClassSelected { get; set; } = String.Empty;
 
-            for (int i = 1; i <= PageModel.TotalPages; i++)
-            {
-                var li = new TagBuilder("li");
-                var a = new TagBuilder("a");
+		public override void Process(TagHelperContext context, TagHelperOutput output)
+		{
+			if (ViewContext != null && PageModel != null && PageModel.TotalPages > 1)
+			{
+				IUrlHelper urlHelper = urlHelperFactory.GetUrlHelper(ViewContext);
 
-                a.Attributes["href"] = ViewContext.HttpContext.Request.Path + "?" + PageAction + "=" + i;
-                a.InnerHtml.Append(i.ToString());
+				TagBuilder navTag = new TagBuilder("nav");
+				TagBuilder ulTag = new TagBuilder("ul");
+				ulTag.AddCssClass("pagination");
 
-                li.AddCssClass("page-item");
-                a.AddCssClass("page-link");
+				for (int i = 1; i <= PageModel.TotalPages; i++)
+				{
+					TagBuilder liTag = new TagBuilder("li");
+					TagBuilder buttonTag = new TagBuilder("button");
+					buttonTag.Attributes["type"] = "button"; // Ensure it's a button type
 
-                if (i == PageModel.CurrentPage)
-                {
-                    li.AddCssClass("active");
-                }
+					// Set the onclick attribute to navigate to the corresponding page
+					buttonTag.Attributes["onclick"] = $"window.location.href='{urlHelper.Action(PageAction, new { pageNum = i })}'";
 
-                li.InnerHtml.AppendHtml(a);
-                ul.InnerHtml.AppendHtml(li);
-            }
+					buttonTag.AddCssClass("page-link");
+					buttonTag.InnerHtml.Append(i.ToString());
 
-            output.Content.AppendHtml(ul);
-        }
-    }
+					liTag.AddCssClass("page-item");
+
+					if (i == PageModel.CurrentPage)
+					{
+						liTag.AddCssClass(PageClassSelected);
+					}
+					else if (PageClassEnabled)
+					{
+						liTag.AddCssClass(PageClassNormal);
+					}
+
+					liTag.InnerHtml.AppendHtml(buttonTag);
+					ulTag.InnerHtml.AppendHtml(liTag);
+				}
+
+				navTag.InnerHtml.AppendHtml(ulTag);
+				output.Content.AppendHtml(navTag);
+			}
+		}
+	}
 }
