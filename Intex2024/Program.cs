@@ -31,8 +31,8 @@ builder.Services.AddRazorPages();
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession();
 
-// builder.Services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
-// builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>() ;allow you to access the current session of the session cart
+builder.Services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
 
 var app = builder.Build();

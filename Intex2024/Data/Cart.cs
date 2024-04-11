@@ -33,9 +33,9 @@ namespace Intex2024.Data
             
         }
 
-        public void RemoveLine(Product p) =>
+        public virtual void RemoveLine(Product p) =>
             Lines.RemoveAll(x => x.Product.ProductId == p.ProductId);
-        public void Clear() => Lines.Clear();
+        public virtual void Clear() => Lines.Clear();
         public decimal CalculateTotal() =>
             Lines.Sum(x => x.Product.Price * x.Quantity);
 

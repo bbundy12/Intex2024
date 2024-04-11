@@ -1,0 +1,14 @@
+@page "{id:int}"
+@model Intex2024.Pages.ProductDetailsModel
+@{
+    ViewData["Title"] = "Product Details";
+}
+
+<h1>@Model.product.Name</h1>
+<div>
+    <img src="@Model.product.ImgLink" alt="@Model.product.Name" />
+</div>
+<div>
+    <p>Price: $@Model.product.Price</p>
+    <p>Description: @Model.product.Description</p>
+</div>
