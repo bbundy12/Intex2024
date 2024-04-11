@@ -7,7 +7,6 @@ using Microsoft.ML.OnnxRuntime;
 using Microsoft.ML.OnnxRuntime.Tensors;
 using System.Diagnostics;
 using System.Xml.Linq;
-using Microsoft.EntityFrameworkCore;
 
 
 namespace Intex2024.Controllers

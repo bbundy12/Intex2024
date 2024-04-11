@@ -38,7 +38,7 @@
 
   <ItemGroup>
     <None Include="decision_tree_clf.onnx">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 
