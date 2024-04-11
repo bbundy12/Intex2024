@@ -84,14 +84,14 @@
         @foreach (var o in Model)
         {
             <tr>
-                <td>@o.Id</td>
+                <td>@o.CustomerId</td>
                 <td>@(o.FirstName + " " + o.LastName)</td>
                 <td>@o.BirthDate</td>
                 <td>@o.CountryOfResidence</td>
                 <td>@o.Gender</td>
                 <td>@o.Age</td>
-                <td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@o.Id">Edit</a></td>
-                <td><a class="btn btn-danger" asp-controller="Home" asp-action="DeleteConfirmation" asp-route-id="@o.Id">Delete</a></td>
+                <td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@o.CustomerId">Edit</a></td>
+                <td><a class="btn btn-danger" asp-controller="Home" asp-action="DeleteConfirmation" asp-route-id="@o.CustomerId">Delete</a></td>
                 
             </tr>
         }

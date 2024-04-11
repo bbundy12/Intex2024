@@ -8,58 +8,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f501258e-1492-4509-b4b1-cd1371616d7c" name="Changes" comment="These are ben Ropers real changes and the ones that should be pushed to main">
-      <change afterPath="$PROJECT_DIR$/Intex2024/Components/ProductCategoriesViewComponent.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Intex2024/Data/CartSubmissionViewModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Intex2024/Data/FraudPrediction.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Intex2024/Data/SessionCart.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Intex2024/Infrastructure/UrlExtensions.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Intex2024/Pages/Cart.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Intex2024/Pages/Cart.cshtml.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Intex2024/Pages/ProductDetails.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Intex2024/Pages/ProductDetails.cshtml.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Intex2024/Pages/_CartLayout.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Intex2024/Pages/_ViewImports.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Intex2024/Pages/_ViewStart.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Intex2024/Views/Shared/Components/ProductCategories/Default.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Intex2024/Views/Shared/ProductCard.cshtml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Intex2024/decision_tree_clf.onnx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Intex2024/wwwroot/img/582c42ea-fa40-434f-9a37-90a2dbae2992.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Intex2024/wwwroot/img/LegoBricks.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Intex2024/wwwroot/img/LegoHouse.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Intex2024/wwwroot/img/Screenshot 2024-04-10 113029.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Intex2024/wwwroot/img/ae569571-4d87-481c-8fa0-8ceaafd95fa0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Intex2024/wwwroot/img/be32e6e3-0ada-4f61-92f6-15213b640b80.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Intex2024/wwwroot/img/ccb8029d-fa5c-459c-9b0d-b4c86327f742.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Intex2024/wwwroot/img/search.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Intex2024/wwwroot/img/shopping-cart.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Intex2024/wwwroot/img/twitterx.png" afterDir="false" />
+    <list default="true" id="f501258e-1492-4509-b4b1-cd1371616d7c" name="Changes" comment="commiting changed files from pull">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Intex2024/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Intex2024/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex2024/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Controllers/HomeController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex2024/Data/ApplicationDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Data/ApplicationDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex2024/Data/Cart.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Data/Cart.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex2024/Data/EFIntexRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Data/EFIntexRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex2024/Data/ProductsListViewModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Data/ProductsListViewModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex2024/Infrastructure/PaginationTagHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Infrastructure/PaginationTagHelper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex2024/Intex2024.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Intex2024.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex2024/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/About.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/Home/About.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/AddProduct.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/Home/AddProduct.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/AdminProducts.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/Home/AdminProducts.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/AdminUsers.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/Home/AdminUsers.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/Confirmation.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/Home/Confirmation.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/Fraud.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/Home/Fraud.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/Home/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/Orders.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/Home/Orders.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/Privacy.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/Home/Privacy.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/ProductDetails.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/Products.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/Home/Products.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex2024/Views/Shared/Components/ProductTypes/Default.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex2024/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/Shared/_Layout.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex2024/Views/Shared/_LoginPartial.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/Shared/_LoginPartial.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex2024/Views/_ViewImports.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/_ViewImports.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex2024/wwwroot/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/wwwroot/css/site.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex2024/wwwroot/img/AURORA_S__2_-removebg-preview.png" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/wwwroot/img/AURORA_S__2_-removebg-preview.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,6 +22,17 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/Customer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/Customer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/Customer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/Customer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/Customer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/Customer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/Customer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/Customer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/Customer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/Customer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/Customer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/EFIntexRepository.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/EFIntexRepository.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/EFIntexRepository.cs" root0="SKIP_HIGHLIGHTING" />
@@ -77,6 +40,18 @@
     <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/EFIntexRepository.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/EFIntexRepository.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/EFIntexRepository.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/EFIntexRepository.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/EFIntexRepository.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/EFIntexRepository.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/EFIntexRepository.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/EFIntexRepository.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/EFIntexRepository.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/EFIntexRepository.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/IIntexRepository.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/IIntexRepository.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/IIntexRepository.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/IIntexRepository.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/IIntexRepository.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Views/Home/AddProduct.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -98,7 +73,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "XThreadsFramesViewSplitterKey": "0.3432836",
-    "git-widget-placeholder": "Merging Ben",
+    "git-widget-placeholder": "Ben",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -198,7 +173,23 @@
       <option name="project" value="LOCAL" />
       <updated>1712847582847</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="I am commiting the changes from my last pull">
+      <option name="closed" value="true" />
+      <created>1712853768882</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1712853768882</updated>
+    </task>
+    <task id="LOCAL-00007" summary="commiting changed files from pull">
+      <option name="closed" value="true" />
+      <created>1712854793995</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1712854793995</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -212,6 +203,8 @@
     <MESSAGE value="oh boy don't break" />
     <MESSAGE value="one more" />
     <MESSAGE value="These are ben Ropers real changes and the ones that should be pushed to main" />
-    <option name="LAST_COMMIT_MESSAGE" value="These are ben Ropers real changes and the ones that should be pushed to main" />
+    <MESSAGE value="I am commiting the changes from my last pull" />
+    <MESSAGE value="commiting changed files from pull" />
+    <option name="LAST_COMMIT_MESSAGE" value="commiting changed files from pull" />
   </component>
 </project>
