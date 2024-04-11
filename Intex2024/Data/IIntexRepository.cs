@@ -12,8 +12,10 @@ namespace Intex2024.Data
         IQueryable<UserRecommendation> UserRecommendations { get; }
         IQueryable<ProductRecommendation> ProductRecommendations { get; }
         IQueryable<IdentityRole> IdentityRoles { get; }
-        void Update(Product updatedInfo);
-        void SaveChanges();
+        public void AddProduct(Product ProductId);
+        public void DeleteProduct(Product ProductId);
+        public void UpdateProduct(Product ProductId);
         public IQueryable<Order> OrderNames();
+        void SaveChanges();
     }
 }

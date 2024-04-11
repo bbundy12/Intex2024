@@ -28,14 +28,25 @@ namespace Intex2024.Data
             
             return orderNames;
         }
-        public void Update(Product product)
-        {
-            // Update the entity in the context
-            _context.Products.Update(product);
-        }
+
         public void SaveChanges()
         {
-            // Save changes to the database
+            throw new NotImplementedException();
+        }
+
+        public void AddProduct(Product ProductId)
+        {
+            _context.Products.Add(ProductId);
+            _context.SaveChanges();
+        }
+        public void DeleteProduct(Product ProductId)
+        {
+            _context.Products.Remove(ProductId);
+            _context.SaveChanges();
+        }
+        public void UpdateProduct(Product ProductId)
+        {
+            _context.Products.Update(ProductId);
             _context.SaveChanges();
         }
     }

@@ -1,3 +1,102 @@
-@{
-    ViewData["Title"] = "Users";
-}
+@model List<Customer>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Page - Products</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #A7CFFB, #067CFE);
+            margin: 0;
+            padding: 0;
+        }
+        nav {
+            background-color: #006FE3;
+            padding: 10px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 150px;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav ul li {
+            margin-bottom: 5px;
+        }
+        nav ul li a {
+            display: block;
+            padding: 10px;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        nav ul li a:hover {
+            background-color: #004E9C;
+        }
+        .container-table {
+            margin-left: 170px; /* Adjust this value to leave space for the navigation menu */
+            width: calc(100% - 170px); /* Adjust this value to leave space for the navigation menu */
+            border: 2px solid #006FE3;
+            overflow-y: auto;
+            max-height: calc(100vh - 20px); /* Adjust the max height */
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #006FE3;
+        }
+        th {
+            background-color: #006FE3;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <ul>
+        <li><a href="#">Dashboard</a></li>
+        <li><a href="#">Orders</a></li>
+        <li><a href="#">AdminProducts</a></li>
+        <li><a href="#">AddProducts</a></li>
+        <li><a href="#">AdminUsers</a></li>
+    </ul>
+</nav>
+
+<div class="container-table">
+    <table>
+        <tr>
+            <th>Product Name</th>
+            <th>Year</th>
+            <th>Number of Parts</th>
+            <th>Price</th>
+            <th>Image Link</th>
+        </tr>
+        @foreach (var o in Model)
+        {
+            <tr>
+                <td>@o.Id</td>
+                <td>@(o.FirstName + " " + o.LastName)</td>
+                <td>@o.BirthDate</td>
+                <td>@o.CountryOfResidence</td>
+                <td>@o.Gender</td>
+                <td>@o.Age</td>
+                <td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@o.Id">Edit</a></td>
+                <td><a class="btn btn-danger" asp-controller="Home" asp-action="DeleteConfirmation" asp-route-id="@o.Id">Delete</a></td>
+                
+            </tr>
+        }
+    </table>
+</div>
+</body>
+</html>
