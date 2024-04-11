@@ -118,13 +118,15 @@
 			<div class="col-sm-6">
 				<div class="row">
 					<div class="col">
-						<h2 class="item-of-week">Item of the week: (Random Product.name)</h2>
+						<h2 class="item-of-week">Item of the week: Harry Potter Classic Kit</h2>
 						<br>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-sm-auto d-flex">
-						<a class="btn btn-lg btn-shop-hero me-5" asp-controller="Home" asp-action="Products">Check It Out</a>
+						<form method="get" asp-page="/ProductDetails" asp-route-id="3">
+							<button type="submit" class="btn btn-lg btn-shop-hero">View Details</button>
+						</form>
 						<a class="btn btn-lg btn-shop-hero" asp-controller="Home" asp-action="Products">Shop All</a>
 					</div>
 				</div>
