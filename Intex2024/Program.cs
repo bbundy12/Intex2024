@@ -1,6 +1,10 @@
 using Intex2024.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
+using Microsoft.ML;
+using Microsoft.ML.Data;
+using Microsoft.ML.Transforms.Onnx;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
@@ -15,9 +19,9 @@ var configuration = builder.Configuration;
 
 // Add services to the container.
 //For the identity database
-var connectionString = builder.Configuration.GetConnectionString("SecurityConnection") ?? throw new InvalidOperationException("Connection string 'IntexConnection' not found.");
+var connectionString = builder.Configuration.GetConnectionString("IntexConnection") ?? throw new InvalidOperationException("Connection string 'IntexConnection' not found.");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlite(connectionString));
+    options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 //Configuration Identity Services
@@ -25,10 +29,10 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<IntexDbContext>(options =>
+/*builder.Services.AddDbContext<IntexDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration["ConnectionStrings:IntexConnection"]);
-});
+});*/
 builder.Services.AddScoped<IIntexRepository, EFIntexRepository>();
 
 builder.Services.AddRazorPages();
@@ -62,11 +66,12 @@ app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
 app.MapControllerRoute(
     name: "cart",
     pattern: "/Cart",
-    defaults: new { controller = "Home", action = "Cart" }
-);
+    defaults: new { controller = "Home", action = "Cart" });
+
 app.MapControllerRoute("pagenumandtype", "Products/{productCategory}/{pageNum}", new { Controller = "Home", action = "Products" });
 app.MapControllerRoute("pagination", "Products/{pageNum}", new { Controller = "Home", action = "Products", pageNum = 1});
 app.MapControllerRoute("productCategory", "Products/{productCategory}", new { Controller = "Home", action = "Products", pageNum = 1 });

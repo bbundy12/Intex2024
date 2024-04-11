@@ -1,15 +1,16 @@
-﻿using System.Linq;
+using System.Linq;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace Intex2024.Data
 {
     public class EFIntexRepository : IIntexRepository
     {
 
-        private IntexDbContext _context;
-        public EFIntexRepository(IntexDbContext ctx)
+        private ApplicationDbContext _context;
+        public EFIntexRepository(ApplicationDbContext ctx)
         {
             _context = ctx;
         }
@@ -22,5 +23,33 @@ namespace Intex2024.Data
         public IQueryable<UserRecommendation> UserRecommendations => _context.UserRecommendations;
         public IQueryable<ProductRecommendation> ProductRecommendations => _context.ProductRecommendations;
 
+        public IQueryable<Order> OrderNames()
+        {
+            var orderNames = _context.Orders
+                .Include(o => o.Customer);
+            
+            return orderNames;
+        }
+
+        public void SaveChanges()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void AddProduct(Product ProductId)
+        {
+            _context.Products.Add(ProductId);
+            _context.SaveChanges();
+        }
+        public void DeleteProduct(Product ProductId)
+        {
+            _context.Products.Remove(ProductId);
+            _context.SaveChanges();
+        }
+        public void UpdateProduct(Product ProductId)
+        {
+            _context.Products.Update(ProductId);
+            _context.SaveChanges();
+        }
     }
 }

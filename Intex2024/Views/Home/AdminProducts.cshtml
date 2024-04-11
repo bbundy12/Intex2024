@@ -1,3 +1,113 @@
-@{
-    ViewData["Title"] = "Products";
-}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page - Products</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Include Bootstrap CSS -->
+    <style>
+        body {
+            background: linear-gradient(to right, #a7cffb, #067cfe);
+        }
+
+        .container {
+            padding: 20px; /* Add padding to the container */
+            margin-top: 20px; /* Add margin to separate from background */
+        }
+
+        .container-white {
+            background-color: white; /* Set background color to white */
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+            padding: 20px; /* Add padding to the white container */
+        }
+
+        .custom-nav {
+            text-align: left; /* Align navigation buttons to the left */
+        }
+
+        .container-form {
+            text-align: left; /* Align table content to the left */
+            margin-top: 20px; /* Add margin to separate from navigation */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="col-md-12">
+        <div class="row justify-content-center">
+            <!-- Bootstrap row to create horizontal groups and center content -->
+            <div class="col-md-2">
+                <!-- Bootstrap column to take up 2 columns on the left for buttons -->
+                <div>
+                    <!-- White container for buttons -->
+                    <div class="custom-nav">
+                        <!-- Navigation buttons -->
+                        <ul class="list-unstyled">
+                            <li class="col-md-12 mb-2 text-center">
+                                <a class="btn btn-primary btn-block" asp-controller="Home" asp-action="Orders">Orders</a>
+                            </li>
+                            <li class="col-md-12 mb-2 text-center">
+                                <a class="btn btn-primary btn-block" asp-controller="Home" asp-action="AdminProducts">Admin Products</a>
+                            </li>
+                            <li class="col-md-12 mb-2 text-center">
+                                <a class="btn btn-primary btn-block" asp-controller="Home" asp-action="AddProduct">Add Products</a>
+                            </li>
+                            <li class="col-md-12 mb-2 text-center">
+                                <a class="btn btn-primary btn-block" asp-controller="Home" asp-action="AdminUsers">Admin Users</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-10">
+                <!-- Bootstrap column to take up 10 columns for the white container -->
+                <div class="container-white">
+                    <!-- White container -->
+                    <h1 class="text-center">Admin Products</h1>
+                    <div class="container-form table-responsive">
+                        <!-- Table -->
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Product Name</th>
+                                    <th>Year</th>
+                                    <th>Number of Parts</th>
+                                    <th>Price</th>
+                                    <th>Image Link</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var o in Model)
+                                {
+                                    <tr>
+                                        <td>@o.Name</td>
+                                        <td>@o.Year</td>
+                                        <td>@o.NumParts</td>
+                                        <td>@o.Price</td>
+                                        <td>@o.ImgLink</td>
+                                        <td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@o.ProductId">Edit</a></td>
+                                        <td><a class="btn btn-danger" asp-controller="Home" asp-action="DeleteConfirmation" asp-route-id="@o.ProductId">Delete</a></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="text-center">
+                        <!-- Add New Product button -->
+                        <a class="btn btn-primary mb-5" asp-controller="Home" asp-action="AddProduct">Add New Product</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Include Bootstrap JS -->
+</body>
+
+</html>

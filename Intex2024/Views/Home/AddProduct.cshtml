@@ -1,3 +1,123 @@
-@{
-    ViewData["Title"] = "Add Product";
-}
+@model Product
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Include Bootstrap CSS -->
+    <style>
+            body {
+                /* Set a background gradient */
+                background: linear-gradient(to right, #a7cffb, #067cfe);
+
+            }
+    
+            .container {
+                /* Ensure container remains white */
+                background-color: white;
+                border-radius: 10px;
+                padding: 20px;
+                box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+            }
+            form {
+                        background-color: white; /* Set background color to white */
+                        border-radius: 10px;
+                        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+                        padding: 20px; /* Add padding to the white container */
+                    }
+        </style>
+</head>
+
+<body>
+     <div class="col-md-12">
+            <div class="row justify-content-center">
+                <!-- Bootstrap row to create horizontal groups and center content -->
+                <div class="col-md-2">
+                    <!-- Bootstrap column to take up 2 columns on the left for buttons -->
+                    <div>
+                        <!-- White container for buttons -->
+                        <div class="custom-nav">
+                            <!-- Navigation buttons -->
+                            <ul class="list-unstyled">
+                                <li class="col-md-12 mb-2 text-center">
+                                    <a class="btn btn-primary btn-block" asp-controller="Home" asp-action="Orders">Orders</a>
+                                </li>
+                                <li class="col-md-12 mb-2 text-center">
+                                    <a class="btn btn-primary btn-block" asp-controller="Home" asp-action="AdminProducts">Admin Products</a>
+                                </li>
+                                <li class="col-md-12 mb-2 text-center">
+                                    <a class="btn btn-primary btn-block" asp-controller="Home" asp-action="AddProduct">Add Products</a>
+                                </li>
+                                <li class="col-md-12 mb-2 text-center">
+                                    <a class="btn btn-primary btn-block" asp-controller="Home" asp-action="AdminUsers">Admin Users</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+            <div class="col-md-10">
+                <!-- Bootstrap column to take up 10 columns for the form -->
+                <div class="container-white">
+                   
+                    <!-- White container -->
+                    <form method="post" class="text-left">
+                        <h1 class="text-center">Add Products</h1>
+                        <!-- Added class="text-center" to center the form contents -->
+                        <input type="hidden" asp-for="ProductId"/>
+                        <br/>
+                        <div class="form-group">
+                            <label asp-for="Name">Product Name:</label>
+                            <input class="form-control" asp-for="Name"/>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Year">Year:</label>
+                            <input class="form-control" asp-for="Year"/>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="NumParts">Number of Parts :</label>
+                            <input class="form-control" asp-for="NumParts"/>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Price">Price:</label>
+                            <input class="form-control" asp-for="Price">
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ImgLink">Image Link</label>
+                            <input class="form-control" asp-for="ImgLink">
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="PrimaryColor">Primary Color</label>
+                            <input class="form-control" asp-for="PrimaryColor"/>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="SecondaryColor">Secondary</label>
+                            <input class="form-control" asp-for="SecondaryColor"/>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Description">Description</label>
+                            <input class="form-control" asp-for="Description"/>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Category">Category</label>
+                            <input class="form-control" asp-for="Category"/>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary mb-5">Confirm New Product</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Include Bootstrap JS -->
+</body>
+
+
+</html>
+
+

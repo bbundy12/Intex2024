@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.ML.OnnxRuntime;
 using Microsoft.ML.OnnxRuntime.Tensors;
 using System.Diagnostics;
+using System.Xml.Linq;
+
 
 namespace Intex2024.Controllers
 {
@@ -26,7 +28,7 @@ namespace Intex2024.Controllers
             _session = new InferenceSession(onnxModelPath);
         }
 
-        [HttpPost]
+        /*[HttpPost]
         public IActionResult SubmitCart(CartSubmissionViewModel cartSubmission)
         {
 
@@ -110,7 +112,7 @@ namespace Intex2024.Controllers
             }
 
             bool isFraud = predictionResult == "Fraud";
-            /*SaveOrder(cartSubmission.Order, isFraud);*/
+            *//*SaveOrder(cartSubmission.Order, isFraud);*//*
 
             if (isFraud)
             {
@@ -120,7 +122,7 @@ namespace Intex2024.Controllers
             {
                 return View("ConfirmationSuccess");
             }
-        }
+        }*/
 
         public IActionResult Index()
         {
@@ -143,30 +145,41 @@ namespace Intex2024.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        public IActionResult Products(int pageNum, string? productCategory)
+        public IActionResult Products(int pageNum, int pageSize, string? productCategory, string? productColor)
         {
-            int pageSize = 5;
             pageNum = Math.Max(1, pageNum); // Ensure pageNum is at least 1
+            pageSize = Math.Max(5, pageSize); // Ensure pageSize is at least 5
 
+            var query = _repo.Products.AsQueryable();
+
+            // Apply filters for productCategory and productColor
+            if (!string.IsNullOrEmpty(productCategory))
+            {
+                query = query.Where(x => x.Category == productCategory);
+            }
+            if (!string.IsNullOrEmpty(productColor))
+            {
+                query = query.Where(x => x.PrimaryColor == productColor);
+            }
 
             var vm = new ProductsListViewModel
             {
-                Products = _repo.Products
-                .Where(x => x.Category == productCategory || productCategory == null)
-                .OrderBy(x => x.Name)
-                .Skip(pageSize * (pageNum - 1))
-                .Take(pageSize),
+                Products = query
+                    .OrderBy(x => x.Name)
+                    .Skip(pageSize * (pageNum - 1))
+                    .Take(pageSize),
 
                 PaginationInfo = new PaginationInfo
                 {
                     CurrentPage = pageNum,
                     ItemsPerPage = pageSize,
-                    TotalItems = productCategory == null ? _repo.Products.Count() : _repo.Products.Where(x => x.Category == productCategory).Count()
+                    TotalItems = query.Count() // Count after applying filters
                 },
 
-                CurrentProductCategory = productCategory
-
+                CurrentProductCategory = productCategory,
+                CurrentProductColor = productColor // Add the current product color to the view model
             };
+
             return View(vm);
         }
 
@@ -189,36 +202,101 @@ namespace Intex2024.Controllers
         {
             return View();
         }
-
+        
+        // [HttpPost]
+        // Commented out the entire method as requested
         public IActionResult Orders()
         {
-            return View();
+            var orders = _repo.Orders.ToList(); // Execute the query to retrieve the orders
+            return View(orders);
         }
+
+
+
+
+        public string? Customer { get; set; }
 
         public IActionResult AdminProducts()
         {
-            return View();
+            var products = _repo.Products.ToList();
+            return View(products);
         }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            // Attempt to find the product by name
+            Product recordToEdit = _repo.Products
+                .Single(x => x.ProductId == id);
+            // If a product was found, return the Edit view with the product data
+            return View("AddProduct", recordToEdit);
+        }
+
+        
+        [HttpPost]
+        public IActionResult Edit(Product updatedInfo)
+        {
+            _repo.UpdateProduct(updatedInfo);
+
+            return RedirectToAction("AdminProducts");
+        }
+        [HttpGet]
+        public IActionResult DeleteConfirmation(int id)
+        {
+            var recordToDelete = _repo.Products
+                .Single(x => x.ProductId == id);
+
+            return View(recordToDelete); // Pass recordToDelete to the view
+        }
+
+        [HttpPost]
+        public IActionResult DeleteConfirmationConfirmed(int productId)
+        {
+            var recordToDelete = _repo.Products
+                .Single(x => x.ProductId == productId);
+
+            _repo.DeleteProduct(recordToDelete); // Pass the entire Product object to the repository method
+
+            return RedirectToAction("AdminProducts");
+        }
+
+
+        
 
         public IActionResult AdminUsers()
         {
-            return View();
+            var customers = _repo.Customers.ToList();
+            return View(customers);
         }
+        
 
         public IActionResult Dashboard()
         {
             return View();
         }
 
-        public IActionResult AddProduct()
-        {
-            return View();
-        }
+        
+   [HttpGet]
+   public IActionResult AddProduct()
+   {
+
+       return View(new Product());
+   }
+
+    [HttpPost]
+   public IActionResult AddProduct(Product response)
+   {
+       _repo.AddProduct(response); // Add product to database
+       
+       var products = _repo.Products.ToList();
+       return View("AdminProducts", products);
+   }
+   
+
 
         public IActionResult Fraud()
         {
             return View();
         }
-
     }
 }
