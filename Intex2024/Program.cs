@@ -63,12 +63,12 @@ app.MapControllerRoute(
     pattern: "/Cart",
     defaults: new { controller = "Home", action = "Cart" }
 );
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-app.MapControllerRoute("pagenumandtype", "{projectType}/{pageNum}", new { Controller = "Home", action = "Index" });
-app.MapControllerRoute("pagination", "{pageNum}", new { Controller = "Home", action = "Index", pageNum = 1 });
-app.MapControllerRoute("projectType", "{projectType}", new { Controller = "Home", action = "Index", pageNum = 1 });
+app.MapControllerRoute("pagenumandtype", "Products/{productCategory}/{pageNum}", new { Controller = "Home", action = "Products" });
+app.MapControllerRoute("pagination", "Products/{pageNum}", new { Controller = "Home", action = "Products", pageNum = 1});
+app.MapControllerRoute("productCategory", "Products/{productCategory}", new { Controller = "Home", action = "Products", pageNum = 1 });
+
+app.MapDefaultControllerRoute();
+
 app.MapRazorPages();
 
 app.Run();

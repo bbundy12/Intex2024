@@ -80,20 +80,16 @@
 		</div>
 	</section>
     <section>
+        <div class="row m-1 p-1">
+            <div class="col-3">
+                <vc:product-categories />
+            </div>
+        </div>
         <div class="container">
             <div class="row">
                 @foreach (Product product in Model.Products)
                 {
-                    <div class="col-md-4 mb-4">
-                        <div class="card">
-                            <img src="@product.ImgLink" class="card-img-top" alt="@product.Name">
-                            <div class="card-body">
-                                <h5 class="card-title">@product.Name</h5>
-                                <p class="card-text">$@product.Price</p>
-                                <a href="#" class="btn btn-primary">Add to Cart</a>
-                            </div>
-                        </div>
-                    </div>
+                    <partial name="ProductCard" model="product"/>
                 }
             </div>
         </div>

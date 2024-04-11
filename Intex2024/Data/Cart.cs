@@ -33,18 +33,20 @@ namespace Intex2024.Data
             
         }
 
-        public virtual void RemoveLine(Product p) =>
+        public void RemoveLine(Product p) =>
             Lines.RemoveAll(x => x.Product.ProductId == p.ProductId);
-        public virtual void Clear() => Lines.Clear();
+        public void Clear() => Lines.Clear();
         public decimal CalculateTotal() =>
-            Lines.Sum(x => 25 * x.Quantity);  
+            Lines.Sum(x => x.Product.Price * x.Quantity);
+
+        public class CartLine
+        {
+            [Key]
+            public int CartLineId { get; set; }
+            public Product Product { get; set; }
+            public int Quantity { get; set; }
+        }  
     }
 
-    public class CartLine
-    {
-        [Key]
-        public int CartLineId { get; set; }
-        public Product Product { get; set; }
-        public int Quantity { get; set; }
-    }
+
 }
