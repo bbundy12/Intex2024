@@ -11,4 +11,13 @@
 <div>
     <p>Price: $@Model.product.Price</p>
     <p>Description: @Model.product.Description</p>
+    <form method="post" asp-page="/Cart">
+        <input type="hidden" name="productId" value="@Model.product.ProductId" />
+        <input type="hidden" name="returnUrl" value="@Url.Page("/ProductDetails", new { id = Model.product.ProductId })" />
+        <button type="submit" class="btn btn-primary">Add to Cart</button>
+    </form>
+
+    <a href="/Products" class="btn btn-secondary">Continue Shopping</a>
+
+
 </div>
