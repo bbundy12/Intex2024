@@ -11,6 +11,5 @@ namespace Intex2024.Data
         IQueryable<LineItem> LineItems { get; }
         IQueryable<UserRecommendation> UserRecommendations { get; }
         IQueryable<ProductRecommendation> ProductRecommendations { get; }
-        IQueryable<IdentityRole> IdentityRoles { get; }
     }
 }

@@ -4,9 +4,10 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Intex2024.Data
 {
-    public class Customer : IdentityUser
+    public class Customer
     {
-        public Customer() : base() { }
+        [Key]
+        public string CustomerId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime BirthDate { get; set; }

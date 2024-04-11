@@ -12,12 +12,12 @@ namespace Intex2024.Controllers
     public class HomeController : Controller
     {
         private IIntexRepository _repo;
-        private readonly UserManager<Customer> _userManager;
+        private readonly UserManager<IdentityUser> _userManager;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly InferenceSession _session;
         private readonly string _onnxModelPath;
       
-        public HomeController(IIntexRepository repo, UserManager<Customer> userManager, IHostEnvironment hostEnvironment, IHttpContextAccessor httpContextAccessor)
+        public HomeController(IIntexRepository repo, UserManager<IdentityUser> userManager, IHostEnvironment hostEnvironment, IHttpContextAccessor httpContextAccessor)
         {
             _repo = repo;
             _userManager = userManager;
@@ -185,10 +185,9 @@ namespace Intex2024.Controllers
             return View();
         }
 
-        public IActionResult Confirmation(string? customerId)
+        public IActionResult Confirmation()
         {
-            Customer c = new Customer();
-            return View(c);
+            return View();
         }
 
         public IActionResult Orders()
