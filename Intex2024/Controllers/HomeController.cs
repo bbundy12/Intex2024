@@ -26,7 +26,7 @@ namespace Intex2024.Controllers
             _session = new InferenceSession(onnxModelPath);
         }
 
-        [HttpPost]
+       /* [HttpPost]
         public IActionResult SubmitCart(CartSubmissionViewModel cartSubmission)
         {
 
@@ -110,7 +110,7 @@ namespace Intex2024.Controllers
             }
 
             bool isFraud = predictionResult == "Fraud";
-            /*SaveOrder(cartSubmission.Order, isFraud);*/
+            *//*SaveOrder(cartSubmission.Order, isFraud);*//*
 
             if (isFraud)
             {
@@ -121,7 +121,7 @@ namespace Intex2024.Controllers
                 return View("ConfirmationSuccess");
             }
         }
-
+*/
         public IActionResult Index()
         {
             var vm = new ProductsListViewModel
