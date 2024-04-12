@@ -32,7 +32,6 @@ namespace Intex2024.Data
         public bool Fraud { get; set; }
         public int CustomerId { get; set; } //Foreign Key to ASP.NET Users table
         public Customer Customer { get; set; }
-        public Cart Cart { get; set; }
         public ICollection<LineItem> LineItems { get; set; }
         public ICollection<CartLine> Lines { get; set; } = new List<CartLine>();
     }

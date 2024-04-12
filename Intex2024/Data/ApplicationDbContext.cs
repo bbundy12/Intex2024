@@ -36,6 +36,8 @@ namespace Intex2024.Data
 
             modelBuilder.Entity<UserRecommendation>()
                 .HasKey(e => new { e.UserId, e.RecommendationId });
+            modelBuilder.Entity<Cart>()
+                .HasNoKey();
 
         }
         public DbSet<Order> Orders { get; set; }
