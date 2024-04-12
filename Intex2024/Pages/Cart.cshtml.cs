@@ -1,11 +1,13 @@
 using Intex2024.Data;
 using Intex2024.Infrastructure;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Build.Evaluation;
 
 namespace Intex2024.Pages
 {
+    [Authorize(Roles = "Customer")]
     public class CartModel : PageModel
     {
         private IIntexRepository _repo;
