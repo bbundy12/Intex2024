@@ -115,22 +115,8 @@ namespace Intex2024.Controllers
     //         bool isFraud = predictionResult == "Fraud";
     //         *//*SaveOrder(cartSubmission.Order, isFraud);*//*
 
-<<<<<<< HEAD
-    //         if (isFraud)
-    //         {
-    //             return View("ConfirmationPending");
-    //         }
-    //         else
-    //         {
-    //             return View("ConfirmationSuccess");
-    //         }
-    //     }
-// End of commented code
-        public IActionResult Index()
-=======
         public ViewResult Checkout() => View( new Order());
         public async Task<IActionResult> IndexAsync()
->>>>>>> 3fbd3c8e12ed3689bd2133469965c7c484e88228
         {
             var vm = new ProductsListViewModel();
 
@@ -239,99 +225,8 @@ namespace Intex2024.Controllers
             return View();
         }
         
-<<<<<<< HEAD
-        // [HttpPost]
-        // Commented out the entire method as requested
-        public IActionResult Orders()
-        {
-            var orders = _repo.Orders.ToList(); // Execute the query to retrieve the orders
-            return View(orders);
-        }
-
-
-
-
-        public string? Customer { get; set; }
-
-        public IActionResult AdminProducts()
-        {
-            var products = _repo.Products.ToList();
-            return View(products);
-        }
-
-        [HttpGet]
-        public IActionResult Edit(int id)
-        {
-            // Attempt to find the product by name
-            Product recordToEdit = _repo.Products
-                .Single(x => x.ProductId == id);
-            // If a product was found, return the Edit view with the product data
-            return View("AddProduct", recordToEdit);
-        }
-
-        
-        [HttpPost]
-        public IActionResult Edit(Product updatedInfo)
-        {
-            _repo.UpdateProduct(updatedInfo);
-
-            return RedirectToAction("AdminProducts");
-        }
-        [HttpGet]
-        public IActionResult DeleteConfirmation(int id)
-        {
-            var recordToDelete = _repo.Products
-                .Single(x => x.ProductId == id);
-
-            return View(recordToDelete); // Pass recordToDelete to the view
-        }
-
-        [HttpPost]
-        public IActionResult DeleteConfirmationConfirmed(int productId)
-        {
-            var recordToDelete = _repo.Products
-                .Single(x => x.ProductId == productId);
-
-            _repo.DeleteProduct(recordToDelete); // Pass the entire Product object to the repository method
-
-            return RedirectToAction("AdminProducts");
-        }
-
-
-        
-
-        public IActionResult AdminUsers()
-        {
-            var customers = _repo.Customers.ToList();
-            return View(customers);
-        }
-        
-
-        public IActionResult Dashboard()
-        {
-            return View();
-        }
-
-        
-   [HttpGet]
-   public IActionResult AddProduct()
-   {
-
-       return View(new Product());
-   }
-
-    [HttpPost]
-   public IActionResult AddProduct(Product response)
-   {
-       _repo.AddProduct(response); // Add product to database
-       
-       var products = _repo.Products.ToList();
-       return View("AdminProducts", products);
-   }
-=======
          
 
->>>>>>> 3fbd3c8e12ed3689bd2133469965c7c484e88228
 
         public IActionResult Fraud()
         {
