@@ -47,16 +47,16 @@
                         <!-- Navigation buttons -->
                         <ul class="list-unstyled">
                             <li class="col-md-12 mb-2 text-center">
-                                <a class="btn btn-primary btn-block" asp-controller="Home" asp-action="Orders">Orders</a>
+                                <a class="btn btn-primary btn-block" asp-controller="Admin" asp-action="Orders">Orders</a>
                             </li>
                             <li class="col-md-12 mb-2 text-center">
-                                <a class="btn btn-primary btn-block" asp-controller="Home" asp-action="AdminProducts">Admin Products</a>
+                                <a class="btn btn-primary btn-block" asp-controller="Admin" asp-action="AdminProducts">Admin Products</a>
                             </li>
                             <li class="col-md-12 mb-2 text-center">
-                                <a class="btn btn-primary btn-block" asp-controller="Home" asp-action="AddProduct">Add Products</a>
+                                <a class="btn btn-primary btn-block" asp-controller="Admin" asp-action="AddProduct">Add Products</a>
                             </li>
                             <li class="col-md-12 mb-2 text-center">
-                                <a class="btn btn-primary btn-block" asp-controller="Home" asp-action="AdminUsers">Admin Users</a>
+                                <a class="btn btn-primary btn-block" asp-controller="Admin" asp-action="AdminUsers">Admin Users</a>
                             </li>
                         </ul>
                     </div>
@@ -90,8 +90,8 @@
                                         <td>@o.NumParts</td>
                                         <td>@o.Price</td>
                                         <td>@o.ImgLink</td>
-                                        <td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@o.ProductId">Edit</a></td>
-                                        <td><a class="btn btn-danger" asp-controller="Home" asp-action="DeleteConfirmation" asp-route-id="@o.ProductId">Delete</a></td>
+                                        <td><a class="btn btn-info" asp-controller="Admin" asp-action="EditProduct" asp-route-id="@o.ProductId">Edit</a></td>
+                                        <td><a class="btn btn-danger" asp-controller="Admin" asp-action="DeleteConfirmationProduct" asp-route-id="@o.ProductId">Delete</a></td>
                                     </tr>
                                 }
                             </tbody>
@@ -99,7 +99,7 @@
                     </div>
                     <div class="text-center">
                         <!-- Add New Product button -->
-                        <a class="btn btn-primary mb-5" asp-controller="Home" asp-action="AddProduct">Add New Product</a>
+                        <a class="btn btn-primary mb-5" asp-controller="Admin" asp-action="AddProduct">Add New Product</a>
                     </div>
                 </div>
             </div>

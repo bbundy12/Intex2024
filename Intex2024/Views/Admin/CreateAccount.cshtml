@@ -1,0 +1,55 @@
+@model CustomerUser 
+
+
+<style>
+    /* Add the same background color and padding as the login page */
+    body {
+        background-color: rgba(255, 215, 0, 0.25);
+        padding-bottom: 100px;
+    }
+</style>
+
+<body>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="container-white mb-5">
+                <form method="post" asp-action="CreateAccount" asp-controller="Home" class="text-left">
+                    <h1 class="text-center">Add Personal Information</h1>
+                    <input type="hidden" asp-for="UserId"/>
+                    <br/>
+                    <div class="form-group">
+                        <label asp-for="Customers.FirstName">First name:</label>
+                        <input class="form-control" asp-for="Customers.FirstName"/>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Customers.LastName">Last Name :</label>
+                        <input class="form-control" asp-for="Customers.LastName"/>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Customers.BirthDate">BirthDate:</label>
+                        <input class="form-control" asp-for="Customers.BirthDate">
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Customers.CountryOfResidence">Country Of Residence</label>
+                        <input class="form-control" asp-for="Customers.CountryOfResidence">
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Customers.Gender">Gender</label>
+                        <input class="form-control" asp-for="Customers.Gender"/>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Customers.Age">Age</label>
+                        <input class="form-control" asp-for="Customers.Age"/>
+                    </div>
+                    <button type="submit" class="btn btn-primary mb-5">Confirm Information</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Include Bootstrap JS -->
+</body>

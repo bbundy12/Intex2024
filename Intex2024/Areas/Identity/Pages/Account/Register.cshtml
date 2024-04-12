@@ -1,8 +1,6 @@
 ﻿@page
 @model RegisterModel
-@{
-    ViewData["Title"] = "Register";
-}
+
 
 <style>
     /* Add the same background color and padding as the login page */
@@ -23,7 +21,7 @@
             <div class="col-md-6">
                 <section>
                     <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-                        <h2>Welcome! Create a new account below.</h2>
+                        <h2>Add to your account below.</h2>
                         <hr />
                         <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
                         <div class="form-floating mb-3">
