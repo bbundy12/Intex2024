@@ -1,0 +1,91 @@
+@using System;
+@using System.ComponentModel.DataAnnotations;
+@using Microsoft.AspNetCore.Identity;
+@model Intex2024.Data.Order;
+
+@{
+    ViewData["Title"] = "Confirmation";
+}
+
+<div class="container">
+    <div class="row">
+    
+        <div class="col-md-6">
+            <h2>Confirm Information</h2>
+            <form asp-action="Checkout" method="post">
+                <div class="form-group">
+                    <label>Day Of Week:</label>
+                    <input type="text" asp-for="DayOfWeek" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label>Hour of Day:  (0 - 23 | 12 is noon, 0 is midnight)</label>
+                    <input type="text" asp-for="Time" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label >Entry Mode:</label>
+                    <input asp-for="EntryMode" type="text" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Amount:</label>
+                    <input type="text" asp-for="Amount" class="form-control"/>
+                </div>
+                <div class="form-group">
+                    <label>Type of Transaction:</label>
+                    <input type="text" asp-for="TypeOfTransaction" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Country of Transaction:</label>
+                    <input type="text" asp-for="CountryOfTransaction" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Shipping Address:</label>
+                    <input type="text" asp-for="ShippingAddress" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Bank:</label>
+                    <input type="text" asp-for="Bank" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Type of Card:</label>
+                    <input type="text" asp-for="TypeOfCard" class="form-control" />
+                </div>
+                <br>
+                <div class="text-center">
+                    <input class="btn btn-primary" type="submit" 
+                        value="Complete Order" />
+                </div>
+                <br><br><br>
+            </form>                    
+            @* <div class="col-md-6">
+                        <h2>Order Summary</h2>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Product Name</th>
+                                        <th>Quantity</th>
+                                        <th>Price</th>
+                                        <th>Subtotal</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var line in Model.Lines)
+                                    {
+                                        <tr>
+                                            <td>@line.Product.Name</td>
+                                            <td>@line.Quantity</td>
+                                            <td>@line.Product.Price</td>
+                                            <td>@(line.Quantity * line.Product.Price)</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="3">Total:</td>
+                                        <td>@Model.Cart.CalculateTotal()</td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+            </div> *@
+        </div>
+    </div>
+</div>

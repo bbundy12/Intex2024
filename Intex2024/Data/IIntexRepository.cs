@@ -11,7 +11,7 @@ namespace Intex2024.Data
         IQueryable<LineItem> LineItems { get; }
         IQueryable<UserRecommendation> UserRecommendations { get; }
         IQueryable<ProductRecommendation> ProductRecommendations { get; }
-        IQueryable<CustomerUser> CustomerUser { get; }
+        IEnumerable<CustomerUser> CustomerUser { get; }
 
         public void AddProduct(Product ProductId);
         public void DeleteProduct(Product ProductId);
