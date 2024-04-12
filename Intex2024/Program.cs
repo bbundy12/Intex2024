@@ -6,14 +6,17 @@ using Microsoft.ML;
 using Microsoft.ML.Data;
 using Microsoft.ML.Transforms.Onnx;
 using Azure.Identity;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // var keyVaultEndpoint = new Uri(Environment.GetEnvironmentVariable("Intex2024"));
 // builder.Configuration.AddAzureKeyVault(keyVaultEndpoint, new DefaultAzureCredential());
-
 var services = builder.Services;
 var configuration = builder.Configuration;
+
+var clientId = builder.Configuration["Authentication:Google:ClientId"];
+var clientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
 
 builder.Services.Configure<IdentityOptions>(options =>
 {
@@ -27,11 +30,12 @@ builder.Services.Configure<IdentityOptions>(options =>
 });
 
 //For Google signin 
-//services.AddAuthentication().AddGoogle(googleOptions =>
- //{
-    // googleOptions.ClientId = configuration["Authentication:Google:ClientId"];
-    // googleOptions.ClientSecret = configuration["Authentication:Google:ClientSecret"];
- //});
+services.AddAuthentication().AddGoogle(googleOptions =>
+{
+    googleOptions.ClientId = clientId;
+    googleOptions.ClientSecret = clientSecret;
+});
+
 
 // Add services to the container.
 //For the identity database
@@ -51,6 +55,8 @@ builder.Services.AddControllersWithViews();
     options.UseSqlServer(builder.Configuration["ConnectionStrings:IntexConnection"]);
 });*/
 builder.Services.AddScoped<IIntexRepository, EFIntexRepository>();
+builder.Services.AddScoped<IOrderRepository, EFOrderRepository>();
+
 
 builder.Services.AddRazorPages();
 
