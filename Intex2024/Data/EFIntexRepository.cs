@@ -23,7 +23,8 @@ namespace Intex2024.Data
         public IQueryable<UserRecommendation> UserRecommendations => _context.UserRecommendations;
         public IQueryable<ProductRecommendation> ProductRecommendations => _context.ProductRecommendations;
 
-        public IQueryable<CustomerUser> CustomerUser => _context.CustomerUser;
+        public IQueryable<CustomerUser> CustomerUsers => _context.CustomerUsers;
+
 
         public IQueryable<Order> OrderNames()
         {

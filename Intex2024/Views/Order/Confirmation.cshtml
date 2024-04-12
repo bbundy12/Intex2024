@@ -1,91 +1,83 @@
 @using System;
 @using System.ComponentModel.DataAnnotations;
 @using Microsoft.AspNetCore.Identity;
-@model Intex2024.Data.Order;
+@model Order
 
-@{
-    ViewData["Title"] = "Confirmation";
-}
+<h1>Place Order</h1>
 
-<div class="container">
-    <div class="row">
+<form method="post">
+
+
+    <h4>Total: $@ViewBag.Amount.00 </h4>
     
-        <div class="col-md-6">
-            <h2>Confirm Information</h2>
-            <form asp-action="Checkout" method="post">
-                <div class="form-group">
-                    <label>Day Of Week:</label>
-                    <input type="text" asp-for="DayOfWeek" class="form-control"/>
-                </div>
-                <div class="form-group">
-                    <label>Hour of Day:  (0 - 23 | 12 is noon, 0 is midnight)</label>
-                    <input type="text" asp-for="Time" class="form-control" />
-                </div>
-                <div class="form-group">
-                    <label >Entry Mode:</label>
-                    <input asp-for="EntryMode" type="text" class="form-control" />
-                </div>
-                <div class="form-group">
-                    <label>Amount:</label>
-                    <input type="text" asp-for="Amount" class="form-control"/>
-                </div>
-                <div class="form-group">
-                    <label>Type of Transaction:</label>
-                    <input type="text" asp-for="TypeOfTransaction" class="form-control" />
-                </div>
-                <div class="form-group">
-                    <label>Country of Transaction:</label>
-                    <input type="text" asp-for="CountryOfTransaction" class="form-control" />
-                </div>
-                <div class="form-group">
-                    <label>Shipping Address:</label>
-                    <input type="text" asp-for="ShippingAddress" class="form-control" />
-                </div>
-                <div class="form-group">
-                    <label>Bank:</label>
-                    <input type="text" asp-for="Bank" class="form-control" />
-                </div>
-                <div class="form-group">
-                    <label>Type of Card:</label>
-                    <input type="text" asp-for="TypeOfCard" class="form-control" />
-                </div>
-                <br>
-                <div class="text-center">
-                    <input class="btn btn-primary" type="submit" 
-                        value="Complete Order" />
-                </div>
-                <br><br><br>
-            </form>                    
-            @* <div class="col-md-6">
-                        <h2>Order Summary</h2>
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>Product Name</th>
-                                        <th>Quantity</th>
-                                        <th>Price</th>
-                                        <th>Subtotal</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach (var line in Model.Lines)
-                                    {
-                                        <tr>
-                                            <td>@line.Product.Name</td>
-                                            <td>@line.Quantity</td>
-                                            <td>@line.Product.Price</td>
-                                            <td>@(line.Quantity * line.Product.Price)</td>
-                                        </tr>
-                                    }
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <td colspan="3">Total:</td>
-                                        <td>@Model.Cart.CalculateTotal()</td>
-                                    </tr>
-                                </tfoot>
-                            </table>
-            </div> *@
-        </div>
-    </div>
-</div>
+    <!-- CountryOfTransaction field -->
+    <label>Country of Transaction:</label>
+    <select asp-for="CountryOfTransaction">
+        <option value="USA">USA</option>
+        <option value="United Kingdom">United Kingdom</option>
+        <option value="India">India</option>
+        <option value="China">China</option>
+        <option value="Russia">Russia</option>
+    </select>
+    <br/><br/>
+    <!-- ShippingAddress field -->
+    <label>Shipping Address:</label>
+    <input asp-for="ShippingAddress">
+    <br/><br/>
+    <!-- Bank field -->
+    <label>Bank:</label>
+    <select asp-for="Bank">
+        <option value="Barclays">Barclays</option>
+        <option value="Halifax Bank">Halifax Bank</option>
+        <option value="Monzo">Monzo</option>
+        <option value="HSBC">HSBC</option>
+        <option value="Metro">Metro</option>
+        <option value="Lloyds">Lloyds</option>
+        <option value="RBS">RBS</option>
+    </select>
+    <br/><br/>
+    <!-- TypeOfCard field -->
+    <label>Type of Card:</label>
+    <select asp-for="TypeOfCard">
+        <option value="MasterCard">MasterCard</option>
+        <option value="Visa">Visa</option>
+    </select>
+    <br/><br/>
+
+    <!-- Hidden field for TransactionId -->
+    <input type="hidden" asp-for="TransactionId"/>
+
+    <!-- Date field (automatically populated) -->
+    <label>Date Order Placed:</label>
+    <input asp-for="Date" readonly/>
+    <br/><br/>
+
+    <!-- DayOfWeek field (automatically populated) -->
+    <label>Day of Week Order Placed:</label>
+    <input asp-for="DayOfWeek" readonly/>
+    <br/><br/>
+
+    <!-- Time field (automatically populated) -->
+    <label>Time Order Placed:</label>
+    <input asp-for="Time" readonly/>
+    <br/><br/>
+
+    <!-- TypeOfTransaction field -->
+    <label>Type of Transaction:</label>
+    <input asp-for="TypeOfTransaction" readonly/>
+    <br/><br/>
+
+    <!-- EntryMode field (automatically populated) -->
+    <label>Entry Mode:</label>
+    <input asp-for="EntryMode" readonly/>
+    <br/><br/>
+    
+
+    <!-- Hidden field to pass the Amount value to the POST action -->
+    <input type="hidden" name="Amount" value="@ViewBag.Amount" />
+
+
+    <!-- Submit button -->
+    <button type="submit">Place Order</button>
+
+</form>

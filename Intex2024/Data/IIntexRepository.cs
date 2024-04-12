@@ -11,12 +11,13 @@ namespace Intex2024.Data
         IQueryable<LineItem> LineItems { get; }
         IQueryable<UserRecommendation> UserRecommendations { get; }
         IQueryable<ProductRecommendation> ProductRecommendations { get; }
-        IEnumerable<CustomerUser> CustomerUser { get; }
+        IQueryable<CustomerUser> CustomerUsers { get; }
 
         public void AddProduct(Product ProductId);
         public void DeleteProduct(Product ProductId);
         public void UpdateProduct(Product ProductId);
         public IQueryable<Order> OrderNames();
+
         void SaveChanges();
     }
 }
