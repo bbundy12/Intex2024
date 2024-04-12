@@ -1,38 +1,71 @@
 @using System;
 @using System.ComponentModel.DataAnnotations;
 @using Microsoft.AspNetCore.Identity;
-@model Intex2024.Data.Customer
+@model Intex2024.Data.Order
+
+<style>
+    body {
+        /* Set background color with 25% opacity using RGBA */
+        background-color: rgba(0, 111, 227, .25);
+        padding-bottom: 100px; /* Add some bottom padding to prevent content from extending below the footer */
+    }
+</style>
 
 @{
-    ViewData["Title"] = "Confirmation";
+    var transactionTypes = new List<string> { "POS", "ATM", "Online" };
+    var countries = new List<string> { "USA", "Canada", "Mexico", "Other" };
+    var cardTypes = new List<string> { "Visa", "Master", "Amex" };
+    var banks = new List<string> { "RBS", "LLoyds", "Barclays", "Halifax", "Monzo", "HSBC", "Metro" };
 }
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <h2>Confirm Information</h2>
-            <form>
-                <div class="form-group">
-                    <label asp-for="FirstName">First Name</label>
-                    <input type="text" class="form-control" id="FirstName">
-                </div>
-                <div class="form-group">
-                    <label asp-for="LastName">Last Name</label>
-                    <input type="text" class="form-control" id="LastName">
-                </div>
-                <div class="form-group">
-                    <label asp-for="CountryOfResidence">Country Of Residence</label>
-                    <input type="text" class="form-control" id="CountryOfResidence" value="">
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
-        </div>
-        <!-- This is the right side of the page. It contains the Place Order section and the Order Summary section. -->
-        <div class="col-md-6">
-            <h2>Place Order</h2>
-            <button class="btn btn-primary">Place Order</button>
-            <h3>Order Summary</h3>
-            <!-- Here you can list the items they are purchasing, the quantity, the price, and the total price. -->
-        </div>
+<div class="row">
+    <div class="col-md-3">
+        <h2>Confirm Information</h2>
+        <form>
+            <div class="form-group">
+                <label for="transactionType">Transaction Type</label>
+                <select id="transactionType" class="form-control">
+                    @foreach (var type in transactionTypes)
+                    {
+                        <option>@type</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="country">Country</label>
+                <select id="country" class="form-control">
+                    @foreach (var country in countries)
+                    {
+                        <option>@country</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="cardType">Card Type</label>
+                <select id="cardType" class="form-control">
+                    @foreach (var card in cardTypes)
+                    {
+                        <option>@card</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="bank">Bank</label>
+                <select id="bank" class="form-control">
+                    @foreach (var bank in banks)
+                    {
+                        <option>@bank</option>
+                    }
+                </select>
+            </div>
+
+        </form>
+    </div>
+    <div class="col-md-6">
+        <h2>Order Summary</h2>
+        <!-- Display the user's order details here -->
+    <div class="col-md-6">
+        <button type="button" class="btn btn-secondary" onclick="location.href='@Url.Action("Index", "Cart")'">Cancel</button>
+        <button type="submit" class="btn btn-primary">Purchase</button>
     </div>
 </div>
