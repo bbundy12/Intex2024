@@ -4,6 +4,14 @@
     ViewData["Title"] = "Product Details";
 }
 
+<style>
+    .product-image {
+    width: 200px; /* Adjust the width as needed */
+    height: 200px; /* Adjust the height as needed */
+    object-fit: cover; /* Ensure the image covers the specified dimensions */
+}
+</style>
+
 <h1>@Model.product.Name</h1>
 <div>
     <img src="@Model.product.ImgLink" alt="@Model.product.Name" />
@@ -18,6 +26,20 @@
     </form>
 
     <a href="/Products" class="btn btn-secondary">Continue Shopping</a>
+    <h2>Recommended Products</h2>
+    <div class="row">
+        @foreach (var recommendation in Model.RecommendedProducts)
+        {
+            <div class="col-md-3">
+                <div>
+                    <h4>@recommendation.Name</h4>
+                    <img src="@recommendation.ImgLink" alt="@recommendation.Name" class="product-image" />
+                    <p>Price: $@recommendation.Price</p>
+                    <a href="@Url.Page("/ProductDetails", new { id = recommendation.ProductId })" class="btn btn-primary">View Details</a>
+                </div>
+            </div>
+        }
+    </div>
 
 
 </div>
