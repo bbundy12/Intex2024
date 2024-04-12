@@ -1,6 +1,9 @@
 ﻿using Intex2024.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.ML.OnnxRuntime;
+using Microsoft.ML.OnnxRuntime.Tensors;
 
 namespace Intex2024.Controllers
 {
@@ -8,23 +11,23 @@ namespace Intex2024.Controllers
     public class AdminController : Controller
     {
         private IIntexRepository _repo;
-        public AdminController(IIntexRepository repo)
+        private readonly InferenceSession _session;
+        private readonly string _onnxModelPath;
+        public AdminController(IIntexRepository repo, IHostEnvironment hostEnvironment)
         {
             _repo = repo;
-        }
 
-        // [HttpPost]
-        // Commented out the entire method as requested
+            _onnxModelPath = System.IO.Path.Combine(hostEnvironment.ContentRootPath, "decision_tree_clf.onnx");
+
+            _session = new InferenceSession(_onnxModelPath);
+        }
+        
         public IActionResult Orders()
         {
             var orders = _repo.Orders.ToList(); // Execute the query to retrieve the orders
             return View(orders);
         }
-
-
-
-
-        public string? Customer { get; set; }
+        
       
         public IActionResult AdminProducts()
         {
@@ -33,9 +36,9 @@ namespace Intex2024.Controllers
         }
        
         [HttpGet]
-        public IActionResult Edit(int id)
+        public IActionResult EditProduct(int id)
         {
-            // Attempt to find the product by name
+            // Attempt to find the product by id
             Product recordToEdit = _repo.Products
                 .Single(x => x.ProductId == id);
             // If a product was found, return the Edit view with the product data
@@ -44,7 +47,7 @@ namespace Intex2024.Controllers
 
        
         [HttpPost]
-        public IActionResult Edit(Product updatedInfo)
+        public IActionResult EditProduct(Product updatedInfo)
         {
             _repo.UpdateProduct(updatedInfo);
 
@@ -52,7 +55,7 @@ namespace Intex2024.Controllers
         }
        
         [HttpGet]
-        public IActionResult DeleteConfirmation(int id)
+        public IActionResult DeleteConfirmationProduct(int id)
         {
             var recordToDelete = _repo.Products
                 .Single(x => x.ProductId == id);
@@ -74,18 +77,13 @@ namespace Intex2024.Controllers
 
 
 
-       
+        [HttpGet]
         public IActionResult AdminUsers()
         {
             var customers = _repo.Customers.ToList();
             return View(customers);
         }
-
-
-        public IActionResult Dashboard()
-        {
-            return View();
-        }
+        
 
         
         [HttpGet]
@@ -103,5 +101,31 @@ namespace Intex2024.Controllers
             var products = _repo.Products.ToList();
             return View("AdminProducts", products);
         }
+        [HttpGet]
+        public IActionResult CreateAccount()
+        {
+
+            return View(new CustomerUser());
+        }
+        [HttpPost]
+        public IActionResult CreateAccount(Customer id)
+        {
+            _repo.CreateAccount(id); // Add product to database
+
+            var customers = _repo.Customers.ToList();
+            return View("AdminUsers", customers);
+        }
+
+        [HttpGet]
+        public IActionResult EditUsers(int id)
+        {
+            // Attempt to find the product by name
+            CustomerUser recordToEdit = _repo.CustomerUsers;
+                
+            // If a product was found, return the Edit view with the product data
+            return View("CreateAccount", recordToEdit);
+        }
+        
+
     }
 }

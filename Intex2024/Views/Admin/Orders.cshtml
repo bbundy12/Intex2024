@@ -47,16 +47,16 @@
                         <!-- Navigation buttons -->
                         <ul class="list-unstyled">
                             <li class="col-md-12 mb-2 text-center">
-                                <a class="btn btn-primary btn-block" asp-controller="Home" asp-action="Orders">Orders</a>
+                                <a class="btn btn-primary btn-block" asp-controller="Admin" asp-action="Orders">Orders</a>
                             </li>
                             <li class="col-md-12 mb-2 text-center">
-                                <a class="btn btn-primary btn-block" asp-controller="Home" asp-action="AdminProducts">Admin Products</a>
+                                <a class="btn btn-primary btn-block" asp-controller="Admin" asp-action="AdminProducts">Admin Products</a>
                             </li>
                             <li class="col-md-12 mb-2 text-center">
-                                <a class="btn btn-primary btn-block" asp-controller="Home" asp-action="AddProduct">Add Products</a>
+                                <a class="btn btn-primary btn-block" asp-controller="Admin" asp-action="AddProduct">Add Products</a>
                             </li>
                             <li class="col-md-12 mb-2 text-center">
-                                <a class="btn btn-primary btn-block" asp-controller="Home" asp-action="AdminUsers">Admin Users</a>
+                                <a class="btn btn-primary btn-block" asp-controller="Admin" asp-action="AdminUsers">Admin Users</a>
                             </li>
                         </ul>
                     </div>
@@ -66,18 +66,18 @@
                 <!-- Bootstrap column to take up 10 columns for the white container -->
                 <div class="container-white mb-5">
                     <!-- White container -->
-                    <h1 class="text-center">Admin Products</h1>
+                    <h1 class="text-center">Customer Orders </h1>
                     <div class="container-form table-responsive">
                         <!-- Table -->
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th>CustomerId</th>
-                                    <th>Name</th>
-                                    <th>BirthDate</th>
-                                    <th>Country</th>
-                                    <th>Gender</th>
-                                    <th>Age</th>
+                                    <th>Transaction ID</th>
+                                    <th>Date</th>
+                                    <th>Amount</th>
+                                    <th>Shipping Address</th>
+                                    <th>Fraud</th>
+                                    
                                     
                                 </tr>
                             </thead>
@@ -85,12 +85,11 @@
                                 @foreach (var o in Model)
                                 {
                                     <tr>
-                                        <td>@o.CustomerId</td>
-                                        <td>@(o.FirstName + " " + o.LastName)</td>
-                                        <td>@o.BirthDate</td>
-                                        <td>@o.CountryOfResidence</td>
-                                        <td>@o.Gender</td>
-                                        <td>@o.Age</td>
+                                        <td>@o.TransactionId</td>
+                                        <td>@o.Date</td>
+                                        <td>@o.Amount</td>
+                                        <td>@o.ShippingAddress</td>
+                                        <td>@o.Fraud</td>
                                     </tr>
                                 }
                             </tbody>

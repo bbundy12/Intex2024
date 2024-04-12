@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Confirmation</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+            body {
+                background: linear-gradient(to right, #a7cffb, #067cfe);
+            }
+    
+            .container {
+                padding: 20px; /* Add padding to the container */
+                margin-top: 20px; /* Add margin to separate from background */
+            }
+    
+            .container-white {
+                background-color: white; /* Set background color to white */
+                border-radius: 10px;
+                box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+                padding: 20px; /* Add padding to the white container */
+            }
+    
+            .custom-nav {
+                text-align: left; /* Align navigation buttons to the left */
+            }
+    
+            .container-form {
+                text-align: left; /* Align table content to the left */
+                margin-top: 20px; /* Add margin to separate from navigation */
+            }
+        </style>
+</head>
+<body>
+<div class="container">
+    <h2 class="text-center">Delete Confirmation</h2>
+
+    <p class="text-center">Are you sure you want to delete the following product?</p>
+
+    <div class="row justify-content-center">
+        <div class="col-sm-10">
+            <form asp-action="DeleteConfirmationConfirmed" method="post">
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Product Name:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" value="@Model.Name" readonly>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-12 text-center">
+                        <input type="hidden" name="productId" value="@Model.ProductId"/>
+                        <button type="submit" class="btn btn-primary">Confirm Delete</button>
+                        <button class="btn btn-primary"asp-action="AdminProducts">Cancel</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
