@@ -1,7 +1,8 @@
 @using System;
 @using System.ComponentModel.DataAnnotations;
 @using Microsoft.AspNetCore.Identity;
-@model Intex2024.Data.Order
+@model Intex2024.Data.Customer
+
 
 <style>
     body {
@@ -10,7 +11,7 @@
         padding-bottom: 100px; /* Add some bottom padding to prevent content from extending below the footer */
     }
 </style>
-
+@* 
 @{
     var transactionTypes = new List<string> { "POS", "ATM", "Online" };
     var countries = new List<string> { "USA", "Canada", "Mexico", "Other" };
@@ -18,54 +19,68 @@
     var banks = new List<string> { "RBS", "LLoyds", "Barclays", "Halifax", "Monzo", "HSBC", "Metro" };
 }
 
-<div class="row">
-    <div class="col-md-3">
-        <h2>Confirm Information</h2>
-        <form>
-            <div class="form-group">
-                <label for="transactionType">Transaction Type</label>
-                <select id="transactionType" class="form-control">
-                    @foreach (var type in transactionTypes)
-                    {
-                        <option>@type</option>
-                    }
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="country">Country</label>
-                <select id="country" class="form-control">
-                    @foreach (var country in countries)
-                    {
-                        <option>@country</option>
-                    }
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="cardType">Card Type</label>
-                <select id="cardType" class="form-control">
-                    @foreach (var card in cardTypes)
-                    {
-                        <option>@card</option>
-                    }
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="bank">Bank</label>
-                <select id="bank" class="form-control">
-                    @foreach (var bank in banks)
-                    {
-                        <option>@bank</option>
-                    }
-                </select>
-            </div>
+<div>
+    <h2>Confirm Information</h2>
+        <div class="form-group">
+            <label for="transactionType">Transaction Type</label>
+            <select id="transactionType" class="form-control">
+                @foreach (var type in transactionTypes)
+                {
+                    <option>@type</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="country">Country</label>
+            <select id="country" class="form-control">
+                @foreach (var country in countries)
+                {
+                    <option>@country</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="cardType">Card Type</label>
+            <select id="cardType" class="form-control">
+                @foreach (var card in cardTypes)
+                {
+                    <option>@card</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="bank">Bank</label>
+            <select id="bank" class="form-control">
+                @foreach (var bank in banks)
+                {
+                    <option>@bank</option>
+                }
+            </select>
+        </div>
+</div> *@
 
-        </form>
+
+<h2>Check out now</h2>
+<p>Please enter your details, and we'll ship your goods right away!</p>
+
+<form asp-action="Checkout" method="post">
+    <h3>Ship to</h3>
+    <div class="form-group">
+        <label>First Name:</label>
+        <input asp-for="FirstName" class="form-control" />
     </div>
-    <div class="col-md-6">
-        <h2>Order Summary</h2>
-        <!-- Display the user's order details here -->
-    <div class="col-md-6">
-        <button type="button" class="btn btn-secondary" onclick="location.href='@Url.Action("Index", "Cart")'">Cancel</button>
-        <button type="submit" class="btn btn-primary">Purchase</button>
+    <h3>Address</h3>
+    <div class="form-group">
+        <label>Last Name</label>
+        <input asp-for="LastName" class="form-control" />
     </div>
-</div>
+    <div class="form-group">
+        <label>Country of Residence</label>
+        <input asp-for="CountryOfResidence" class="form-control" />
+    </div>
+    <h3>Options</h3>
+    <div class="text-center">
+        <input class="btn btn-primary" type="submit" 
+            value="Complete Order" />
+    </div>
+</form>
