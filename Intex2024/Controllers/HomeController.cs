@@ -1,5 +1,6 @@
 using Intex2024.Data;
 using Intex2024.Infrastructure;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -224,13 +225,13 @@ namespace Intex2024.Controllers
 
 
         public string? Customer { get; set; }
-
+        [Authorize(Roles = "Admin")]
         public IActionResult AdminProducts()
         {
             var products = _repo.Products.ToList();
             return View(products);
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult Edit(int id)
         {
@@ -241,7 +242,7 @@ namespace Intex2024.Controllers
             return View("AddProduct", recordToEdit);
         }
 
-        
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult Edit(Product updatedInfo)
         {
@@ -249,6 +250,7 @@ namespace Intex2024.Controllers
 
             return RedirectToAction("AdminProducts");
         }
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public IActionResult DeleteConfirmation(int id)
         {
@@ -258,6 +260,7 @@ namespace Intex2024.Controllers
             return View(recordToDelete); // Pass recordToDelete to the view
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult DeleteConfirmationConfirmed(int productId)
         {
@@ -270,8 +273,8 @@ namespace Intex2024.Controllers
         }
 
 
-        
 
+        [Authorize(Roles = "Admin")]
         public IActionResult AdminUsers()
         {
             var customers = _repo.Customers.ToList();
@@ -284,22 +287,22 @@ namespace Intex2024.Controllers
             return View();
         }
 
-        
-   [HttpGet]
-   public IActionResult AddProduct()
-   {
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
+       public IActionResult AddProduct()
+       {
 
-       return View(new Product());
-   }
-
-    [HttpPost]
-   public IActionResult AddProduct(Product response)
-   {
-       _repo.AddProduct(response); // Add product to database
+           return View(new Product());
+       }
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+       public IActionResult AddProduct(Product response)
+       {
+           _repo.AddProduct(response); // Add product to database
        
-       var products = _repo.Products.ToList();
-       return View("AdminProducts", products);
-   }
+           var products = _repo.Products.ToList();
+           return View("AdminProducts", products);
+       }
    
 
 
