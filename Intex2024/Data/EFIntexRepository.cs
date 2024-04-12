@@ -23,7 +23,7 @@ namespace Intex2024.Data
         public IQueryable<UserRecommendation> UserRecommendations => _context.UserRecommendations;
         public IQueryable<ProductRecommendation> ProductRecommendations => _context.ProductRecommendations;
         
-        public object CustomerUsers { get; set; }
+        public CustomerUser CustomerUsers { get; set; }
 
         public IQueryable<CustomerUser> CustomerUser => _context.CustomerUser;
 
@@ -33,11 +33,6 @@ namespace Intex2024.Data
                 .Include(o => o.Customer);
             
             return orderNames;
-        }
-
-        public void SaveChanges()
-        {
-            throw new NotImplementedException();
         }
 
         public void AddProduct(Product ProductId)
@@ -56,6 +51,11 @@ namespace Intex2024.Data
             _context.SaveChanges();
         }
 
+        public void SaveChanges()
+        {
+            throw new NotImplementedException();
+        }
+
         public void CreateAccount(Customer id)
         {
             _context.Add(id);
@@ -70,7 +70,12 @@ namespace Intex2024.Data
 
         public void UpdateUser(Customer CustomerId)
         {
-            _context.Customers.Update(CustomerId);
+            throw new NotImplementedException();
+        }
+
+        public void UpdateUser(CustomerUser id)
+        {
+            _context.CustomerUser.Update(id);
             _context.SaveChanges();
         }
 

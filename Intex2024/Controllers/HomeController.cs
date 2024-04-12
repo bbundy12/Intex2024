@@ -198,10 +198,7 @@ namespace Intex2024.Controllers
             return View();
         }
 
-        public IActionResult CreateAccount()
-        {
-            return View();
-        }
+      
 
         public IActionResult About()
         {

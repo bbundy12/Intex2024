@@ -8,19 +8,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f501258e-1492-4509-b4b1-cd1371616d7c" name="Changes" comment="finished the merge conflicts">
+    <list default="true" id="f501258e-1492-4509-b4b1-cd1371616d7c" name="Changes" comment="finishing the commits">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Intex2024/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Intex2024/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Intex2024/Controllers/AdminController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Controllers/AdminController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex2024/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Controllers/HomeController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex2024/Data/Customer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Data/Customer.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Intex2024/Data/EFIntexRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Data/EFIntexRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex2024/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/AddProduct.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/Admin/AddProduct.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/AdminProducts.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/Admin/AdminProducts.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/AdminUsers.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/Admin/AdminUsers.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/CreateAccount.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/Admin/CreateAccount.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/Dashboard.cshtml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/DeleteConfirmationProduct.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/Admin/DeleteConfirmationProduct.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/DeleteConfirmationProduct.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/Admin/DeleteConfirmationProduct.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/Orders.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/Admin/Orders.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex2024/Data/IIntexRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Data/IIntexRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex2024/Views/Admin/AdminUsers.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/Admin/AdminUsers.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex2024/Views/Admin/CreateAccount.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/Admin/CreateAccount.cshtml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +42,9 @@
     <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Controllers/HomeController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Controllers/HomeController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Controllers/HomeController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/ApplicationDbContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/ApplicationDbContext.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/ApplicationDbContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/Customer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/Customer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/Customer.cs" root0="SKIP_HIGHLIGHTING" />
@@ -71,6 +70,9 @@
     <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/EFIntexRepository.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/EFIntexRepository.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/EFIntexRepository.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/IIntexRepository.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/IIntexRepository.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/IIntexRepository.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/IIntexRepository.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/IIntexRepository.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/IIntexRepository.cs" root0="SKIP_HIGHLIGHTING" />
@@ -264,7 +266,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712906248380</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="finishing the commits">
+      <option name="closed" value="true" />
+      <created>1712909119470</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1712909119470</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -284,6 +294,7 @@
     <MESSAGE value="brendans last database update hopefully" />
     <MESSAGE value="changed files for new controller" />
     <MESSAGE value="finished the merge conflicts" />
-    <option name="LAST_COMMIT_MESSAGE" value="finished the merge conflicts" />
+    <MESSAGE value="finishing the commits" />
+    <option name="LAST_COMMIT_MESSAGE" value="finishing the commits" />
   </component>
 </project>

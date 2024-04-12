@@ -29,7 +29,7 @@ namespace Intex2024.Controllers
         [HttpGet]
         public IActionResult EditProduct(int id)
         {
-            // Attempt to find the product by name
+            // Attempt to find the product by id
             Product recordToEdit = _repo.Products
                 .Single(x => x.ProductId == id);
             // If a product was found, return the Edit view with the product data
@@ -92,5 +92,31 @@ namespace Intex2024.Controllers
             var products = _repo.Products.ToList();
             return View("AdminProducts", products);
         }
+        [HttpGet]
+        public IActionResult CreateAccount()
+        {
+
+            return View(new CustomerUser());
+        }
+        [HttpPost]
+        public IActionResult CreateAccount(Customer id)
+        {
+            _repo.CreateAccount(id); // Add product to database
+
+            var customers = _repo.Customers.ToList();
+            return View("AdminUsers", customers);
+        }
+
+        [HttpGet]
+        public IActionResult EditUsers(int id)
+        {
+            // Attempt to find the product by name
+            CustomerUser recordToEdit = _repo.CustomerUsers;
+                
+            // If a product was found, return the Edit view with the product data
+            return View("CreateAccount", recordToEdit);
+        }
+        
+
     }
 }
