@@ -1,16 +1,31 @@
-@model List<FraudPrediction>
-
-@{
-    ViewData["Title"] = "Predictions";
-
-    var classTypeDict = new Dictionary<int, string>
-    {
-        { 0, "Not Fraud" },
-        { 1, "Fraud" }
-    };
-}
-
+@model List<Intex2024.Data.FraudPrediction>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page - Predictions</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Include Bootstrap CSS -->
     <style>
+        body {
+            background: linear-gradient(to right, #a7cffb, #067cfe);
+        }
+
+        
+        .container-white {
+            background-color: white; /* Set background color to white */
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+            padding: 20px; /* Add padding to the white container */
+        }
+
+        .custom-nav {
+            text-align: left; /* Align navigation buttons to the left */
+        }
+
+        
+
         .table-striped > tbody > tr:nth-of-type(odd) {
             background-color: rgba(0,0,0,.05); /* Add a background color to odd rows */
         }
@@ -33,111 +48,126 @@
             width: 100%; /* Set table width to 100% */
         }
 
-
-        .table-responsive {
-            overflow-x: auto;
-        }
-
-        .full-width-table {
-            margin-left: -50px;
-            margin-right: 0;
-        }
-
-        .table {
-            width: auto;
-            margin-bottom: 0;
-        }
-
         .prediction-cell {
             background-color: #e0f2f1;
         }
-
     </style>
-
-<h2>Predictions for most recent 20 orders</h2>
-<h5>Scroll down to view only orders that are predicted to be fraud</h5>
-
-<table class="table table-bordered table-striped">
-    <thead>
-        <tr class="review-orders-cols-names">
-            <th>TransactionId</th>
-            <th>CustomerId</th>
-            <th>Date</th>
-            <th>Day Of The Week</th>
-            <th>Time (Military Time)</th>
-            <th>Entry Mode</th>
-            <th>Amount</th>
-            <th>Type Of Transaction</th>
-            <th>Country Of Transaction</th>
-            <th>Shipping Address</th>
-            <th>Bank</th>
-            <th>Type Of Card</th>
-            <th class="prediction-cell">Fraud Prediction</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr class="review-orders">
-                <td>@item.Order.TransactionId</td>
-                <td>@item.Order.CustomerId</td>
-                <td>@item.Order.Date</td>
-                <td>@item.Order.DayOfWeek</td>
-                <td>@item.Order.Time</td>
-                <td>@item.Order.EntryMode</td>
-                <td>@item.Order.Amount</td>
-                <td>@item.Order.TypeOfTransaction</td>
-                <td>@item.Order.CountryOfTransaction</td>
-                <td>@item.Order.ShippingAddress</td>
-                <td>@item.Order.Bank</td>
-                <td>@item.Order.TypeOfCard</td>
-                <td class="prediction-cell">@item.Prediction</td>
-            </tr>
-        }
-    </tbody>
-</table>
-
-
-<h2>Only those predicted to be Fraud</h2>
-<table class="table table-bordered table-striped">
-    <thead>
-        <tr class="review-orders-cols-names">
-            <th>TransactionId</th>
-            <th>CustomerId</th>
-            <th>Date</th>
-            <th>Day Of The Week</th>
-            <th>Time (Military Time)</th>
-            <th>Entry Mode</th>
-            <th>Amount</th>
-            <th>Type Of Transaction</th>
-            <th>Country Of Transaction</th>
-            <th>Shipping Address</th>
-            <th>Bank</th>
-            <th>Type Of Card</th>
-            <th class="prediction-cell">Fraud Prediction</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            if (item.Prediction == "Fraud")
-            {
-                <tr>
-                    <td>@item.Order.TransactionId</td>
-                    <td>@item.Order.CustomerId</td>
-                    <td>@item.Order.Date</td>
-                    <td>@item.Order.DayOfWeek</td>
-                    <td>@item.Order.Time</td>
-                    <td>@item.Order.EntryMode</td>
-                    <td>@item.Order.Amount</td>
-                    <td>@item.Order.TypeOfTransaction</td>
-                    <td>@item.Order.CountryOfTransaction</td>
-                    <td>@item.Order.ShippingAddress</td>
-                    <td>@item.Order.Bank</td>
-                    <td>@item.Order.TypeOfCard</td>
-                    <td class="prediction-cell">@item.Prediction</td>
-                </tr>
-            }
-        }
-    </tbody>
-</table>
+</head>
+<body>
+    <div class="container col-12">
+        <div class="row">
+            <div class="col-md-1">
+                <!-- Bootstrap column to take up 3 columns for the buttons -->
+                <div class="custom-nav">
+                    <!-- Navigation buttons -->
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <a class="btn btn-primary btn-block" asp-controller="Admin" asp-action="OrderPredictions">Orders</a>
+                        </li>
+                        <li class="mb-2">
+                            <a class="btn btn-primary btn-block" asp-controller="Admin" asp-action="AdminProducts">Admin Products</a>
+                        </li>
+                        <li class="mb-2">
+                            <a class="btn btn-primary btn-block" asp-controller="Admin" asp-action="AddProduct">Add Products</a>
+                        </li>
+                        <li class="mb-2">
+                            <a class="btn btn-primary btn-block" asp-controller="Admin" asp-action="AdminUsers">Admin Users</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-11">
+                <!-- Bootstrap column to take up 9 columns for the table -->
+                <div class="container-white mb-5">
+                    <h2 class="text-center">Predictions for most recent 20 orders</h2>
+                    <h5 class="text-center">Scroll down to view only orders that are predicted to be fraud</h5>
+                    <table class="container-white table-bordered table-striped">
+                        <thead>
+                            <tr class="review-orders-cols-names">
+                                <th>TransactionId</th>
+                                <th>CustomerId</th>
+                                <th>Date</th>
+                                <th>Day Of The Week</th>
+                                <th>Time (Military Time)</th>
+                                <th>Entry Mode</th>
+                                <th>Amount</th>
+                                <th>Type Of Transaction</th>
+                                <th>Country Of Transaction</th>
+                                <th>Shipping Address</th>
+                                <th>Bank</th>
+                                <th>Type Of Card</th>
+                                <th class="prediction-cell">Fraud Prediction</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr class="review-orders">
+                                    <td>@item.Order.TransactionId</td>
+                                    <td>@item.Order.CustomerId</td>
+                                    <td>@item.Order.Date</td>
+                                    <td>@item.Order.DayOfWeek</td>
+                                    <td>@item.Order.Time</td>
+                                    <td>@item.Order.EntryMode</td>
+                                    <td>@item.Order.Amount</td>
+                                    <td>@item.Order.TypeOfTransaction</td>
+                                    <td>@item.Order.CountryOfTransaction</td>
+                                    <td>@item.Order.ShippingAddress</td>
+                                    <td>@item.Order.Bank</td>
+                                    <td>@item.Order.TypeOfCard</td>
+                                    <td class="prediction-cell">@item.Prediction</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <h2 class="text-center">Only those predicted to be Fraud</h2>
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr class="review-orders-cols-names">
+                                <th>TransactionId</th>
+                                <th>CustomerId</th>
+                                <th>Date</th>
+                                <th>Day Of The Week</th>
+                                <th>Time (Military Time)</th>
+                                <th>Entry Mode</th>
+                                <th>Amount</th>
+                                <th>Type Of Transaction</th>
+                                <th>Country Of Transaction</th>
+                                <th>Shipping Address</th>
+                                <th>Bank</th>
+                                <th>Type Of Card</th>
+                                <th class="prediction-cell">Fraud Prediction</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                if (item.Prediction == "Fraud")
+                                {
+                                    <tr>
+                                        <td>@item.Order.TransactionId</td>
+                                        <td>@item.Order.CustomerId</td>
+                                        <td>@item.Order.Date</td>
+                                        <td>@item.Order.DayOfWeek</td>
+                                        <td>@item.Order.Time</td>
+                                        <td>@item.Order.EntryMode</td>
+                                        <td>@item.Order.Amount</td>
+                                        <td>@item.Order.TypeOfTransaction</td>
+                                        <td>@item.Order.CountryOfTransaction</td>
+                                        <td>@item.Order.ShippingAddress</td>
+                                        <td>@item.Order.Bank</td>
+                                        <td>@item.Order.TypeOfCard</td>
+                                        <td class="prediction-cell">@item.Prediction</td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Include Bootstrap JS -->
+</body>
+</html>

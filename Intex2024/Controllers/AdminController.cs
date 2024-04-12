@@ -101,30 +101,99 @@ namespace Intex2024.Controllers
             var products = _repo.Products.ToList();
             return View("AdminProducts", products);
         }
-        [HttpGet]
-        public IActionResult CreateAccount()
-        {
+        
+      public IActionResult OrderPredictions()
+{
+    var records = _repo.Orders
+        .Include(o => o.Customer) // Include the Customer navigation property
+        .OrderByDescending(o => o.Date)
+        .Take(20)
+        .ToList();  // Fetch the 20 most recent records with their corresponding customers
+    
+    var predictions = new List<FraudPrediction>();  // Your ViewModel for the view
 
-            return View(new CustomerUser());
-        }
-        [HttpPost]
-        public IActionResult CreateAccount(Customer id)
+    // Dictionary mapping the numeric prediction to an animal type
+    var class_type_dict = new Dictionary<int, string>
         {
-            _repo.CreateAccount(id); // Add product to database
+            { 0, "Not Fraud" },
+            { 1, "Fraud" }
+        };
 
-            var customers = _repo.Customers.ToList();
-            return View("AdminUsers", customers);
-        }
+    foreach (var cartSubmission in records)
+    {
+        // Preprocess features to make them compatible with the model
+        var input = new List<float>
+            {
+        cartSubmission.Customer.Age, // Assuming Age is already a float or can be cast to one.
+        (float)cartSubmission.Time, 
+        (float)cartSubmission.Amount, 
 
-        [HttpGet]
-        public IActionResult EditUsers(int id)
+        // Country of residence
+        cartSubmission.Customer.CountryOfResidence == "USA" ? 1 : 0,
+        cartSubmission.Customer.CountryOfResidence == "United Kingdom" ? 1 : 0,
+
+        // Gender
+        cartSubmission.Customer.Gender == "M" ? 1 : 0,
+
+        // Day of the week
+        cartSubmission.DayOfWeek == "Mon" ? 1 : 0,
+        cartSubmission.DayOfWeek == "Sat" ? 1 : 0,
+        cartSubmission.DayOfWeek == "Sun" ? 1 : 0,
+        cartSubmission.DayOfWeek == "Thu" ? 1 : 0,
+        cartSubmission.DayOfWeek == "Tue" ? 1 : 0,
+        cartSubmission.DayOfWeek == "Wed" ? 1 : 0,
+
+        // Entry mode
+        cartSubmission.EntryMode == "PIN" ? 1 : 0,
+        cartSubmission.EntryMode == "Tap" ? 1 : 0,
+
+        // Type of transaction
+        cartSubmission.TypeOfTransaction == "Online" ? 1 : 0,
+        cartSubmission.TypeOfTransaction == "POS" ? 1 : 0,
+
+        // Country of transaction
+        cartSubmission.CountryOfTransaction == "India" ? 1 : 0,
+        cartSubmission.CountryOfTransaction == "Russia" ? 1 : 0,
+        cartSubmission.CountryOfTransaction == "USA" ? 1 : 0,
+        cartSubmission.CountryOfTransaction == "United Kingdom" ? 1 : 0,
+
+        // Shipping address
+        cartSubmission.ShippingAddress == "India" ? 1 : 0,
+        cartSubmission.ShippingAddress == "Russia" ? 1 : 0,
+        cartSubmission.ShippingAddress == "USA" ? 1 : 0,
+        cartSubmission.ShippingAddress == "United Kingdom" ? 1 : 0,
+
+        // Bank
+        cartSubmission.Bank == "HSBC" ? 1 : 0,
+        cartSubmission.Bank == "Halifax" ? 1 : 0,
+        cartSubmission.Bank == "Lloyds" ? 1 : 0,
+        cartSubmission.Bank == "Metro" ? 1 : 0,
+        cartSubmission.Bank == "Monzo" ? 1 : 0,
+        cartSubmission.Bank == "RBS" ? 1 : 0,
+
+        // Type of card
+        cartSubmission.TypeOfCard == "Visa" ? 1 : 0,
+            };
+        var inputTensor = new DenseTensor<float>(input.ToArray(), new[] { 1, input.Count });
+
+        var inputs = new List<NamedOnnxValue>
+            {
+                NamedOnnxValue.CreateFromTensor("float_input", inputTensor)
+            };
+
+        string predictionResult;
+        using (var results = _session.Run(inputs))
         {
-            // Attempt to find the product by name
-            var recordToEdit = _repo.CustomerUsers;
-                
-            // If a product was found, return the Edit view with the product data
-            return View("CreateAccount", recordToEdit);
+            var prediction = results.FirstOrDefault(item => item.Name == "output_label")?.AsTensor<long>().ToArray();
+            predictionResult = prediction != null && prediction.Length > 0 ? class_type_dict.GetValueOrDefault((int)prediction[0], "Unknown") : "Error in prediction";
         }
+
+        predictions.Add(new FraudPrediction() { Order = cartSubmission, Prediction = predictionResult }); // Adds the animal information and prediction for that animal to AnimalPrediction viewmodel
+    }
+
+    return View(predictions);
+}
+
         
 
     }
