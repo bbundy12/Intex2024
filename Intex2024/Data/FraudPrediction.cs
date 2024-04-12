@@ -2,7 +2,7 @@
 {
     public class FraudPrediction
     {
-        public Order Order { get; set; }
-        public string Prediction { get; set; }
+        public Order? Order { get; set; }
+        public string? Prediction { get; set; }
     }
 }
