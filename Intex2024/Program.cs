@@ -9,17 +9,28 @@ using Azure.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var keyVaultEndpoint = new Uri(Environment.GetEnvironmentVariable("Intex2024"));
-builder.Configuration.AddAzureKeyVault(keyVaultEndpoint, new DefaultAzureCredential());
+/*var keyVaultEndpoint = new Uri(Environment.GetEnvironmentVariable("Intex2024"));
+builder.Configuration.AddAzureKeyVault(keyVaultEndpoint, new DefaultAzureCredential());*/
 var services = builder.Services;
 var configuration = builder.Configuration;
 
-// For Google signin 
-// services.AddAuthentication().AddGoogle(googleOptions =>
-// {
-//     googleOptions.ClientId = configuration["Authentication:Google:ClientId"];
-//     googleOptions.ClientSecret = configuration["Authentication:Google:ClientSecret"];
-// });
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    // Default Password settings.
+    options.Password.RequireDigit = true;
+    options.Password.RequireLowercase = true;
+    options.Password.RequireNonAlphanumeric = true;
+    options.Password.RequireUppercase = true;
+    options.Password.RequiredLength = 10;
+    options.Password.RequiredUniqueChars = 1;
+});
+
+//For Google signin 
+services.AddAuthentication().AddGoogle(googleOptions =>
+ {
+     googleOptions.ClientId = configuration["Authentication:Google:ClientId"];
+     googleOptions.ClientSecret = configuration["Authentication:Google:ClientSecret"];
+ });
 
 // Add services to the container.
 //For the identity database
@@ -30,6 +41,7 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 //Configuration Identity Services
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
