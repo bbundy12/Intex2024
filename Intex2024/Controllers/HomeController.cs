@@ -125,6 +125,7 @@ namespace Intex2024.Controllers
             }
         }*/
 
+        public ViewResult Checkout() => View( new Order());
         public async Task<IActionResult> IndexAsync()
         {
             var vm = new ProductsListViewModel();

@@ -11,7 +11,6 @@ var builder = WebApplication.CreateBuilder(args);
 
 // var keyVaultEndpoint = new Uri(Environment.GetEnvironmentVariable("Intex2024"));
 // builder.Configuration.AddAzureKeyVault(keyVaultEndpoint, new DefaultAzureCredential());
-
 var services = builder.Services;
 var configuration = builder.Configuration;
 
@@ -51,6 +50,8 @@ builder.Services.AddControllersWithViews();
     options.UseSqlServer(builder.Configuration["ConnectionStrings:IntexConnection"]);
 });*/
 builder.Services.AddScoped<IIntexRepository, EFIntexRepository>();
+builder.Services.AddScoped<IOrderRepository, EFOrderRepository>();
+
 
 builder.Services.AddRazorPages();
 
