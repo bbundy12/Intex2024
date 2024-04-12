@@ -8,22 +8,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f501258e-1492-4509-b4b1-cd1371616d7c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Intex2024/.idea/dataSources/5211fe57-4812-40da-90e2-dea368068177.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Intex2024/.idea/dataSources/5211fe57-4812-40da-90e2-dea368068177.xml" afterDir="false" />
+    <list default="true" id="f501258e-1492-4509-b4b1-cd1371616d7c" name="Changes" comment="finished the merge conflicts">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Intex2024/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Intex2024/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex2024/Areas/Identity/Pages/Account/Register.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Areas/Identity/Pages/Account/Register.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex2024/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Controllers/HomeController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex2024/Data/ApplicationDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Data/ApplicationDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex2024/Controllers/AdminController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Controllers/AdminController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Intex2024/Data/EFIntexRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Data/EFIntexRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex2024/Data/IIntexRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Data/IIntexRepository.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Intex2024/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/AdminProducts.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/Home/AdminProducts.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/AdminUsers.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/Home/AdminUsers.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/CreateAccount.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/Home/CreateAccount.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/DeleteConfirmation.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/Home/DeleteConfirmationProduct.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/DeleteConfirmation.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/Home/DeleteConfirmationProduct.cshtml.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/Orders.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/Home/Orders.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/_ListProductsView.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/AddProduct.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/Admin/AddProduct.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/AdminProducts.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/Admin/AdminProducts.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/AdminUsers.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/Admin/AdminUsers.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/CreateAccount.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/Admin/CreateAccount.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/Dashboard.cshtml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/DeleteConfirmationProduct.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/Admin/DeleteConfirmationProduct.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/DeleteConfirmationProduct.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/Admin/DeleteConfirmationProduct.cshtml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/Orders.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/Admin/Orders.cshtml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,9 +28,24 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Ben2" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Controllers/HomeController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Controllers/HomeController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Controllers/HomeController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Controllers/HomeController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Controllers/HomeController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Controllers/HomeController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Controllers/HomeController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Controllers/HomeController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Controllers/HomeController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Controllers/HomeController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/Customer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/Customer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/Customer.cs" root0="SKIP_HIGHLIGHTING" />
@@ -64,6 +76,13 @@
     <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/IIntexRepository.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/IIntexRepository.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Data/IIntexRepository.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Views/Home/About.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Views/Home/About.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Views/Home/AddProduct.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/benroper/RiderProjects/Intex2024pleasework/Intex2024/Views/Home/AdminProducts.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
   </component>
@@ -229,7 +248,23 @@
       <option name="project" value="LOCAL" />
       <updated>1712859272570</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="changed files for new controller">
+      <option name="closed" value="true" />
+      <created>1712906184273</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1712906184273</updated>
+    </task>
+    <task id="LOCAL-00012" summary="finished the merge conflicts">
+      <option name="closed" value="true" />
+      <created>1712906248380</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1712906248380</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -247,6 +282,8 @@
     <MESSAGE value="commiting changed files from pull" />
     <MESSAGE value="i hope this pushes" />
     <MESSAGE value="brendans last database update hopefully" />
-    <option name="LAST_COMMIT_MESSAGE" value="brendans last database update hopefully" />
+    <MESSAGE value="changed files for new controller" />
+    <MESSAGE value="finished the merge conflicts" />
+    <option name="LAST_COMMIT_MESSAGE" value="finished the merge conflicts" />
   </component>
 </project>

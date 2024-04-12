@@ -81,6 +81,7 @@ namespace Intex2024.Data
         {
             _context.Customers.Add(CustomerId);
             _context.SaveChanges();
+            
         }
 
         public Customer CustomerId { get; set; }
