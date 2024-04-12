@@ -95,16 +95,30 @@ namespace Intex2024.Data
 
         public void UpdateUser(CustomerUser id)
         {
-            _context.CustomerUser.Update(id);
+            _context.CustomerUsers.Update(id);
             _context.SaveChanges();
         }
 
 
         public void AddProduct(Customer customerId)
         {
-            _context.Customers.Add(CustomerId);
+            _context.Customers.Add(customerId);
             _context.SaveChanges();
             
+        }
+    
+        public void SaveChanges()
+        {
+            throw new NotImplementedException();
+        }
+        public void CreateAccount(Customer id)
+        {
+            _context.Add(id);
+            _context.SaveChanges();
+        }
+        public void UpdateProduct(Customer updatedInfo)
+        {
+            throw new NotImplementedException();
         }
 
     }
