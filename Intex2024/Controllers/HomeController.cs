@@ -187,11 +187,27 @@ namespace Intex2024.Controllers
         {
             return View();
         }
-
+        [HttpGet]
         public IActionResult CreateAccount()
         {
-            return View();
+            ViewBag.Customers = _repo.Customers
+                .OrderBy(x => x.CustomerId);
+            // Pass a new instance of CustomerUser to the view
+            return View(new CustomerUser());
         }
+
+        [HttpPost]
+        public IActionResult CreateAccount(Customer customerUser)
+        {
+            _repo.CreateAccount(customerUser);
+
+            var customer = _repo.Customers.Include("Customer")
+                .OrderBy(x => x.CustomerId);
+
+            return View("AdminUsers", customer);
+
+        }
+        
 
         public IActionResult About()
         {
@@ -203,8 +219,6 @@ namespace Intex2024.Controllers
             return View();
         }
         
-        // [HttpPost]
-        // Commented out the entire method as requested
         public IActionResult Orders()
         {
             var orders = _repo.Orders.ToList(); // Execute the query to retrieve the orders
@@ -223,7 +237,7 @@ namespace Intex2024.Controllers
         }
 
         [HttpGet]
-        public IActionResult Edit(int id)
+        public IActionResult EditProduct(int id)
         {
             // Attempt to find the product by name
             Product recordToEdit = _repo.Products
@@ -234,14 +248,14 @@ namespace Intex2024.Controllers
 
         
         [HttpPost]
-        public IActionResult Edit(Product updatedInfo)
+        public IActionResult EditProduct(Product updatedInfo)
         {
             _repo.UpdateProduct(updatedInfo);
 
             return RedirectToAction("AdminProducts");
         }
         [HttpGet]
-        public IActionResult DeleteConfirmation(int id)
+        public IActionResult DeleteConfirmationProduct(int id)
         {
             var recordToDelete = _repo.Products
                 .Single(x => x.ProductId == id);
@@ -269,11 +283,6 @@ namespace Intex2024.Controllers
             return View(customers);
         }
         
-
-        public IActionResult Dashboard()
-        {
-            return View();
-        }
 
         
    [HttpGet]

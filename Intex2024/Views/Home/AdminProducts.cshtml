@@ -90,8 +90,8 @@
                                         <td>@o.NumParts</td>
                                         <td>@o.Price</td>
                                         <td>@o.ImgLink</td>
-                                        <td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@o.ProductId">Edit</a></td>
-                                        <td><a class="btn btn-danger" asp-controller="Home" asp-action="DeleteConfirmation" asp-route-id="@o.ProductId">Delete</a></td>
+                                        <td><a class="btn btn-info" asp-controller="Admin" asp-action="EditProduct" asp-route-id="@o.ProductId">Edit</a></td>
+                                        <td><a class="btn btn-danger" asp-controller="Admin" asp-action="DeleteConfirmationProduct" asp-route-id="@o.ProductId">Delete</a></td>
                                     </tr>
                                 }
                             </tbody>

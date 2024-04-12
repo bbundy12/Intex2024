@@ -47,16 +47,16 @@
                         <!-- Navigation buttons -->
                         <ul class="list-unstyled">
                             <li class="col-md-12 mb-2 text-center">
-                                <a class="btn btn-primary btn-block" asp-controller="Home" asp-action="Orders">Orders</a>
+                                <a class="btn btn-primary btn-block" asp-controller="Admin" asp-action="Orders">Orders</a>
                             </li>
                             <li class="col-md-12 mb-2 text-center">
-                                <a class="btn btn-primary btn-block" asp-controller="Home" asp-action="AdminProducts">Admin Products</a>
+                                <a class="btn btn-primary btn-block" asp-controller="Admin" asp-action="AdminProducts">Admin Products</a>
                             </li>
                             <li class="col-md-12 mb-2 text-center">
-                                <a class="btn btn-primary btn-block" asp-controller="Home" asp-action="AddProduct">Add Products</a>
+                                <a class="btn btn-primary btn-block" asp-controller="Admin" asp-action="AddProduct">Add Products</a>
                             </li>
                             <li class="col-md-12 mb-2 text-center">
-                                <a class="btn btn-primary btn-block" asp-controller="Home" asp-action="AdminUsers">Admin Users</a>
+                                <a class="btn btn-primary btn-block" asp-controller="Admin" asp-action="AdminUsers">Admin Users</a>
                             </li>
                         </ul>
                     </div>
@@ -78,6 +78,8 @@
                                     <th>Country</th>
                                     <th>Gender</th>
                                     <th>Age</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
                                     
                                 </tr>
                             </thead>
@@ -91,6 +93,8 @@
                                         <td>@o.CountryOfResidence</td>
                                         <td>@o.Gender</td>
                                         <td>@o.Age</td>
+                                        @*<td><a class="btn btn-info" asp-controller="Admin" asp-action="EditUsers" asp-route-id="@o.CustomerId">Edit</a></td> 
+                                        <td><a class="btn btn-danger" asp-controller="Admin" asp-action="DeleteConfirmationUsers" asp-route-id="@o.CustomerId">Delete</a></td>*@
                                     </tr>
                                 }
                             </tbody>

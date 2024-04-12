@@ -11,10 +11,17 @@ namespace Intex2024.Data
         IQueryable<LineItem> LineItems { get; }
         IQueryable<UserRecommendation> UserRecommendations { get; }
         IQueryable<ProductRecommendation> ProductRecommendations { get; }
+        object CustomerUsers { get; set; }
         public void AddProduct(Product ProductId);
         public void DeleteProduct(Product ProductId);
         public void UpdateProduct(Product ProductId);
         public IQueryable<Order> OrderNames();
         void SaveChanges();
+        public void CreateAccount(Customer CustomerId);
+        public void DeleteUser(Customer CustomerId);
+        public void UpdateUser(Customer CustomerId);
+        void UpdateProduct(Customer updatedInfo);
+
+        void AddProduct(Customer customerId);
     }
 }

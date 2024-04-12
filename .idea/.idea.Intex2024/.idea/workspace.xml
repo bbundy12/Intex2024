@@ -9,13 +9,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f501258e-1492-4509-b4b1-cd1371616d7c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Intex2024/.idea/dataSources/5211fe57-4812-40da-90e2-dea368068177.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Intex2024/.idea/dataSources/5211fe57-4812-40da-90e2-dea368068177.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Intex2024/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Intex2024/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex2024/Areas/Identity/Pages/Account/Register.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Areas/Identity/Pages/Account/Register.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Intex2024/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Controllers/HomeController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex2024/Data/Customer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Data/Customer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex2024/Data/UserRecommendation.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Data/UserRecommendation.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/AddProduct.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/Home/AddProduct.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex2024/Data/ApplicationDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Data/ApplicationDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex2024/Data/EFIntexRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Data/EFIntexRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex2024/Data/IIntexRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Data/IIntexRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex2024/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/AdminProducts.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/Home/AdminProducts.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/AdminUsers.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/Home/AdminUsers.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/CreateAccount.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/Home/CreateAccount.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/DeleteConfirmation.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/Home/DeleteConfirmationProduct.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/DeleteConfirmation.cshtml.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/Home/DeleteConfirmationProduct.cshtml.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/Orders.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Intex2024/Views/Home/Orders.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Intex2024/Views/Home/_ListProductsView.cshtml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,6 +71,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -72,29 +83,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.Intex2024: http.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "XThreadsFramesViewSplitterKey": "0.3432836",
-    "git-widget-placeholder": "Ben",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "CodeLensConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.Intex2024: http.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.3432836&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Ben&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;CodeLensConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "/Users/benroper/Library/Application Support/JetBrains/Rider2023.3/resharper-host/DecompilerCache",
-      "/Users/benroper/Library/Application Support/JetBrains/Rider2023.3/resharper-host/SourcesCache",
-      "/Users/benroper/.local/share/Symbols/src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;/Users/benroper/Library/Application Support/JetBrains/Rider2023.3/resharper-host/DecompilerCache&quot;,
+      &quot;/Users/benroper/Library/Application Support/JetBrains/Rider2023.3/resharper-host/SourcesCache&quot;,
+      &quot;/Users/benroper/.local/share/Symbols/src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.Intex2024: http">
     <configuration name="Intex2024: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/Intex2024/Intex2024.csproj" />
