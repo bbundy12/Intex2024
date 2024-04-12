@@ -291,10 +291,13 @@ namespace Intex2024.Controllers
        var products = _repo.Products.ToList();
        return View("AdminProducts", products);
    }
-   
-
 
         public IActionResult Fraud()
+        {
+            return View();
+        }
+
+        public IActionResult NotFraud()
         {
             return View();
         }
