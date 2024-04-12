@@ -35,6 +35,9 @@ namespace Intex2024.Data
 
             modelBuilder.Entity<UserRecommendation>()
                 .HasKey(e => new { e.UserId, e.RecommendationId });
+                
+            modelBuilder.Entity<CustomerUser>().HasNoKey();
+
         }
         public DbSet<Order> Orders { get; set; }
         public virtual DbSet<Product> Products { get; set; }
@@ -44,5 +47,7 @@ namespace Intex2024.Data
         public DbSet<LineItem> LineItems { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<CustomerUser> CustomerUsers { get; set; }
+
+
     }
 }

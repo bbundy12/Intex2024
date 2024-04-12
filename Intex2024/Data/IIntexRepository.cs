@@ -15,9 +15,15 @@ namespace Intex2024.Data
         public void AddProduct(Product ProductId);
         public void DeleteProduct(Product ProductId);
         public void UpdateProduct(Product ProductId);
-        public IQueryable<Order> OrderNames();
+       
         void SaveChanges();
         public void SaveCustomer(Customer customer);
         public void UpdateCustomerUser(string username, int userId);
+        public void CreateAccount(Customer CustomerId);
+        public void DeleteUser(Customer CustomerId);
+        public void UpdateUser(Customer CustomerId);
+        void UpdateProduct(Customer updatedInfo);
+
+        void AddProduct(Customer customerId);
     }
 }

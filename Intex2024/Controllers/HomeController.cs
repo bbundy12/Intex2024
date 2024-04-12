@@ -126,13 +126,22 @@ namespace Intex2024.Controllers
             }
         }*/
 
-        public IActionResult Index()
+        public async Task<IActionResult> IndexAsync()
         {
-            var vm = new ProductsListViewModel
+            var vm = new ProductsListViewModel();
+
+            if (User.Identity.IsAuthenticated)
             {
-                Products = _repo.Products
-                .OrderBy(x => x.Name)
-            };
+                var user = await _userManager.GetUserAsync(User);
+                vm.Products = _repo.UserRecommendations
+                                .Where(ur => ur.UserId == 3) // Hardcoded UserId
+                                .Select(ur => ur.Product);
+            }
+            else
+            {
+                vm.Products = _repo.Products.OrderBy(x => x.Name);
+            }
+
             return View(vm);
         }
 
@@ -190,6 +199,7 @@ namespace Intex2024.Controllers
             return View();
         }
 
+
         [HttpGet]
         public IActionResult CustomerInfo(string email)
         {
@@ -213,6 +223,7 @@ namespace Intex2024.Controllers
 
             return RedirectToAction("Index");
         }
+
 
         public IActionResult About()
         {

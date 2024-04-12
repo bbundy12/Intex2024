@@ -32,11 +32,6 @@ namespace Intex2024.Data
             return orderNames;
         }
 
-        public void SaveChanges()
-        {
-            throw new NotImplementedException();
-        }
-
         public void AddProduct(Product ProductId)
         {
             _context.Products.Add(ProductId);
@@ -90,5 +85,27 @@ namespace Intex2024.Data
             _context.CustomerUsers.Add(customerUser);
             _context.SaveChanges();
         }
+
+        public void DeleteUser(Customer CustomerId)
+        {
+            _context.Customers.Remove(CustomerId);
+            _context.SaveChanges();
+        }
+
+
+        public void UpdateUser(CustomerUser id)
+        {
+            _context.CustomerUser.Update(id);
+            _context.SaveChanges();
+        }
+
+
+        public void AddProduct(Customer customerId)
+        {
+            _context.Customers.Add(CustomerId);
+            _context.SaveChanges();
+            
+        }
+
     }
 }
