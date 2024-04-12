@@ -1,6 +1,9 @@
 ﻿using Intex2024.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.ML.OnnxRuntime;
+using Microsoft.ML.OnnxRuntime.Tensors;
 
 namespace Intex2024.Controllers
 {
@@ -8,9 +11,15 @@ namespace Intex2024.Controllers
     public class AdminController : Controller
     {
         private IIntexRepository _repo;
-        public AdminController(IIntexRepository repo)
+        private readonly InferenceSession _session;
+        private readonly string _onnxModelPath;
+        public AdminController(IIntexRepository repo, IHostEnvironment hostEnvironment)
         {
             _repo = repo;
+
+            _onnxModelPath = System.IO.Path.Combine(hostEnvironment.ContentRootPath, "decision_tree_clf.onnx");
+
+            _session = new InferenceSession(_onnxModelPath);
         }
         
         public IActionResult Orders()
@@ -111,7 +120,7 @@ namespace Intex2024.Controllers
         public IActionResult EditUsers(int id)
         {
             // Attempt to find the product by name
-            var recordToEdit = _repo.CustomerUsers;
+            CustomerUser recordToEdit = _repo.CustomerUsers;
                 
             // If a product was found, return the Edit view with the product data
             return View("CreateAccount", recordToEdit);

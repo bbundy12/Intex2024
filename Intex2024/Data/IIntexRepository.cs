@@ -21,6 +21,8 @@ namespace Intex2024.Data
         public void UpdateCustomerUser(string username, int userId);
         public void CreateAccount(Customer CustomerId);
         public void DeleteUser(Customer CustomerId);
+        public void UpdateUser(Customer CustomerId);
+        void UpdateProduct(Customer updatedInfo);
 
         void AddProduct(Customer customerId);
     }
