@@ -1,0 +1,55 @@
+﻿@model Intex2024.Data.CustomerUserViewModel
+
+<form method="post">
+    <input asp-for="UserName" type="hidden" />
+    <div>
+        <label asp-for="Customer.FirstName">First Name</label>
+        <input asp-for="Customer.FirstName" class="form-control" />
+        <span asp-validation-for="Customer.FirstName" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Customer.LastName">Last Name</label>
+        <input asp-for="Customer.LastName" class="form-control" />
+        <span asp-validation-for="Customer.LastName" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Customer.BirthDate">Birth Date</label>
+        <input asp-for="Customer.BirthDate" class="form-control" type="date" />
+        <span asp-validation-for="Customer.BirthDate" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Customer.CountryOfResidence">Country of Residence</label>
+        <select asp-for="Customer.CountryOfResidence" class="form-control">
+            <option value="">Select a country</option>
+            <option value="USA">USA</option>
+            <option value="United Kingdom">United Kingdom</option>
+            <option value="China">China</option>
+            <option value="India">India</option>
+            <option value="Russia">Russia</option>
+            <option value="Other">Other</option>
+        </select>
+        <span asp-validation-for="Customer.CountryOfResidence" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Customer.Gender">Gender</label>
+        <select asp-for="Customer.Gender" class="form-control">
+            <option value="">Select a gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+        <span asp-validation-for="Customer.Gender" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="Customer.Age">Age</label>
+        <input asp-for="Customer.Age" class="form-control" type="number" min="0" />
+        <span asp-validation-for="Customer.Age" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+

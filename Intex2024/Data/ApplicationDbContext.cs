@@ -46,7 +46,8 @@ namespace Intex2024.Data
         public DbSet<Cart> Carts { get; set; }
         public DbSet<LineItem> LineItems { get; set; }
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<CustomerUser> CustomerUsers { get; set; }
 
-        public IQueryable<CustomerUser> CustomerUsers { get; set; }
+
     }
 }
