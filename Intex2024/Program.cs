@@ -15,6 +15,9 @@ var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
 var configuration = builder.Configuration;
 
+var clientId = builder.Configuration["Authentication:Google:ClientId"];
+var clientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
+
 builder.Services.Configure<IdentityOptions>(options =>
 {
     // Default Password settings.
@@ -27,11 +30,12 @@ builder.Services.Configure<IdentityOptions>(options =>
 });
 
 //For Google signin 
-//services.AddAuthentication().AddGoogle(googleOptions =>
- //{
-    // googleOptions.ClientId = configuration["Authentication:Google:ClientId"];
-    // googleOptions.ClientSecret = configuration["Authentication:Google:ClientSecret"];
- //});
+services.AddAuthentication().AddGoogle(googleOptions =>
+{
+    googleOptions.ClientId = clientId;
+    googleOptions.ClientSecret = clientSecret;
+});
+
 
 // Add services to the container.
 //For the identity database
