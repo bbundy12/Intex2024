@@ -30,11 +30,11 @@ builder.Services.Configure<IdentityOptions>(options =>
 });
 
 //For Google signin 
-services.AddAuthentication().AddGoogle(googleOptions =>
+/*services.AddAuthentication().AddGoogle(googleOptions =>
 {
     googleOptions.ClientId = clientId;
     googleOptions.ClientSecret = clientSecret;
-});
+});*/
 
 
 // Add services to the container.
