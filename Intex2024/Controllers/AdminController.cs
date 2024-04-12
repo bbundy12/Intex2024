@@ -120,7 +120,7 @@ namespace Intex2024.Controllers
         public IActionResult EditUsers(int id)
         {
             // Attempt to find the product by name
-            CustomerUser recordToEdit = _repo.CustomerUsers;
+            var recordToEdit = _repo.CustomerUsers;
                 
             // If a product was found, return the Edit view with the product data
             return View("CreateAccount", recordToEdit);
