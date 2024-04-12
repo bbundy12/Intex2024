@@ -64,7 +64,7 @@
             <br><br><br>
         </main>
     </div>
-
+    
     <footer class="border-top footer text-muted">
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm bg-#FFD700">
             <div class="container-fluid">
@@ -103,13 +103,13 @@
 
             </div>
         </nav>
-    </footer>
+    </footer>    
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-
-    @Html.Partial("_CookieConsentPartial")
-
+    
     @await RenderSectionAsync("Scripts", required: false)
-</body>
+    @Html.Partial("_CookieConsentPartial")
+ 
+</body>s
 </html>
