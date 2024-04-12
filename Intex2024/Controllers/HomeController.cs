@@ -8,6 +8,7 @@ using Microsoft.ML.OnnxRuntime;
 using Microsoft.ML.OnnxRuntime.Tensors;
 using System.Diagnostics;
 using System.Xml.Linq;
+using Intex2024.Areas.Identity.Pages.Account;
 
 
 namespace Intex2024.Controllers
@@ -189,9 +190,28 @@ namespace Intex2024.Controllers
             return View();
         }
 
-        public IActionResult CreateAccount()
+        [HttpGet]
+        public IActionResult CustomerInfo(string email)
         {
-            return View();
+           
+            var viewModel = new CustomerUserViewModel
+            {
+                Customer = new Customer(),
+                UserName = email 
+            };
+
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public IActionResult CustomerInfo(CustomerUserViewModel model)
+        {
+                
+            _repo.SaveCustomer(model.Customer);
+            _repo.UpdateCustomerUser(model.UserName, model.Customer.CustomerId);
+
+            return RedirectToAction("Index");
         }
 
         public IActionResult About()

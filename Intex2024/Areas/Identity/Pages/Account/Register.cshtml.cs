@@ -147,6 +147,7 @@ namespace Intex2024.Areas.Identity.Pages.Account
                     
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
+                        TempData["UserEmail"] = user.Email;
                         return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
                     }
                     else

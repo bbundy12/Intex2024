@@ -3,6 +3,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.ML;
 
 namespace Intex2024.Data
 {
@@ -22,7 +23,7 @@ namespace Intex2024.Data
         public IQueryable<LineItem> LineItems => _context.LineItems;
         public IQueryable<UserRecommendation> UserRecommendations => _context.UserRecommendations;
         public IQueryable<ProductRecommendation> ProductRecommendations => _context.ProductRecommendations;
-
+        public IQueryable<CustomerUser> CustomerUsers => _context.CustomerUsers;
         public IQueryable<Order> OrderNames()
         {
             var orderNames = _context.Orders
@@ -49,6 +50,44 @@ namespace Intex2024.Data
         public void UpdateProduct(Product ProductId)
         {
             _context.Products.Update(ProductId);
+            _context.SaveChanges();
+        }
+
+        public void SaveCustomer(Customer customer)
+        {
+            if (customer.CustomerId == 0)
+            {
+                // If the CustomerId is 0, it's a new customer, so add it to the context
+                _context.Customers.Add(customer);
+            }
+            else
+            {
+                // If the CustomerId is not 0, then it's an existing customer, so update its data
+                Customer dbEntry = _context.Customers.FirstOrDefault(c => c.CustomerId == customer.CustomerId);
+                if (dbEntry != null)
+                {
+                    dbEntry.FirstName = customer.FirstName;
+                    dbEntry.LastName = customer.LastName;
+                    dbEntry.BirthDate = customer.BirthDate;
+                    dbEntry.CountryOfResidence = customer.CountryOfResidence;
+                    dbEntry.Gender = customer.Gender;
+                    dbEntry.Age = customer.Age;
+                    _context.Customers.Update(dbEntry);
+
+                }
+            }
+            _context.SaveChanges();
+        }
+
+        public void UpdateCustomerUser(string username, int userId)
+        {
+            var customerUser = new CustomerUser
+            {
+                CustomerId = userId,
+                UserName = username
+                // Initialize other properties as necessary
+            };
+            _context.CustomerUsers.Add(customerUser);
             _context.SaveChanges();
         }
     }
