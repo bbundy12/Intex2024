@@ -25,7 +25,7 @@ namespace Intex2024.Data
         
         public CustomerUser CustomerUsers { get; set; }
 
-        public IQueryable<CustomerUser> CustomerUser => _context.CustomerUser;
+        public IQueryable<CustomerUser> CustomerUser => _context.CustomerUsers;
 
         public IQueryable<Order> OrderNames()
         {
