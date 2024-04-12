@@ -22,8 +22,8 @@ namespace Intex2024.Data
         public IQueryable<LineItem> LineItems => _context.LineItems;
         public IQueryable<UserRecommendation> UserRecommendations => _context.UserRecommendations;
         public IQueryable<ProductRecommendation> ProductRecommendations => _context.ProductRecommendations;
-        
-        public CustomerUser CustomerUsers { get; set; }
+        public IQueryable<CustomerUser> CustomerUsers { get; }
+
 
         public IQueryable<CustomerUser> CustomerUser => _context.CustomerUsers;
 
@@ -40,9 +40,9 @@ namespace Intex2024.Data
             _context.Products.Add(ProductId);
             _context.SaveChanges();
         }
-        public void DeleteProduct(Product ProductId)
+        public void DeleteProduct(Product Name)
         {
-            _context.Products.Remove(ProductId);
+            _context.Products.Remove(Name);
             _context.SaveChanges();
         }
         public void UpdateProduct(Product ProductId)
@@ -73,11 +73,7 @@ namespace Intex2024.Data
             throw new NotImplementedException();
         }
 
-        public void UpdateUser(CustomerUser id)
-        {
-            _context.CustomerUser.Update(id);
-            _context.SaveChanges();
-        }
+       
 
         public void UpdateProduct(Customer updatedInfo)
         {

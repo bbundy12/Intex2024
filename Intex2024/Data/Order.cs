@@ -20,7 +20,8 @@ namespace Intex2024.Data
         public string ShippingAddress { get; set; }
         public string Bank { get; set; }
         public bool Fraud { get; set; }
-        public string CustomerId { get; set; } //Foreign Key to ASP.NET Users table
+        
+        public int CustomerId { get; set; } //Foreign Key to ASP.NET Users table
         public Customer Customer { get; set; }
         public ICollection<LineItem> LineItems { get; set; }
     }

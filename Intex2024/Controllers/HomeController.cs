@@ -25,8 +25,7 @@ namespace Intex2024.Controllers
             _repo = repo;
             _userManager = userManager;
             _httpContextAccessor = httpContextAccessor;
-            string onnxModelPath = System.IO.Path.Combine(hostEnvironment.ContentRootPath, "wwwroot/decision_tree_clf.onnx");
-            _session = new InferenceSession(onnxModelPath);
+            
         }
 
         /*[HttpPost]
