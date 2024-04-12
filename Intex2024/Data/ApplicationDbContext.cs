@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -46,6 +47,8 @@ namespace Intex2024.Data
         public DbSet<Cart> Carts { get; set; }
         public DbSet<LineItem> LineItems { get; set; }
         public DbSet<Customer> Customers { get; set; }
+
         public IQueryable<CustomerUser> CustomerUsers { get; set; }
+
     }
 }
