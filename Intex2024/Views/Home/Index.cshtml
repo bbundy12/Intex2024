@@ -62,7 +62,7 @@
       background-color: #FFD700;
     }
 	.item-of-week {
-		font-size: 75px;
+		font-size: 60px;
 	}
 </style>
 <section  style="background: linear-gradient(to right, rgba(68, 159, 255, 0.25), rgba(0, 61, 125, 0.25));">
@@ -102,21 +102,21 @@
 				<a class="btn btn-lg btn-shop-hero" asp-controller="Home" asp-action="About">Learn More</a>
 			</div>
 		</div>
-		<div class="row py-3 justify-content-center">
+		<div class="row py-5 justify-content-center">
 			<div class="col-sm-3">
 				<img src="~/img/lego3.jpg" style="height: 448px; width: 386px; border-radius: 20px;" alt="Random Product">
 			</div>
 			<div class="col-sm-6">
 				<div class="row">
 					<div class="col">
-						<h2 class="item-of-week">Item of the week: Harry Potter Classic Kit</h2>
+						<h2 class="item-of-week px-5">Item of the week: Harry Potter Classic Kit</h2>
 						<br>
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-sm-auto d-flex">
+					<div class="col-sm-auto d-flex px-5">
 						<form method="get" asp-page="/ProductDetails" asp-route-id="3">
-							<button type="submit" class="btn btn-lg btn-shop-hero">View Details</button>
+							<button type="submit" class="btn btn-lg btn-shop-hero mx-4">View Details</button>
 						</form>
 						<a class="btn btn-lg btn-shop-hero" asp-controller="Home" asp-action="Products">Shop All</a>
 					</div>
@@ -125,4 +125,5 @@
 		</div>
 
 	</section>
+	<br>
 </section>
