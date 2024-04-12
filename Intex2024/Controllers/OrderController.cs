@@ -24,7 +24,6 @@ namespace Intex2024.Controllers {
             var order = new Order();
 
             // Initialize the Cart property
-            order.Cart = new Cart();
 
             
 
