@@ -4,20 +4,118 @@
     ViewData["Title"] = "Product Details";
 }
 
-<h1>@Model.product.Name</h1>
-<div>
-    <img src="@Model.product.ImgLink" alt="@Model.product.Name" />
-</div>
-<div>
-    <p>Price: $@Model.product.Price</p>
-    <p>Description: @Model.product.Description</p>
-    <form method="post" asp-page="/Cart">
-        <input type="hidden" name="productId" value="@Model.product.ProductId" />
-        <input type="hidden" name="returnUrl" value="@Url.Page("/ProductDetails", new { id = Model.product.ProductId })" />
-        <button type="submit" class="btn btn-primary">Add to Cart</button>
-    </form>
+<style>
+    /* CSS for main product image */
+    .product-image {
+        width: 250px; /* Adjust the width as needed */
+        height: 200px; /* Auto height to maintain aspect ratio */
+        object-fit: cover; /* Ensure the image covers the specified dimensions */
+    }
+    .product-image-main {
+        width: auto; /* Adjust the width as needed */
+        max-height: 500px; /* Auto height to maintain aspect ratio */
+        max-width: 500px;
+        object-fit: contain;
+        float:right;
+    }
+    /* CSS for main product image container */
+    .image-container {
+        float: left; /* Float the image container to the left */
+        margin-right: 20px; /* Add some right margin for spacing */
+    }
+    /* CSS for product details container */
+    .product-details-container {
+        overflow: hidden; /* Clear the float */
+        text-align: center; /* Center-align the content */
+        padding-left: 15%;
+    }
+    /* CSS for product name */
+    .product-name {
+        font-size: 24px; /* Increase font size for the product name */
+        margin-top: 0; /* Remove top margin for the product name */
+    }
+    /* CSS for price and description */
+    .product-price, .product-description {
+        font-size: 18px; /* Increase font size for price and description */
+    }
+    /* CSS for buttons container */
+    .buttons-container {
+        margin-top: 20px; /* Add some top margin for spacing */
+        display: flex;
+        justify-content: center;
+    }
+    /* CSS for buttons */
+    .btn-add-to-cart {
+        margin-right: 10px; /* Add some right margin for spacing between buttons */
+    }
+    .recommended-products-container {
+        display: flex; /* Use flexbox */
+        flex-wrap: nowrap; /* Prevent wrapping */
+        overflow-x: auto; /* Enable horizontal scrolling */
+        -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on iOS */
+        margin-bottom: 20px; /* Add bottom margin for spacing */
+    }
+    /* CSS for recommended product item */
+    .recommended-product {
+        flex: 0 0 auto; /* Don't grow or shrink, maintain initial size */
+        margin-right: 20px; /* Add some right margin for spacing between products */
+    }
+    .recommended-product h4 {
+        max-width: 200px; /* Set max width for product names */
+        overflow: hidden; /* Hide overflow text */
+        text-overflow: ellipsis; /* Display ellipsis for overflow text */
+        white-space: nowrap; /* Prevent text wrapping */
+    }
+</style>
+<section  style="background: linear-gradient(to right, rgba(68, 159, 255, 0.25), rgba(0, 61, 125, 0.25));">
+    <br><br>
+        <h2 class="p-3 text-center">Product Details</h2>
+<br>
+    <!-- Product details container -->
+    <div class="product-details-container">
+        <!-- Product name on the right -->
 
-    <a href="/Products" class="btn btn-secondary">Continue Shopping</a>
+        <!-- Image container -->
+        <div class="image-container">
+            <img src="@Model.product.ImgLink" alt="@Model.product.Name" class="product-image-main py-1 col-sm" />
+        </div>
 
+        <!-- Product details -->
+        <div class="col-sm-10">
+                <h1 class="product-name">@Model.product.Name</h1>
 
-</div>
+            <!-- Price -->
+            <p class="product-price">Price: $@Model.product.Price</p>
+            <!-- Description -->
+            <p class="product-description">Description: @Model.product.Description</p>
+            
+            <!-- Buttons container -->
+            <div class="buttons-container">
+                <!-- Add to Cart button -->
+                <form method="post" asp-page="/Cart" class="btn-add-to-cart">
+                    <input type="hidden" name="productId" value="@Model.product.ProductId" />
+                    <input type="hidden" name="returnUrl" value="@Url.Page("/ProductDetails", new { id = Model.product.ProductId })" />
+                    <button type="submit" class="btn btn-primary">Add to Cart</button>    
+                </form>
+                <!-- Continue Shopping button -->
+                <a href="/Products" class="btn btn-secondary">Continue Shopping</a>
+            </div>
+        </div>
+    </div>
+<br><br>
+    <!-- Recommended Products -->
+    <h2 class="p-3 text-center">Recommended Products</h2>
+    <!-- Recommended products container -->
+    <div class="recommended-products-container justify-content-center">
+        @foreach (var recommendation in Model.RecommendedProducts)
+        {
+            <div class="recommended-product">
+                <h4>@recommendation.Name</h4>
+                <img src="@recommendation.ImgLink" alt="@recommendation.Name" class="product-image" />
+                <p>Price: $@recommendation.Price</p>
+                <a href="@Url.Page("/ProductDetails", new { id = recommendation.ProductId })" class="btn btn-primary">View Details</a>
+            </div>
+        }
+    </div>
+    <br><br><br>
+</section>

@@ -1,5 +1,6 @@
 using Intex2024.Data;
 using Intex2024.Infrastructure;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -7,6 +8,7 @@ using Microsoft.ML.OnnxRuntime;
 using Microsoft.ML.OnnxRuntime.Tensors;
 using System.Diagnostics;
 using System.Xml.Linq;
+using Intex2024.Areas.Identity.Pages.Account;
 
 
 namespace Intex2024.Controllers
@@ -24,8 +26,7 @@ namespace Intex2024.Controllers
             _repo = repo;
             _userManager = userManager;
             _httpContextAccessor = httpContextAccessor;
-            string onnxModelPath = System.IO.Path.Combine(hostEnvironment.ContentRootPath, "wwwroot/decision_tree_clf.onnx");
-            _session = new InferenceSession(onnxModelPath);
+            
         }
 // Beginning of commented code
     //     [HttpPost]
@@ -114,6 +115,7 @@ namespace Intex2024.Controllers
     //         bool isFraud = predictionResult == "Fraud";
     //         *//*SaveOrder(cartSubmission.Order, isFraud);*//*
 
+<<<<<<< HEAD
     //         if (isFraud)
     //         {
     //             return View("ConfirmationPending");
@@ -125,12 +127,25 @@ namespace Intex2024.Controllers
     //     }
 // End of commented code
         public IActionResult Index()
+=======
+        public ViewResult Checkout() => View( new Order());
+        public async Task<IActionResult> IndexAsync()
+>>>>>>> 3fbd3c8e12ed3689bd2133469965c7c484e88228
         {
-            var vm = new ProductsListViewModel
+            var vm = new ProductsListViewModel();
+
+            if (User.Identity.IsAuthenticated)
             {
-                Products = _repo.Products
-                .OrderBy(x => x.Name)
-            };
+                var user = await _userManager.GetUserAsync(User);
+                vm.Products = _repo.UserRecommendations
+                                .Where(ur => ur.UserId == 3) // Hardcoded UserId
+                                .Select(ur => ur.Product);
+            }
+            else
+            {
+                vm.Products = _repo.Products.OrderBy(x => x.Name);
+            }
+
             return View(vm);
         }
 
@@ -188,10 +203,31 @@ namespace Intex2024.Controllers
             return View();
         }
 
-        public IActionResult CreateAccount()
+
+        [HttpGet]
+        public IActionResult CustomerInfo(string email)
         {
-            return View();
+           
+            var viewModel = new CustomerUserViewModel
+            {
+                Customer = new Customer(),
+                UserName = email 
+            };
+
+
+            return View(viewModel);
         }
+
+        [HttpPost]
+        public IActionResult CustomerInfo(CustomerUserViewModel model)
+        {
+                
+            _repo.SaveCustomer(model.Customer);
+            _repo.UpdateCustomerUser(model.UserName, model.Customer.CustomerId);
+
+            return RedirectToAction("Index");
+        }
+
 
         public IActionResult About()
         {
@@ -203,6 +239,7 @@ namespace Intex2024.Controllers
             return View();
         }
         
+<<<<<<< HEAD
         // [HttpPost]
         // Commented out the entire method as requested
         public IActionResult Orders()
@@ -291,6 +328,10 @@ namespace Intex2024.Controllers
        var products = _repo.Products.ToList();
        return View("AdminProducts", products);
    }
+=======
+         
+
+>>>>>>> 3fbd3c8e12ed3689bd2133469965c7c484e88228
 
         public IActionResult Fraud()
         {

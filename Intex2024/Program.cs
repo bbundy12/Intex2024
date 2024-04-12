@@ -6,6 +6,7 @@ using Microsoft.ML;
 using Microsoft.ML.Data;
 using Microsoft.ML.Transforms.Onnx;
 using Azure.Identity;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,12 +15,27 @@ var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
 var configuration = builder.Configuration;
 
-// For Google signin 
-// services.AddAuthentication().AddGoogle(googleOptions =>
-// {
-//     googleOptions.ClientId = configuration["Authentication:Google:ClientId"];
-//     googleOptions.ClientSecret = configuration["Authentication:Google:ClientSecret"];
-// });
+var clientId = builder.Configuration["Authentication:Google:ClientId"];
+var clientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
+
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    // Default Password settings.
+    options.Password.RequireDigit = true;
+    options.Password.RequireLowercase = true;
+    options.Password.RequireNonAlphanumeric = true;
+    options.Password.RequireUppercase = true;
+    options.Password.RequiredLength = 10;
+    options.Password.RequiredUniqueChars = 1;
+});
+
+//For Google signin 
+services.AddAuthentication().AddGoogle(googleOptions =>
+{
+    googleOptions.ClientId = clientId;
+    googleOptions.ClientSecret = clientSecret;
+});
+
 
 // Add services to the container.
 //For the identity database
@@ -30,6 +46,7 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 //Configuration Identity Services
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
@@ -38,6 +55,8 @@ builder.Services.AddControllersWithViews();
     options.UseSqlServer(builder.Configuration["ConnectionStrings:IntexConnection"]);
 });*/
 builder.Services.AddScoped<IIntexRepository, EFIntexRepository>();
+builder.Services.AddScoped<IOrderRepository, EFOrderRepository>();
+
 
 builder.Services.AddRazorPages();
 

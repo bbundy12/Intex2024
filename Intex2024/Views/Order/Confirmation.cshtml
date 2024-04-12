@@ -1,0 +1,125 @@
+@using System;
+@using System.ComponentModel.DataAnnotations;
+@model Order
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        text-align: center;
+        margin-top: 30px;
+        color: #333;
+    }
+
+    form {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+        display: block;
+        margin-bottom: 10px;
+        color: #555;
+    }
+
+    select,
+    input[type="text"],
+    input[type="hidden"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    select {
+        appearance: none;
+        background: transparent url('data:image/svg+xml;utf8,<svg fill="%23828282" viewBox="0 0 24 24" width="24" height="24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>') no-repeat right 10px center;
+        background-size: 15px;
+    }
+
+    input[type="hidden"] {
+        display: none;
+    }
+
+    button[type="submit"] {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    button[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+</style>
+
+<h1>Place Order</h1>
+
+<form method="post">
+    <h4>Total: $@ViewBag.Amount.00</h4>
+    
+    <label>Country of Transaction:</label>
+    <select asp-for="CountryOfTransaction">
+        <option value="USA">USA</option>
+        <option value="United Kingdom">United Kingdom</option>
+        <option value="India">India</option>
+        <option value="China">China</option>
+        <option value="Russia">Russia</option>
+    </select>
+
+    <label>Shipping Address:</label>
+    <input asp-for="ShippingAddress">
+
+    <label>Bank:</label>
+    <select asp-for="Bank">
+        <option value="Barclays">Barclays</option>
+        <option value="Halifax Bank">Halifax Bank</option>
+        <option value="Monzo">Monzo</option>
+        <option value="HSBC">HSBC</option>
+        <option value="Metro">Metro</option>
+        <option value="Lloyds">Lloyds</option>
+        <option value="RBS">RBS</option>
+    </select>
+
+    <label>Type of Card:</label>
+    <select asp-for="TypeOfCard">
+        <option value="MasterCard">MasterCard</option>
+        <option value="Visa">Visa</option>
+    </select>
+
+    <input type="hidden" asp-for="TransactionId"/>
+    <label>Date Order Placed:</label>
+    <input asp-for="Date" readonly/>
+
+    <label>Day of Week Order Placed:</label>
+    <input asp-for="DayOfWeek" readonly/>
+
+    <label>Time Order Placed:</label>
+    <input asp-for="Time" readonly/>
+
+    <label>Type of Transaction:</label>
+    <input asp-for="TypeOfTransaction" readonly/>
+
+    <label>Entry Mode:</label>
+    <input asp-for="EntryMode" readonly/>
+
+    <input type="hidden" name="Amount" value="@ViewBag.Amount" />
+
+    <button type="submit">Place Order</button>
+</form>
+<br><br>

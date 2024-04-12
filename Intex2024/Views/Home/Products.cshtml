@@ -63,6 +63,33 @@
 	.item-of-week {
 		font-size: 75px;
 	}
+    .page-title {
+        text-align: center;
+        font-size: 36px;
+        font-weight: bold;
+        margin-top: 20px;
+    }
+
+    /* Adjustments for pagination */
+    .pagination-container {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    /* Fix for Products Per Page button */
+    .btn-group {
+        justify-content: center;
+    }
+    .btn-group-products-per-page button {
+        width: 50px;
+        padding: 5px 15px; /* Adjust the padding as needed */
+        font-size: 16px; /* Adjust the font size as needed */
+    }
+    .products-per-page-label {
+        font-size: 16px;
+        font-weight: bold;
+    }
+
 </style>
 <script>
     function changePageSize(pageSize) {
@@ -96,20 +123,22 @@
 			</div>
 		</div>
 	</section>
+    <div class="page-title">
+        Products
+    </div>
     <section>
         <div class="mt-3">
-            <label>Products Per Page:</label>
-            <div class="btn-group" role="group" aria-label="Page Size">
-                <button type="button" class="btn btn-outline-secondary" data-page-size="5" onclick="changePageSize(5)">5</button>
-                <button type="button" class="btn btn-outline-secondary" data-page-size="10" onclick="changePageSize(10)">10</button>
-                <button type="button" class="btn btn-outline-secondary" data-page-size="20" onclick="changePageSize(20)">20</button>
+            <label class="products-per-page-label px-5">Products Per Page:</label>
+            <div class="btn-group btn-group-products-per-page mx-5" role="group" aria-label="Page Size">
+                <button type="button" class="btn btn-secondary" data-page-size="5" onclick="changePageSize(5)">5</button>
+                <button type="button" class="btn btn-secondary" data-page-size="10" onclick="changePageSize(10)">10</button>
+                <button type="button" class="btn btn-secondary" data-page-size="20" onclick="changePageSize(20)">20</button>
             </div>
         </div>
 
-        <div class="row m-1 p-1">
-            <div class="col-3">
-                <vc:product-categories />
-                <vc:product-colors />
+        <div class="row m-1 p-1 px-5">
+            <div class="col-sm d-flex">
+                <vc:product-categories />&nbsp;&nbsp;&nbsp;<vc:product-colors />
             </div>
         </div>
             
@@ -122,7 +151,8 @@
             </div>
         </div>
     </section>
-<div page-model="@Model.PaginationInfo" page-action="Products" page-class-enabled="true" page-class-normal="btn-outline-dark" 
-	page-class="btn" page-class-selected="active" class="btn-group pull-right m-1"></div>
-
+    <div class="pagination-container">
+        <div page-model="@Model.PaginationInfo" page-action="Products" page-class-enabled="true" page-class-normal="btn-outline-dark" 
+             page-class="btn" page-class-selected="active" class="btn-group m-1"></div>
+    </div>
 </section>

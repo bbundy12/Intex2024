@@ -1,0 +1,76 @@
+﻿@model Intex2024.Data.CustomerUserViewModel
+@{
+    var maxDate = DateTime.Today.ToString("yyyy-MM-dd");
+}
+
+<style>
+    /* Add the same background color and padding as the login page */
+    body {
+        background-color: rgba(255, 215, 0, 0.25);
+        padding-bottom: 100px;
+    }
+</style>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="container-white mb-5">
+                    <form method="post" class="text-left">
+                        <h1 class="text-center">Add Personal Information</h1>
+                    <br />
+                        <input asp-for="UserName" type="hidden" />
+                    <div class="form-group">
+                        <label asp-for="Customer.FirstName">First Name</label>
+                        <input asp-for="Customer.FirstName" class="form-control" />
+                        <span asp-validation-for="Customer.FirstName" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Customer.LastName">Last Name</label>
+                        <input asp-for="Customer.LastName" class="form-control" />
+                        <span asp-validation-for="Customer.LastName" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Customer.BirthDate">Birth Date</label>
+                        <input asp-for="Customer.BirthDate" class="form-control" type="date" placeholder="2000-01-01" min="1901-01-01" max="@maxDate">
+                        <span asp-validation-for="Customer.BirthDate" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Customer.CountryOfResidence">Country of Residence</label>
+                        <select asp-for="Customer.CountryOfResidence" class="form-control">
+                            <option value="">Select a country</option>
+                            <option value="USA">USA</option>
+                            <option value="United Kingdom">United Kingdom</option>
+                            <option value="China">China</option>
+                            <option value="India">India</option>
+                            <option value="Russia">Russia</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <span asp-validation-for="Customer.CountryOfResidence" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Customer.Gender">Gender</label>
+                        <select asp-for="Customer.Gender" class="form-control">
+                            <option value="">Select a gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                        <span asp-validation-for="Customer.Gender" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Customer.Age">Age</label>
+                        <input asp-for="Customer.Age" class="form-control" type="number" min="0" />
+                        <span asp-validation-for="Customer.Age" class="text-danger"></span>
+                    </div>
+
+
+                    <button type="submit" class="btn btn-primary mb-5">Confirm Information</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>                    
+

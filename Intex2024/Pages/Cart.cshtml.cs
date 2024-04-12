@@ -1,11 +1,13 @@
 using Intex2024.Data;
 using Intex2024.Infrastructure;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Build.Evaluation;
 
 namespace Intex2024.Pages
 {
+    [Authorize(Roles = "Customer")]
     public class CartModel : PageModel
     {
         private IIntexRepository _repo;
@@ -38,6 +40,10 @@ namespace Intex2024.Pages
         {
             Cart.RemoveLine(Cart.Lines.First(x => x.Product.ProductId == productId).Product);
             return RedirectToPage (new {returnUrl = returnUrl});
+        }
+        public IActionResult OnPostConfirm()
+        {
+            return RedirectToPage("/Confirmation", new { Cart = Cart });
         }
     }
 }
